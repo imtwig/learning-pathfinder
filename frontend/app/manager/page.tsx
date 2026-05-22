@@ -214,7 +214,7 @@ export default function ManagerDashboard() {
                   <h1 className="font-serif text-[length:var(--text-xl)] font-bold text-[rgb(var(--color-text-primary))] leading-none mb-0.5">
                     Learning Pathway
                   </h1>
-                  <p className="text-xs text-[rgb(var(--color-text-muted))]">Manager Dashboard</p>
+                  <p className="text-xs text-[rgb(var(--color-text-muted))]">Manager / Practice Lead Dashboard</p>
                 </div>
               </div>
             </div>
@@ -242,7 +242,7 @@ export default function ManagerDashboard() {
         {/* Header */}
         <header className="mb-6 sm:mb-[var(--space-8)]">
           <h1 className="font-serif text-2xl sm:text-[length:var(--text-4xl)] font-bold text-[rgb(var(--color-text-primary))] mb-2 sm:mb-[var(--space-2)]">
-            Manager Dashboard
+            Manager / Practice Lead Dashboard
           </h1>
           <p className="text-[rgb(var(--color-text-secondary))] text-base sm:text-[length:var(--text-lg)]">
             View and manage your team's learning pathways
