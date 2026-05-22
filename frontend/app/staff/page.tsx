@@ -709,7 +709,8 @@ function StaffDashboardContent() {
               )}
 
               {/* Dropdown Menu - Rendered with Portal */}
-              {!isManagerView && pathwaySearchOpen && typeof window !== 'undefined' && createPortal((
+              {!isManagerView && pathwaySearchOpen && typeof window !== 'undefined' && (
+                createPortal(
                   <div
                     className="fixed bg-white border-2 border-[rgb(var(--color-border))] rounded-xl shadow-lg z-[100]"
                     style={{
@@ -777,11 +778,10 @@ function StaffDashboardContent() {
                           </div>
                         )}
                       </div>
-                    </div>
-                  ),
+                    </div>,
                   document.body
-                ))
-              }
+                )
+              )}
             </div>
 
             {/* Level Progress Indicator */}
