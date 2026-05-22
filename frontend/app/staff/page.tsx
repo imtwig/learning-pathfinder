@@ -35,6 +35,28 @@ const PRODUCT_MANAGER_LEVELS = [
   { id: 7, name: 'LEVEL OUT OF RANGE', label: '7', description: 'Your level is so high nobody knows what you are even', color: 'rgb(var(--color-primary-600))' },
 ];
 
+const PRODUCT_OPS_LEVELS = [
+  { id: 0, name: 'Pre-Schema', label: '0', description: 'Complete prerequisite requirements with manager approval', color: 'rgb(var(--color-neutral-500))' },
+  { id: 1, name: 'Product Ops Specialist (I)', label: '1', description: "As an L1 Product Ops Specialist (I), you are an entry-level position designed for individuals new to product operations.", color: 'rgb(var(--color-primary-600))' },
+  { id: 2, name: 'Product Ops Specialist (II)', label: '2', description: "As an L2 Product Ops Specialist (II), you are responsible for managing operational aspects of products or feature areas and driving their success from implementation to ongoing support.", color: 'rgb(var(--color-primary-600))' },
+  { id: 3, name: 'Senior Product Ops Specialist', label: '3', description: "As an L3 Senior Product Ops Specialist, you are an expert operator able to achieve success in complex and ambiguous spaces.", color: 'rgb(var(--color-primary-600))' },
+  { id: 4, name: 'Assistant Director, Product Ops', label: '4', description: "As an L4 Assistant Director, Product Ops, you are a competent people manager who raises the standard of their team while maintaining strong operational expertise.", color: 'rgb(var(--color-primary-600))' },
+  { id: 5, name: 'Deputy Director, Product Ops', label: '5', description: "As a L5 Deputy Director, Product Ops, you are a senior leader who defines the vision and strategy for product operations across a cluster of agencies.", color: 'rgb(var(--color-primary-600))' },
+  { id: 6, name: 'Director, Product Ops', label: '6', description: "As a L6 Director, Product Ops, you lead product operations across government.", color: 'rgb(var(--color-primary-600))' },
+  { id: 7, name: 'LEVEL OUT OF RANGE', label: '7', description: 'Your level is so high nobody knows what you are even', color: 'rgb(var(--color-primary-600))' },
+];
+
+const SOFTWARE_ENGINEER_LEVELS = [
+  { id: 0, name: 'Pre-Schema', label: '0', description: 'Complete prerequisite requirements with manager approval', color: 'rgb(var(--color-neutral-500))' },
+  { id: 1, name: 'Software Engineer (I)', label: '1', description: "As an L1 Software Engineer (I), your primary focus is on building foundational software development skills.", color: 'rgb(var(--color-primary-600))' },
+  { id: 2, name: 'Software Engineer (II)', label: '2', description: "As an L2 Software Engineer (II), your scope includes contributing to multiple components or features within your team, with growing independence in driving development.", color: 'rgb(var(--color-primary-600))' },
+  { id: 3, name: 'Senior Software Engineer', label: '3', description: "As an L3 Senior Software Engineer, you are a trusted technical contributor who consistently delivers high-quality, maintainable, and impactful features and components within your team.", color: 'rgb(var(--color-primary-600))' },
+  { id: 4, name: 'Staff Software Engineer', label: '4', description: "As an L4 Staff Software Engineer, you are a senior technical leader whose impact extends across multiple teams, or a single team with a larger or more complex domain. Your ownership and influence are not limited to a single small team—you are expected to drive technical quality, scalability, and maintainability for systems and initiatives that span teams, or for a team responsible for a significant product area or domain.", color: 'rgb(var(--color-primary-600))' },
+  { id: 5, name: 'Principal Software Engineer', label: '5', description: "As an L5 Principal Software Engineer, you are a highly trusted technical leader who defines and drives the engineering strategy across multiple teams or product areas.", color: 'rgb(var(--color-primary-600))' },
+  { id: 6, name: 'Distinguished Software Engineer', label: '6', description: "As an L6 Distinguished Engineer, you steward long-term technical vision across the organisation and contribute to WOG-scale engineering challenges.", color: 'rgb(var(--color-primary-600))' },
+  { id: 7, name: 'LEVEL OUT OF RANGE', label: '7', description: 'Your level is so high nobody knows what you are even', color: 'rgb(var(--color-primary-600))' },
+];
+
 function StaffDashboardContent() {
   const searchParams = useSearchParams();
   const userId = searchParams.get('userId') || '';
@@ -279,6 +301,10 @@ function StaffDashboardContent() {
       setLevels(UX_DESIGNER_LEVELS);
     } else if (selectedPathway === 'Product Manager') {
       setLevels(PRODUCT_MANAGER_LEVELS);
+    } else if (selectedPathway === 'Product Ops') {
+      setLevels(PRODUCT_OPS_LEVELS);
+    } else if (selectedPathway === 'Software Engineer') {
+      setLevels(SOFTWARE_ENGINEER_LEVELS);
     }
   }, [selectedPathway]);
 
@@ -339,7 +365,14 @@ function StaffDashboardContent() {
       if (pathwayData.data?.pathway?.schemaLevels) {
         const transformedLevels = pathwayData.data.pathway.schemaLevels.map((level: any, index: number) => {
           // Use appropriate levels array based on pathway
-          const levelsArray = selectedPathway === 'Product Manager' ? PRODUCT_MANAGER_LEVELS : UX_DESIGNER_LEVELS;
+          let levelsArray = UX_DESIGNER_LEVELS;
+          if (selectedPathway === 'Product Manager') {
+            levelsArray = PRODUCT_MANAGER_LEVELS;
+          } else if (selectedPathway === 'Product Ops') {
+            levelsArray = PRODUCT_OPS_LEVELS;
+          } else if (selectedPathway === 'Software Engineer') {
+            levelsArray = SOFTWARE_ENGINEER_LEVELS;
+          }
           const defaultLevel = levelsArray.find(dl => dl.id === level.levelOrder);
           return {
             id: level.levelOrder,
@@ -799,9 +832,14 @@ function StaffDashboardContent() {
                       </div>
                       {expandedLevel >= 1 && expandedLevel <= 6 && (
                         <a
-                          href={selectedPathway === 'Product Manager'
-                            ? 'https://appraise.tech.gov.sg/schemas/role/cmnd18pf2002j0clbuvybnyxh'
-                            : 'https://appraise.tech.gov.sg/schemas/role/cmnd18pco001o0clbcz1vqx1f'
+                          href={
+                            selectedPathway === 'Product Manager'
+                              ? 'https://appraise.tech.gov.sg/schemas/role/cmnd18pf2002j0clbuvybnyxh'
+                              : selectedPathway === 'Product Ops'
+                              ? 'https://appraise.tech.gov.sg/schemas/role/cmnd18pfh002q0clb5dy700v0'
+                              : selectedPathway === 'Software Engineer'
+                              ? 'https://appraise.tech.gov.sg/schemas/role/cmnd18p9g00080clbqru5ngyb'
+                              : 'https://appraise.tech.gov.sg/schemas/role/cmnd18pco001o0clbcz1vqx1f'
                           }
                           target="_blank"
                           rel="noopener noreferrer"
@@ -841,8 +879,8 @@ function StaffDashboardContent() {
                         </div>
                       </div>
 
-                      {selectedPathway === 'Product Manager' ? (
-                        // Product Manager Pre-Schema - Coming Soon
+                      {selectedPathway === 'Product Manager' || selectedPathway === 'Product Ops' || selectedPathway === 'Software Engineer' ? (
+                        // Product Manager / Product Ops / Software Engineer Pre-Schema - Coming Soon
                         <div className="text-center py-[var(--space-16)]">
                           <div className="w-20 h-20 rounded-2xl bg-[rgb(var(--color-neutral-100))] flex items-center justify-center mx-auto mb-[var(--space-4)]">
                             <svg className="w-10 h-10 text-[rgb(var(--color-text-muted))]" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.5}>
@@ -851,7 +889,7 @@ function StaffDashboardContent() {
                           </div>
                           <h3 className="font-serif text-2xl font-bold text-[rgb(var(--color-text-primary))] mb-2">Coming Soon</h3>
                           <p className="text-[rgb(var(--color-text-secondary))] max-w-md mx-auto">
-                            Pre-Schema requirements for Product Manager pathway are currently being developed.
+                            Pre-Schema requirements for {selectedPathway} pathway are currently being developed.
                           </p>
                         </div>
                       ) : selectedPathway === 'UX Designer' ? (
