@@ -918,17 +918,17 @@ function StaffDashboardContent() {
                       {/* More Ahead Indicator (Clickable) or Remaining Levels */}
                       {hasMoreLevels && !showFullPathway && (
                         <>
-                          <div className="flex items-center -mt-6">
+                          <div className="flex items-center -mt-6 transition-opacity duration-300">
                             <div className="h-0.5 w-8 sm:w-12 bg-[rgb(var(--color-neutral-300))]"></div>
                           </div>
                           <button
                             onClick={() => setShowFullPathway(true)}
                             className="flex flex-col items-center gap-2 group cursor-pointer"
                           >
-                            <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full inline-flex items-center justify-center bg-[rgb(var(--color-neutral-100))] text-[rgb(var(--color-text-muted))] opacity-60 group-hover:opacity-100 group-hover:bg-[rgb(var(--color-neutral-200))] transition-all">
+                            <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full inline-flex items-center justify-center bg-[rgb(var(--color-neutral-100))] text-[rgb(var(--color-text-muted))] opacity-60 group-hover:opacity-100 group-hover:bg-[rgb(var(--color-neutral-200))] transition-all duration-200 group-hover:scale-105">
                               <span className="text-lg">⋯</span>
                             </div>
-                            <p className="text-[10px] sm:text-xs font-medium text-[rgb(var(--color-text-muted))] opacity-60 group-hover:opacity-100 group-hover:text-[rgb(var(--color-primary-600))] transition-all">
+                            <p className="text-[10px] sm:text-xs font-medium text-[rgb(var(--color-text-muted))] opacity-60 group-hover:opacity-100 group-hover:text-[rgb(var(--color-primary-600))] transition-all duration-200">
                               More ahead
                             </p>
                           </button>
@@ -938,12 +938,15 @@ function StaffDashboardContent() {
                       {/* Show Remaining Levels when expanded */}
                       {hasMoreLevels && showFullPathway && (
                         <>
-                          <div className="flex items-center -mt-6">
+                          <div className="flex items-center -mt-6 animate-fadeIn" style={{ animationDelay: '0ms' }}>
                             <div className="h-0.5 w-8 sm:w-12 bg-[rgb(var(--color-neutral-300))]"></div>
                           </div>
                           {remainingLevels.map((level, index) => (
                             <React.Fragment key={level.id}>
-                              <div className="flex flex-col items-center gap-2">
+                              <div
+                                className="flex flex-col items-center gap-2 animate-fadeInUp"
+                                style={{ animationDelay: `${index * 40}ms` }}
+                              >
                                 <button
                                   onClick={() => setExpandedLevel(level.id)}
                                   className="group"
@@ -973,8 +976,11 @@ function StaffDashboardContent() {
 
                               {/* Connecting Line */}
                               {index < remainingLevels.length - 1 && (
-                                <div className="flex items-center -mt-6">
-                                  <div className="h-0.5 w-8 sm:w-12 bg-[rgb(var(--color-neutral-300))] transition-colors duration-300"></div>
+                                <div
+                                  className="flex items-center -mt-6 animate-fadeIn"
+                                  style={{ animationDelay: `${(index * 40) + 20}ms` }}
+                                >
+                                  <div className="h-0.5 w-8 sm:w-12 bg-[rgb(var(--color-neutral-300))]"></div>
                                 </div>
                               )}
                             </React.Fragment>
@@ -983,9 +989,10 @@ function StaffDashboardContent() {
                           {/* Show Focus View Link */}
                           <button
                             onClick={() => setShowFullPathway(false)}
-                            className="flex items-center ml-4 cursor-pointer group -mt-6"
+                            className="flex items-center ml-4 cursor-pointer group -mt-6 animate-fadeIn"
+                            style={{ animationDelay: `${remainingLevels.length * 40}ms` }}
                           >
-                            <p className="text-xs sm:text-sm font-medium text-[rgb(var(--color-primary-600))] hover:text-[rgb(var(--color-primary-700))] underline transition-colors whitespace-nowrap">
+                            <p className="text-xs sm:text-sm font-medium text-[rgb(var(--color-primary-600))] hover:text-[rgb(var(--color-primary-700))] underline transition-colors duration-200 whitespace-nowrap">
                               Show focus view
                             </p>
                           </button>
