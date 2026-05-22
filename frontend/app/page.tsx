@@ -56,33 +56,33 @@ export default function HomePage() {
             <div className="grid md:grid-cols-2 gap-[var(--space-8)] max-w-4xl mx-auto">
               {/* Staff Card */}
               <Link href="/staff?userId=staff-1" className="group block">
-                <Card className="h-full hover:shadow-[var(--shadow-lg)] transition-all duration-300 bg-[rgb(var(--color-surface))] overflow-hidden relative cursor-pointer">
-                  <CardHeader className="text-center py-[var(--space-12)] relative px-4">
-                    <div className="mb-[var(--space-6)] flex justify-center">
+                <Card className="h-full hover:shadow-[var(--shadow-lg)] transition-all duration-300 bg-[rgb(var(--color-surface))] overflow-hidden relative cursor-pointer min-h-[280px] flex items-center justify-center">
+                  <CardHeader className="text-center relative px-6">
+                    <div className="mb-[var(--space-4)] flex justify-center">
                       <div className="w-20 h-20 rounded-3xl bg-[rgb(var(--color-neutral-100))] flex items-center justify-center text-[rgb(var(--color-text-primary))] transform group-hover:scale-110 transition-transform duration-300 shadow-[var(--shadow-base)]">
                         <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.5}>
                           <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
                         </svg>
                       </div>
                     </div>
-                    <CardTitle className="font-serif text-[length:var(--text-3xl)] text-[rgb(var(--color-text-primary))] leading-tight min-h-[3.5rem] flex items-center justify-center">Staff</CardTitle>
+                    <CardTitle className="font-serif text-2xl text-[rgb(var(--color-text-primary))]">Staff</CardTitle>
                   </CardHeader>
                 </Card>
               </Link>
 
               {/* Manager Card */}
               <Link href="/manager?userId=manager-1" className="group block">
-                <Card className="h-full hover:shadow-[var(--shadow-lg)] transition-all duration-300 bg-[rgb(var(--color-surface))] overflow-hidden relative cursor-pointer">
-                  <CardHeader className="text-center py-[var(--space-12)] relative px-4">
-                    <div className="mb-[var(--space-6)] flex justify-center">
+                <Card className="h-full hover:shadow-[var(--shadow-lg)] transition-all duration-300 bg-[rgb(var(--color-surface))] overflow-hidden relative cursor-pointer min-h-[280px] flex items-center justify-center">
+                  <CardHeader className="text-center relative px-6">
+                    <div className="mb-[var(--space-4)] flex justify-center">
                       <div className="w-20 h-20 rounded-3xl bg-[rgb(var(--color-neutral-100))] flex items-center justify-center text-[rgb(var(--color-text-primary))] transform group-hover:scale-110 transition-transform duration-300 shadow-[var(--shadow-base)]">
                         <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.5}>
                           <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
                       </div>
                     </div>
-                    <CardTitle className="font-serif text-[length:var(--text-3xl)] text-[rgb(var(--color-text-primary))] leading-tight min-h-[3.5rem] flex items-center justify-center">
-                      Manager / Practice<br />Leads
+                    <CardTitle className="font-serif text-2xl text-[rgb(var(--color-text-primary))]">
+                      Manager / Practice Leads
                     </CardTitle>
                   </CardHeader>
                 </Card>
