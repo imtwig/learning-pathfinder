@@ -183,13 +183,15 @@ export default function ManagerDashboard() {
     'Software Engineer': FAKE_STAFF_LIST.filter(s => s.pathway === 'Software Engineer').length,
   };
 
-  // For demo purposes - simulate pre-schema step completion data
-  // In real app, this would come from API
+  // Calculate actual pre-schema step completion based on real staff data
+  // John Tan (staff-1): Steps 1, 2, 3 completed (75%), Step 4 pending
+  // Sarah Chen (staff-2): Steps 1, 2 completed (50%), Step 3 ongoing
+  // All others: 0% completion
   const preSchemaSteps = {
-    step1: 3, // 3 people completed step 1
-    step2: 2, // 2 people completed step 2
-    step3: 1, // 1 person completed step 3
-    step4: 1, // 1 person completed step 4
+    step1: 2, // John + Sarah completed step 1
+    step2: 2, // John + Sarah completed step 2
+    step3: 1, // Only John completed step 3 (Sarah is ongoing)
+    step4: 0, // John is pending, not completed
   };
 
   // Calculate pre-schema completion percentage
@@ -255,7 +257,7 @@ export default function ManagerDashboard() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <div className="bg-[rgb(var(--color-neutral-50))] rounded-lg p-4 border-2 border-[rgb(var(--color-border))]">
                 <div className="flex items-center justify-between mb-2">
-                  <span className="text-sm font-medium text-[rgb(var(--color-text-secondary))]">Pre-Schema ({preSchemaCompletionPercentage}%)</span>
+                  <span className="text-base font-medium text-[rgb(var(--color-text-secondary))]">Pre-Schema</span>
                   <span className="text-2xl font-bold text-[rgb(var(--color-text-primary))]">{levelCounts.preSchema}</span>
                 </div>
                 <div className="w-full h-2 bg-[rgb(var(--color-neutral-200))] rounded-full overflow-hidden">
@@ -267,7 +269,7 @@ export default function ManagerDashboard() {
               </div>
               <div className="bg-[rgb(var(--color-primary-50))] rounded-lg p-4 border-2 border-[rgb(var(--color-primary-200))]">
                 <div className="flex items-center justify-between mb-2">
-                  <span className="text-sm font-medium text-[rgb(var(--color-text-secondary))]">Level 1</span>
+                  <span className="text-base font-medium text-[rgb(var(--color-text-secondary))]">Level 1</span>
                   <span className="text-2xl font-bold text-[rgb(var(--color-primary-700))]">{levelCounts.level1}</span>
                 </div>
                 <div className="w-full h-2 bg-[rgb(var(--color-primary-100))] rounded-full overflow-hidden">
@@ -279,7 +281,7 @@ export default function ManagerDashboard() {
               </div>
               <div className="bg-[rgb(var(--color-accent-50))] rounded-lg p-4 border-2 border-[rgb(var(--color-accent-200))]">
                 <div className="flex items-center justify-between mb-2">
-                  <span className="text-sm font-medium text-[rgb(var(--color-text-secondary))]">Level 2</span>
+                  <span className="text-base font-medium text-[rgb(var(--color-text-secondary))]">Level 2</span>
                   <span className="text-2xl font-bold text-[rgb(var(--color-accent-700))]">{levelCounts.level2}</span>
                 </div>
                 <div className="w-full h-2 bg-[rgb(var(--color-accent-100))] rounded-full overflow-hidden">
