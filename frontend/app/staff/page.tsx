@@ -1460,7 +1460,6 @@ function StaffDashboardContent() {
                             </a>
                           </div>
                         </div>
-                      </div>
                     </div>
                   ) : expandedLevel === 7 ? (
                     // Level 7: No content
