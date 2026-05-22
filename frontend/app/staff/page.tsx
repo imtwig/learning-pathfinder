@@ -681,7 +681,7 @@ function StaffDashboardContent() {
             </div>
             <div className="flex-1">
               <p className="font-semibold text-[rgb(var(--color-text-primary))]">Manager View</p>
-              <p className="text-sm text-[rgb(var(--color-text-secondary))]">You are viewing and can endorse this staff member's pathway progress</p>
+              <p className="text-sm text-[rgb(var(--color-text-secondary))]">You are viewing this staff member's pathway progress</p>
             </div>
           </div>
         )}
@@ -1076,34 +1076,6 @@ function StaffDashboardContent() {
                                     </Button>
                                   )}
 
-
-                                  {isManagerView && (
-                                    <Button
-                                      onClick={() => {
-                                        if (endorsements[step.id]) {
-                                          // Unendorse - remove the endorsement
-                                          const newEndorsements = {...endorsements};
-                                          delete newEndorsements[step.id];
-                                          setEndorsements(newEndorsements);
-                                        } else {
-                                          // Endorse
-                                          setEndorsements({...endorsements, [step.id]: managerName});
-                                        }
-                                      }}
-                                      className={`
-                                        text-white
-                                        shadow-sm
-                                        shrink-0
-                                        transition-colors
-                                        ${endorsements[step.id]
-                                          ? 'bg-[rgb(var(--color-neutral-400))] hover:bg-[rgb(var(--color-neutral-500))]'
-                                          : 'bg-[rgb(var(--color-secondary-600))] hover:bg-[rgb(var(--color-secondary-700))]'
-                                        }
-                                      `}
-                                    >
-                                      {endorsements[step.id] ? 'Unendorse' : 'Endorse'}
-                                    </Button>
-                                  )}
                                 </div>
                               </CardHeader>
                               <CardContent className="overflow-visible">
@@ -1137,16 +1109,6 @@ function StaffDashboardContent() {
                                     ></div>
                                     <span className="text-[rgb(var(--color-text-primary))]">{preSchemaStatuses[step.id]}</span>
                                   </div>
-
-                                  {/* Endorsement Text */}
-                                  {endorsements[step.id] && (
-                                    <div className="flex items-center gap-2 text-sm text-[rgb(var(--color-secondary-700))] bg-[rgb(var(--color-secondary-50))] px-3 py-1.5 rounded-lg">
-                                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
-                                        <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                      </svg>
-                                      <span className="font-medium">Endorsed by {endorsements[step.id]}</span>
-                                    </div>
-                                  )}
                                 </div>
                               </CardContent>
                             </Card>
