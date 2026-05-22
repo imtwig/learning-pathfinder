@@ -1180,8 +1180,8 @@ function StaffDashboardContent() {
                         </Card>
                       )))}
                     </div>
-                  ) : selectedPathway === 'UX Designer' && expandedLevel === 1 ? (
-                    // Level 1 Designer (I)
+                  ) : expandedLevel === 1 ? (
+                    // Level 1
                     <div className="space-y-[var(--space-6)]">
                       {/* Core */}
                       <div className="mb-[var(--space-6)]">
@@ -1239,8 +1239,8 @@ function StaffDashboardContent() {
                           </div>
                         </div>
                     </div>
-                  ) : selectedPathway === 'UX Designer' && expandedLevel === 2 ? (
-                    // Level 2: Developing content
+                  ) : expandedLevel === 2 ? (
+                    // Level 2
                     <div className="space-y-[var(--space-6)]">
                       {/* Core */}
                       <div className="mb-[var(--space-6)]">
@@ -1298,7 +1298,7 @@ function StaffDashboardContent() {
                           </div>
                         </div>
                     </div>
-                  ) : selectedPathway === 'UX Designer' && expandedLevel === 3 ? (
+                  ) : expandedLevel === 3 ? (
                     // Level 3 Senior Designer
                     <div className="space-y-[var(--space-6)]">
                         {/* Core */}
@@ -1357,7 +1357,7 @@ function StaffDashboardContent() {
                           </div>
                         </div>
                     </div>
-                  ) : selectedPathway === 'UX Designer' && expandedLevel === 4 ? (
+                  ) : expandedLevel === 4 ? (
                     // Level 4 Lead Designer
                     <div className="space-y-[var(--space-6)]">
                       {/* Core */}
@@ -1416,7 +1416,7 @@ function StaffDashboardContent() {
                           </div>
                         </div>
                     </div>
-                  ) : selectedPathway === 'UX Designer' && expandedLevel === 5 ? (
+                  ) : expandedLevel === 5 ? (
                     // Level 5 Principal Designer
                     <div className="space-y-[var(--space-6)]">
                         {/* Core */}
@@ -1475,7 +1475,7 @@ function StaffDashboardContent() {
                           </div>
                         </div>
                     </div>
-                  ) : selectedPathway === 'UX Designer' && expandedLevel === 6 ? (
+                  ) : expandedLevel === 6 ? (
                     // Level 6 Distinguished Designer
                     <div className="space-y-[var(--space-6)]">
                       {/* Core */}
