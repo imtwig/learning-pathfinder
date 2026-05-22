@@ -196,6 +196,7 @@ function StaffDashboardContent() {
           '1': 'Completed',
           '2': 'Passed',
           '3': 'Ongoing',
+          '4': 'Not Yet',
         }));
         setStep3SampleCertificate(false);
         setCurrentLevel(0);
