@@ -240,6 +240,14 @@ export default function ManagerDashboard() {
     step4: preSchemaStaff.filter(s => (s.preSchemaCompletion || 0) === 75).length, // 0 people at 75%
   };
 
+  // Get staff members at each step for the dots
+  const staffAtStep = {
+    step1: preSchemaStaff.filter(s => (s.preSchemaCompletion || 0) === 0),
+    step2: preSchemaStaff.filter(s => (s.preSchemaCompletion || 0) === 25),
+    step3: preSchemaStaff.filter(s => (s.preSchemaCompletion || 0) === 50),
+    step4: preSchemaStaff.filter(s => (s.preSchemaCompletion || 0) === 75),
+  };
+
   // Calculate pre-schema completion percentage
   const totalPreSchemaSteps = levelCounts.preSchema * 4; // 4 steps per person
   const completedPreSchemaSteps = preSchemaSteps.step1 + preSchemaSteps.step2 + preSchemaSteps.step3 + preSchemaSteps.step4;
@@ -339,22 +347,31 @@ export default function ManagerDashboard() {
               <p className="text-sm text-[rgb(var(--color-text-secondary))] mb-6">{levelCounts.preSchema} staff members in Pre-Schema</p>
               <div className="space-y-5">
                 {[
-                  { step: 'Step 1', count: preSchemaSteps.step1 },
-                  { step: 'Step 2', count: preSchemaSteps.step2 },
-                  { step: 'Step 3', count: preSchemaSteps.step3 },
-                  { step: 'Step 4', count: preSchemaSteps.step4 },
-                ].map(({ step, count }) => (
+                  { step: 'Step 1', stepKey: 'step1', count: preSchemaSteps.step1, staffList: staffAtStep.step1 },
+                  { step: 'Step 2', stepKey: 'step2', count: preSchemaSteps.step2, staffList: staffAtStep.step2 },
+                  { step: 'Step 3', stepKey: 'step3', count: preSchemaSteps.step3, staffList: staffAtStep.step3 },
+                  { step: 'Step 4', stepKey: 'step4', count: preSchemaSteps.step4, staffList: staffAtStep.step4 },
+                ].map(({ step, stepKey, count, staffList }) => (
                   <div key={step}>
                     <div className="flex items-center justify-between mb-2">
                       <span className="text-sm font-medium text-[rgb(var(--color-text-primary))]">Currently at {step}</span>
                       <span className="text-base font-bold text-[rgb(var(--color-text-primary))]">{count}</span>
                     </div>
-                    <div className="flex items-center gap-1">
-                      {Array.from({ length: count }).map((_, i) => (
-                        <div
-                          key={i}
-                          className="w-3 h-3 rounded-full bg-[rgb(34,197,94)]"
-                        ></div>
+                    <div className="flex items-center gap-1 flex-wrap">
+                      {staffList.map((staff) => (
+                        <Link
+                          key={staff.id}
+                          href={`/staff?userId=${staff.id}&managerId=manager-1&managerName=Sarah Manager&pathway=${encodeURIComponent(staff.pathway)}&level=${staff.currentLevel}&staffName=${encodeURIComponent(staff.name)}`}
+                          className="group relative"
+                        >
+                          <div
+                            className="w-3 h-3 rounded-full bg-[rgb(34,197,94)] hover:bg-[rgb(22,163,74)] cursor-pointer transition-colors"
+                            title={staff.name}
+                          ></div>
+                          <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 bg-[rgb(var(--color-text-primary))] text-white text-xs rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-10">
+                            {staff.name}
+                          </div>
+                        </Link>
                       ))}
                       {count === 0 && (
                         <span className="text-xs text-[rgb(var(--color-text-muted))]">No one at this step</span>
