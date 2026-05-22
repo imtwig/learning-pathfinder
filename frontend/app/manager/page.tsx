@@ -606,6 +606,17 @@ export default function ManagerDashboard() {
               shadow-sm
             "
           />
+          {/* Reset View Link */}
+          {activeFilter.type !== null && (
+            <div className="flex justify-end mt-2">
+              <button
+                onClick={() => setActiveFilter({ type: null, value: null })}
+                className="text-xs text-[rgb(var(--color-primary-600))] hover:text-[rgb(var(--color-primary-700))] font-medium underline cursor-pointer transition-colors"
+              >
+                Reset View
+              </button>
+            </div>
+          )}
         </div>
 
         {/* Staff List */}
