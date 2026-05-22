@@ -345,7 +345,7 @@ export default function ManagerDashboard() {
         {/* Dashboard Stats */}
         <div className="mb-8 space-y-6">
           {/* Level Distribution - Vertical Bar Chart */}
-          <div className="bg-[rgb(var(--color-surface))] rounded-xl p-6 shadow-[var(--shadow-sm)]">
+          <div className="bg-[rgb(var(--color-surface))] border border-[rgb(var(--color-border))] rounded-xl p-6 shadow-[var(--shadow-sm)]">
             <h3 className="font-serif text-xl font-bold text-[rgb(var(--color-text-primary))] mb-6">Team Level Distribution</h3>
             <div className="flex items-end justify-between gap-2 h-48">
               {[
@@ -390,7 +390,7 @@ export default function ManagerDashboard() {
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             {/* Pre-Schema Step Progress */}
-            <div className="bg-[rgb(var(--color-surface))] rounded-xl p-6 shadow-[var(--shadow-sm)]">
+            <div className="bg-[rgb(var(--color-surface))] border border-[rgb(var(--color-border))] rounded-xl p-6 shadow-[var(--shadow-sm)]">
               <h3 className="font-serif text-xl font-bold text-[rgb(var(--color-text-primary))] mb-4">Pre-Schema Progress</h3>
               <p className="text-sm text-[rgb(var(--color-text-secondary))] mb-6">{levelCounts.preSchema} staff members in Pre-Schema</p>
               <div className="space-y-5">
@@ -443,7 +443,7 @@ export default function ManagerDashboard() {
             </div>
 
             {/* Team by Functional Role - Pie Chart */}
-            <div className="bg-[rgb(var(--color-surface))] rounded-xl p-6 shadow-[var(--shadow-sm)]">
+            <div className="bg-[rgb(var(--color-surface))] border border-[rgb(var(--color-border))] rounded-xl p-6 shadow-[var(--shadow-sm)]">
               <h3 className="font-serif text-xl font-bold text-[rgb(var(--color-text-primary))] mb-6">Team by Functional Role</h3>
               <div className="flex justify-center">
                 {/* Pie Chart SVG with Labels */}
@@ -635,7 +635,7 @@ export default function ManagerDashboard() {
               key={staff.id}
               href={`/staff?userId=${staff.id}&managerId=manager-1&managerName=Sarah Manager&pathway=${encodeURIComponent(staff.pathway)}&level=${staff.currentLevel}&staffName=${encodeURIComponent(staff.name)}`}
             >
-              <Card className="shadow-[var(--shadow-sm)] hover:shadow-[var(--shadow-md)] transition-all cursor-pointer bg-[rgb(var(--color-surface))] hover:border-[rgb(var(--color-primary-300))]">
+              <Card className="shadow-[var(--shadow-sm)] hover:shadow-[var(--shadow-md)] transition-all cursor-pointer bg-[rgb(var(--color-surface))] border border-[rgb(var(--color-border))] hover:border-[rgb(var(--color-primary-300))]">
                 <CardHeader>
                   <div className="flex items-start justify-between">
                     <div className="flex-1">
