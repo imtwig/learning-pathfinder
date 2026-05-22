@@ -108,11 +108,12 @@ function StaffDashboardContent() {
         '4': 'Not Yet',
       };
     } else {
+      // All other staff members start with "Not Started"
       return {
         '1': 'Not Started',
-        '2': 'Not Yet',
-        '3': 'Not Yet',
-        '4': 'Not Yet',
+        '2': 'Not Started',
+        '3': 'Not Started',
+        '4': 'Not Started',
       };
     }
   };
