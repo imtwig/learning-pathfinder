@@ -297,58 +297,43 @@ export default function ManagerDashboard() {
 
         {/* Dashboard Stats */}
         <div className="mb-8 space-y-6">
-          {/* Level Distribution */}
+          {/* Level Distribution - Vertical Bar Chart */}
           <div className="bg-[rgb(var(--color-surface))] rounded-xl p-6 shadow-[var(--shadow-sm)]">
-            <h3 className="font-serif text-xl font-bold text-[rgb(var(--color-text-primary))] mb-4">Team Level Distribution</h3>
-            <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-8 gap-3">
-              <div className="bg-[rgb(var(--color-neutral-50))] rounded-lg p-4 border-2 border-[rgb(var(--color-border))]">
-                <div className="flex flex-col items-center text-center">
-                  <span className="text-xs font-medium text-[rgb(var(--color-text-secondary))] mb-1">Pre-Schema</span>
-                  <span className="text-xl font-bold text-[rgb(var(--color-text-primary))]">{levelCounts.preSchema}</span>
-                </div>
-              </div>
-              <div className="bg-[rgb(var(--color-primary-50))] rounded-lg p-4 border-2 border-[rgb(var(--color-primary-200))]">
-                <div className="flex flex-col items-center text-center">
-                  <span className="text-xs font-medium text-[rgb(var(--color-text-secondary))] mb-1">Level 1</span>
-                  <span className="text-xl font-bold text-[rgb(var(--color-primary-700))]">{levelCounts.level1}</span>
-                </div>
-              </div>
-              <div className="bg-[rgb(var(--color-accent-50))] rounded-lg p-4 border-2 border-[rgb(var(--color-accent-200))]">
-                <div className="flex flex-col items-center text-center">
-                  <span className="text-xs font-medium text-[rgb(var(--color-text-secondary))] mb-1">Level 2</span>
-                  <span className="text-xl font-bold text-[rgb(var(--color-accent-700))]">{levelCounts.level2}</span>
-                </div>
-              </div>
-              <div className="bg-[rgb(var(--color-primary-50))] rounded-lg p-4 border-2 border-[rgb(var(--color-primary-200))]">
-                <div className="flex flex-col items-center text-center">
-                  <span className="text-xs font-medium text-[rgb(var(--color-text-secondary))] mb-1">Level 3</span>
-                  <span className="text-xl font-bold text-[rgb(var(--color-primary-700))]">{levelCounts.level3}</span>
-                </div>
-              </div>
-              <div className="bg-[rgb(var(--color-accent-50))] rounded-lg p-4 border-2 border-[rgb(var(--color-accent-200))]">
-                <div className="flex flex-col items-center text-center">
-                  <span className="text-xs font-medium text-[rgb(var(--color-text-secondary))] mb-1">Level 4</span>
-                  <span className="text-xl font-bold text-[rgb(var(--color-accent-700))]">{levelCounts.level4}</span>
-                </div>
-              </div>
-              <div className="bg-[rgb(var(--color-primary-50))] rounded-lg p-4 border-2 border-[rgb(var(--color-primary-200))]">
-                <div className="flex flex-col items-center text-center">
-                  <span className="text-xs font-medium text-[rgb(var(--color-text-secondary))] mb-1">Level 5</span>
-                  <span className="text-xl font-bold text-[rgb(var(--color-primary-700))]">{levelCounts.level5}</span>
-                </div>
-              </div>
-              <div className="bg-[rgb(var(--color-accent-50))] rounded-lg p-4 border-2 border-[rgb(var(--color-accent-200))]">
-                <div className="flex flex-col items-center text-center">
-                  <span className="text-xs font-medium text-[rgb(var(--color-text-secondary))] mb-1">Level 6</span>
-                  <span className="text-xl font-bold text-[rgb(var(--color-accent-700))]">{levelCounts.level6}</span>
-                </div>
-              </div>
-              <div className="bg-[rgb(var(--color-primary-50))] rounded-lg p-4 border-2 border-[rgb(var(--color-primary-200))]">
-                <div className="flex flex-col items-center text-center">
-                  <span className="text-xs font-medium text-[rgb(var(--color-text-secondary))] mb-1">Level 7</span>
-                  <span className="text-xl font-bold text-[rgb(var(--color-primary-700))]">{levelCounts.level7}</span>
-                </div>
-              </div>
+            <h3 className="font-serif text-xl font-bold text-[rgb(var(--color-text-primary))] mb-6">Team Level Distribution</h3>
+            <div className="flex items-end justify-between gap-2 h-48">
+              {[
+                { label: 'Pre-Schema', count: levelCounts.preSchema, color: 'rgb(156, 163, 175)' },
+                { label: 'L1', count: levelCounts.level1, color: 'rgb(99, 102, 241)' },
+                { label: 'L2', count: levelCounts.level2, color: 'rgb(139, 92, 246)' },
+                { label: 'L3', count: levelCounts.level3, color: 'rgb(236, 72, 153)' },
+                { label: 'L4', count: levelCounts.level4, color: 'rgb(245, 158, 11)' },
+                { label: 'L5', count: levelCounts.level5, color: 'rgb(99, 102, 241)' },
+                { label: 'L6', count: levelCounts.level6, color: 'rgb(139, 92, 246)' },
+                { label: 'L7', count: levelCounts.level7, color: 'rgb(236, 72, 153)' },
+              ].map(({ label, count, color }) => {
+                const maxCount = Math.max(...Object.values(levelCounts));
+                const height = maxCount > 0 ? (count / maxCount) * 100 : 0;
+                return (
+                  <div key={label} className="flex-1 flex flex-col items-center gap-2">
+                    <div className="w-full flex flex-col items-center justify-end" style={{ height: '160px' }}>
+                      {count > 0 && (
+                        <>
+                          <span className="text-sm font-bold text-[rgb(var(--color-text-primary))] mb-1">{count}</span>
+                          <div
+                            className="w-full rounded-t-lg transition-all duration-500"
+                            style={{
+                              height: `${height}%`,
+                              backgroundColor: color,
+                              minHeight: count > 0 ? '20px' : '0'
+                            }}
+                          ></div>
+                        </>
+                      )}
+                    </div>
+                    <span className="text-xs font-medium text-[rgb(var(--color-text-secondary))] text-center">{label}</span>
+                  </div>
+                );
+              })}
             </div>
           </div>
 
@@ -356,56 +341,32 @@ export default function ManagerDashboard() {
             {/* Pre-Schema Step Progress */}
             <div className="bg-[rgb(var(--color-surface))] rounded-xl p-6 shadow-[var(--shadow-sm)]">
               <h3 className="font-serif text-xl font-bold text-[rgb(var(--color-text-primary))] mb-4">Pre-Schema Progress</h3>
-              <p className="text-sm text-[rgb(var(--color-text-secondary))] mb-4">{levelCounts.preSchema} staff members in Pre-Schema</p>
-              <div className="space-y-3">
-                <div>
-                  <div className="flex items-center justify-between mb-1">
-                    <span className="text-sm font-medium text-[rgb(var(--color-text-primary))]">Currently at Step 1</span>
-                    <span className="text-sm font-semibold text-[rgb(var(--color-text-primary))]">{preSchemaSteps.step1}</span>
+              <p className="text-sm text-[rgb(var(--color-text-secondary))] mb-6">{levelCounts.preSchema} staff members in Pre-Schema</p>
+              <div className="space-y-5">
+                {[
+                  { step: 'Step 1', count: preSchemaSteps.step1 },
+                  { step: 'Step 2', count: preSchemaSteps.step2 },
+                  { step: 'Step 3', count: preSchemaSteps.step3 },
+                  { step: 'Step 4', count: preSchemaSteps.step4 },
+                ].map(({ step, count }) => (
+                  <div key={step}>
+                    <div className="flex items-center justify-between mb-2">
+                      <span className="text-sm font-medium text-[rgb(var(--color-text-primary))]">Currently at {step}</span>
+                      <span className="text-base font-bold text-[rgb(var(--color-text-primary))]">{count}</span>
+                    </div>
+                    <div className="flex items-center gap-1">
+                      {Array.from({ length: count }).map((_, i) => (
+                        <div
+                          key={i}
+                          className="w-3 h-3 rounded-full bg-[rgb(34,197,94)]"
+                        ></div>
+                      ))}
+                      {count === 0 && (
+                        <span className="text-xs text-[rgb(var(--color-text-muted))]">No one at this step</span>
+                      )}
+                    </div>
                   </div>
-                  <div className="w-full h-2 bg-[rgb(var(--color-neutral-200))] rounded-full overflow-hidden">
-                    <div
-                      className="h-full bg-[rgb(34,197,94)] rounded-full"
-                      style={{ width: `${(preSchemaSteps.step1 / levelCounts.preSchema) * 100}%` }}
-                    ></div>
-                  </div>
-                </div>
-                <div>
-                  <div className="flex items-center justify-between mb-1">
-                    <span className="text-sm font-medium text-[rgb(var(--color-text-primary))]">Currently at Step 2</span>
-                    <span className="text-sm font-semibold text-[rgb(var(--color-text-primary))]">{preSchemaSteps.step2}</span>
-                  </div>
-                  <div className="w-full h-2 bg-[rgb(var(--color-neutral-200))] rounded-full overflow-hidden">
-                    <div
-                      className="h-full bg-[rgb(34,197,94)] rounded-full"
-                      style={{ width: `${(preSchemaSteps.step2 / levelCounts.preSchema) * 100}%` }}
-                    ></div>
-                  </div>
-                </div>
-                <div>
-                  <div className="flex items-center justify-between mb-1">
-                    <span className="text-sm font-medium text-[rgb(var(--color-text-primary))]">Currently at Step 3</span>
-                    <span className="text-sm font-semibold text-[rgb(var(--color-text-primary))]">{preSchemaSteps.step3}</span>
-                  </div>
-                  <div className="w-full h-2 bg-[rgb(var(--color-neutral-200))] rounded-full overflow-hidden">
-                    <div
-                      className="h-full bg-[rgb(34,197,94)] rounded-full"
-                      style={{ width: `${(preSchemaSteps.step3 / levelCounts.preSchema) * 100}%` }}
-                    ></div>
-                  </div>
-                </div>
-                <div>
-                  <div className="flex items-center justify-between mb-1">
-                    <span className="text-sm font-medium text-[rgb(var(--color-text-primary))]">Currently at Step 4</span>
-                    <span className="text-sm font-semibold text-[rgb(var(--color-text-primary))]">{preSchemaSteps.step4}</span>
-                  </div>
-                  <div className="w-full h-2 bg-[rgb(var(--color-neutral-200))] rounded-full overflow-hidden">
-                    <div
-                      className="h-full bg-[rgb(34,197,94)] rounded-full"
-                      style={{ width: `${(preSchemaSteps.step4 / levelCounts.preSchema) * 100}%` }}
-                    ></div>
-                  </div>
-                </div>
+                ))}
               </div>
             </div>
 
@@ -450,6 +411,7 @@ export default function ManagerDashboard() {
 
                       const displayName = pathway
                         .replace('UX Designer', 'Designer')
+                        .replace('Product Manager', 'Product Mgr')
                         .replace('Software Engineer', 'Software Eng.');
 
                       return (
@@ -468,16 +430,26 @@ export default function ManagerDashboard() {
                             stroke={colors[index]}
                             strokeWidth="2"
                           />
-                          {/* Label text */}
+                          {/* Label text - two lines */}
                           <text
                             x={textX}
-                            y={outerY}
+                            y={outerY - 6}
                             textAnchor={textAnchor}
                             dominantBaseline="middle"
                             className="text-xs font-semibold"
                             fill="rgb(var(--color-text-primary))"
                           >
-                            {displayName} ({count})
+                            {displayName}
+                          </text>
+                          <text
+                            x={textX}
+                            y={outerY + 8}
+                            textAnchor={textAnchor}
+                            dominantBaseline="middle"
+                            className="text-xs font-bold"
+                            fill="rgb(var(--color-text-primary))"
+                          >
+                            ({count})
                           </text>
                         </g>
                       );
