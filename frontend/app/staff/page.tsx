@@ -694,7 +694,7 @@ function StaffDashboardContent() {
 
                   {/* Dropdown Menu */}
                   {pathwaySearchOpen && (
-                    <div className="absolute top-full left-0 right-0 mt-2 bg-white border-2 border-[rgb(var(--color-border))] rounded-xl shadow-lg z-50">
+                    <div className="absolute top-full left-0 right-0 mt-2 bg-white border-2 border-[rgb(var(--color-border))] rounded-xl shadow-lg z-[100]">
                       <div className="p-2">
                         <input
                           type="text"
