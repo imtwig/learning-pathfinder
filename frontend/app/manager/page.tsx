@@ -184,6 +184,11 @@ export default function ManagerDashboard() {
     step4: 1, // 1 person completed step 4
   };
 
+  // Calculate pre-schema completion percentage
+  const totalPreSchemaSteps = levelCounts.preSchema * 4; // 4 steps per person
+  const completedPreSchemaSteps = preSchemaSteps.step1 + preSchemaSteps.step2 + preSchemaSteps.step3 + preSchemaSteps.step4;
+  const preSchemaCompletionPercentage = totalPreSchemaSteps > 0 ? Math.round((completedPreSchemaSteps / totalPreSchemaSteps) * 100) : 0;
+
   return (
     <div className="min-h-screen bg-[rgb(var(--color-background))]">
       {/* Navigation Bar */}
@@ -242,7 +247,7 @@ export default function ManagerDashboard() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <div className="bg-[rgb(var(--color-neutral-50))] rounded-lg p-4 border-2 border-[rgb(var(--color-border))]">
                 <div className="flex items-center justify-between mb-2">
-                  <span className="text-sm font-medium text-[rgb(var(--color-text-secondary))]">Pre-Schema</span>
+                  <span className="text-sm font-medium text-[rgb(var(--color-text-secondary))]">Pre-Schema ({preSchemaCompletionPercentage}%)</span>
                   <span className="text-2xl font-bold text-[rgb(var(--color-text-primary))]">{levelCounts.preSchema}</span>
                 </div>
                 <div className="w-full h-2 bg-[rgb(var(--color-neutral-200))] rounded-full overflow-hidden">
