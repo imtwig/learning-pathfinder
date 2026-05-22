@@ -106,6 +106,28 @@
     }
   }
 
+  @keyframes glideInFromRight {
+    from {
+      opacity: 0;
+      transform: translateX(40px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes glideOutToLeft {
+    from {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    to {
+      opacity: 0;
+      transform: translateX(-30px);
+    }
+  }
+
   @keyframes slideInFromLeft {
     from {
       opacity: 0;
@@ -149,6 +171,16 @@
 
   .animate-glideOutDown {
     animation: glideOutDown 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    opacity: 1;
+  }
+
+  .animate-glideInFromRight {
+    animation: glideInFromRight 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    opacity: 0;
+  }
+
+  .animate-glideOutToLeft {
+    animation: glideOutToLeft 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
     opacity: 1;
   }
 
