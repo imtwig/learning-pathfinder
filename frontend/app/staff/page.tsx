@@ -65,6 +65,7 @@ function StaffDashboardContent() {
   const managerName = searchParams.get('managerName') || 'Manager';
   const urlPathway = searchParams.get('pathway') || 'UX Designer';
   const urlLevel = searchParams.get('level') ? parseInt(searchParams.get('level')!) : 0;
+  const staffName = searchParams.get('staffName') || '';
   const isManagerView = !!managerId;
   const [user, setUser] = useState<any>(null);
   const [pathway, setPathway] = useState<any>(null);
@@ -665,7 +666,7 @@ function StaffDashboardContent() {
             <div className="mb-4 sm:mb-[var(--space-6)] flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 overflow-visible">
               <div className="flex-1">
                 <h2 className="font-serif text-2xl sm:text-[length:var(--text-4xl)] font-bold text-[rgb(var(--color-text-primary))]">
-                  Career Progression Pathway
+                  {staffName ? `${staffName.split(' ')[0]}'s Progress` : user?.firstName ? `${user.firstName}'s Progress` : 'Career Progression Pathway'}
                 </h2>
               </div>
 

@@ -236,7 +236,7 @@ export default function ManagerDashboard() {
           {filteredStaff.map((staff) => (
             <Link
               key={staff.id}
-              href={`/staff?userId=${staff.id}&managerId=manager-1&managerName=Sarah Manager&pathway=${encodeURIComponent(staff.pathway)}&level=${staff.currentLevel}`}
+              href={`/staff?userId=${staff.id}&managerId=manager-1&managerName=Sarah Manager&pathway=${encodeURIComponent(staff.pathway)}&level=${staff.currentLevel}&staffName=${encodeURIComponent(staff.name)}`}
             >
               <Card className="shadow-[var(--shadow-sm)] hover:shadow-[var(--shadow-md)] transition-all cursor-pointer bg-[rgb(var(--color-surface))] hover:border-[rgb(var(--color-primary-300))]">
                 <CardHeader>
