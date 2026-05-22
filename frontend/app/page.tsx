@@ -65,10 +65,7 @@ export default function HomePage() {
                         </svg>
                       </div>
                     </div>
-                    <CardTitle className="font-serif text-[length:var(--text-3xl)] mb-[var(--space-3)] text-[rgb(var(--color-text-primary))]">Staff</CardTitle>
-                    <CardDescription className="text-[rgb(var(--color-text-secondary))] leading-[var(--leading-relaxed)] text-[length:var(--text-base)] px-[var(--space-2)]">
-                      Track your pathway, submit work for review, and celebrate each milestone in your professional journey.
-                    </CardDescription>
+                    <CardTitle className="font-serif text-[length:var(--text-3xl)] text-[rgb(var(--color-text-primary))]">Staff</CardTitle>
                   </CardHeader>
                   <div className="px-[var(--space-8)] pb-[var(--space-8)]">
                     <Button className="w-full bg-[rgb(var(--color-primary-600))] hover:bg-[rgb(var(--color-primary-700))] text-white py-[var(--space-4)] text-[length:var(--text-base)] font-medium rounded-xl shadow-[var(--shadow-sm)] hover:shadow-[var(--shadow-md)] transition-all">
@@ -92,10 +89,7 @@ export default function HomePage() {
                         </svg>
                       </div>
                     </div>
-                    <CardTitle className="font-serif text-[length:var(--text-3xl)] mb-[var(--space-3)] text-[rgb(var(--color-text-primary))]">Manager</CardTitle>
-                    <CardDescription className="text-[rgb(var(--color-text-secondary))] leading-[var(--leading-relaxed)] text-[length:var(--text-base)] px-[var(--space-2)]">
-                      Review submissions with focus, provide meaningful feedback, and guide staff toward excellence.
-                    </CardDescription>
+                    <CardTitle className="font-serif text-[length:var(--text-3xl)] text-[rgb(var(--color-text-primary))]">Manager</CardTitle>
                   </CardHeader>
                   <div className="px-[var(--space-8)] pb-[var(--space-8)]">
                     <Button className="w-full bg-[rgb(var(--color-primary-600))] hover:bg-[rgb(var(--color-primary-700))] text-white py-[var(--space-4)] text-[length:var(--text-base)] font-medium rounded-xl shadow-[var(--shadow-sm)] hover:shadow-[var(--shadow-md)] transition-all">
