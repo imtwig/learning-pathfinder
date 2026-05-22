@@ -1099,13 +1099,13 @@ function StaffDashboardContent() {
                     </svg>
                   </div>
                   <div className="flex-1">
-                    <div className="flex items-center justify-between gap-[var(--space-3)] mb-1">
-                      <div className="flex items-center gap-[var(--space-2)]">
+                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-[var(--space-3)] mb-2">
+                      <div className="flex flex-col sm:flex-row sm:items-center gap-2">
                         <CardTitle className="font-serif text-[length:var(--text-2xl)] text-[rgb(var(--color-text-primary))] leading-tight">
                           {levels[expandedLevel]?.id === 0 ? levels[expandedLevel]?.name : `${levels[expandedLevel]?.name}`}
                         </CardTitle>
                         {levels[expandedLevel]?.id === currentLevel && (
-                          <Badge className="bg-[rgb(var(--color-primary-600))] text-white uppercase tracking-[var(--tracking-wide)] text-xs font-semibold px-2.5 py-1 leading-none">
+                          <Badge className="bg-[rgb(var(--color-primary-600))] text-white uppercase tracking-[var(--tracking-wide)] text-xs font-semibold px-2.5 py-1 leading-none w-fit">
                             Current Level
                           </Badge>
                         )}
@@ -1123,15 +1123,33 @@ function StaffDashboardContent() {
                           }
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="bg-[rgb(var(--color-neutral-600))] hover:bg-[rgb(var(--color-neutral-700))] text-white shadow-sm h-8 px-2.5 inline-flex items-center justify-center text-sm font-medium rounded-lg transition-all shrink-0"
+                          className="hidden sm:inline-flex bg-[rgb(var(--color-neutral-600))] hover:bg-[rgb(var(--color-neutral-700))] text-white shadow-sm h-8 px-2.5 items-center justify-center text-sm font-medium rounded-lg transition-all shrink-0"
                         >
                           See Schema in Appraise
                         </a>
                       )}
                     </div>
-                    <CardDescription className="text-[rgb(var(--color-text-secondary))] text-sm">
+                    <CardDescription className="text-[rgb(var(--color-text-secondary))] text-sm leading-relaxed">
                       {levels[expandedLevel]?.description}
                     </CardDescription>
+                    {expandedLevel >= 1 && expandedLevel <= 6 && (
+                      <a
+                        href={
+                          selectedPathway === 'Product Manager'
+                            ? 'https://appraise.tech.gov.sg/schemas/role/cmnd18pf2002j0clbuvybnyxh'
+                            : selectedPathway === 'Product Ops'
+                            ? 'https://appraise.tech.gov.sg/schemas/role/cmnd18pfh002q0clb5dy700v0'
+                            : selectedPathway === 'Software Engineer'
+                            ? 'https://appraise.tech.gov.sg/schemas/role/cmnd18p9g00080clbqru5ngyb'
+                            : 'https://appraise.tech.gov.sg/schemas/role/cmnd18pco001o0clbcz1vqx1f'
+                        }
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="sm:hidden inline-flex bg-[rgb(var(--color-neutral-600))] hover:bg-[rgb(var(--color-neutral-700))] text-white shadow-sm h-8 px-2.5 items-center justify-center text-sm font-medium rounded-lg transition-all mt-3"
+                      >
+                        See Schema in Appraise
+                      </a>
+                    )}
                   </div>
                 </div>
               </CardHeader>
@@ -1183,20 +1201,20 @@ function StaffDashboardContent() {
                           ].map((step, index) => (
                             <Card key={step.id} className="shadow-[var(--shadow-sm)] bg-[rgb(var(--color-surface))] overflow-visible">
                               <CardHeader className="pb-[var(--space-4)]">
-                                <div className="flex justify-between items-start gap-[var(--space-4)]">
+                                <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-3 sm:gap-[var(--space-4)]">
                                   <div className="flex-1">
                                     <div className="flex items-center gap-[var(--space-3)] mb-[var(--space-2)]">
                                       <span className="text-sm font-semibold text-[rgb(var(--color-text-muted))]">Step {index + 1}</span>
                                     </div>
-                                    <CardTitle className="font-serif text-[length:var(--text-xl)] mb-[var(--space-2)] text-[rgb(var(--color-text-primary))]">
+                                    <CardTitle className="font-serif text-[length:var(--text-xl)] mb-[var(--space-2)] text-[rgb(var(--color-text-primary))] leading-snug">
                                       {step.title}
                                     </CardTitle>
-                                    <CardDescription className="text-[rgb(var(--color-text-secondary))]">
+                                    <CardDescription className="text-[rgb(var(--color-text-secondary))] leading-relaxed">
                                       {step.description}
                                     </CardDescription>
                                   </div>
 
-                                  {/* Action Buttons - Top Right */}
+                                  {/* Action Buttons - Top Right on desktop, below description on mobile */}
                                   {!isManagerView && step.id === '1' && preSchemaStatuses['1'] === 'Not Yet' && (
                                     <Button
                                       onClick={handleRegisterClick}
@@ -1205,7 +1223,8 @@ function StaffDashboardContent() {
                                         hover:bg-[rgb(var(--color-primary-700))]
                                         text-white
                                         shadow-sm
-                                        shrink-0
+                                        sm:shrink-0
+                                        w-full sm:w-auto
                                       "
                                     >
                                       Register for Course
@@ -1223,7 +1242,8 @@ function StaffDashboardContent() {
                                         shadow-sm
                                         disabled:opacity-50
                                         disabled:cursor-not-allowed
-                                        shrink-0
+                                        sm:shrink-0
+                                        w-full sm:w-auto
                                       "
                                     >
                                       Take assessment
@@ -1232,7 +1252,7 @@ function StaffDashboardContent() {
 
                                   {step.id === '4' && (
                                     <button
-                                      className="bg-[rgb(var(--color-neutral-600))] hover:bg-[rgb(var(--color-neutral-700))] text-white shadow-sm h-8 px-4 inline-flex items-center justify-center text-sm font-medium rounded-lg transition-all shrink-0"
+                                      className="bg-[rgb(var(--color-neutral-600))] hover:bg-[rgb(var(--color-neutral-700))] text-white shadow-sm h-8 px-4 inline-flex items-center justify-center text-sm font-medium rounded-lg transition-all sm:shrink-0 w-full sm:w-auto"
                                     >
                                       View Apprenticeship Site
                                     </button>
