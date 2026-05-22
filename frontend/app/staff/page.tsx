@@ -182,6 +182,7 @@ function StaffDashboardContent() {
         setPreSchemaStatuses(prev => ({
           ...prev,
           '1': 'Completed',
+          '2': 'Not Yet',
           '3': 'Not Yet',
           '4': 'Not Yet',
         }));
