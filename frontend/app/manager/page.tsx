@@ -441,24 +441,14 @@ export default function ManagerDashboard() {
                 <svg viewBox="0 0 500 300" className="w-full max-w-lg">
                   {(() => {
                     const total = FAKE_STAFF_LIST.length;
-                    let cumulativePercent = 0;
                     const colors = ['#6366f1', '#8b5cf6', '#ec4899', '#f59e0b'];
                     const centerX = 250;
                     const centerY = 150;
                     const radius = 70;
 
-                    // Sort entries so active slice renders last (on top)
-                    const entries = Object.entries(pathwayCounts);
-                    const sortedEntries = [...entries].sort(([pathwayA], [pathwayB]) => {
-                      const isActiveA = activeFilter.type === 'pathway' && activeFilter.value === pathwayA;
-                      const isActiveB = activeFilter.type === 'pathway' && activeFilter.value === pathwayB;
-                      if (isActiveA) return 1; // Move active to end
-                      if (isActiveB) return -1;
-                      return 0;
-                    });
-
-                    return sortedEntries.map(([pathway, count]) => {
-                      const index = entries.findIndex(([p]) => p === pathway);
+                    // First, calculate all slice data in original order
+                    let cumulativePercent = 0;
+                    const sliceData = Object.entries(pathwayCounts).map(([pathway, count], index) => {
                       const percent = count / total;
                       const startAngle = cumulativePercent * 360;
                       const endAngle = startAngle + percent * 360;
@@ -490,54 +480,101 @@ export default function ManagerDashboard() {
 
                       const isActive = activeFilter.type === 'pathway' && activeFilter.value === pathway;
 
-                      return (
-                        <g
-                          key={pathway}
-                          className="cursor-pointer"
-                          onClick={() => handleFilterClick('pathway', pathway)}
-                        >
-                          {/* Pie slice */}
-                          <path
-                            d={`M ${centerX} ${centerY} L ${startX} ${startY} A ${radius} ${radius} 0 ${largeArc} 1 ${endX} ${endY} Z`}
-                            fill={colors[index]}
-                            stroke={isActive ? 'rgb(var(--color-primary-500))' : 'white'}
-                            strokeWidth={isActive ? '4' : '2'}
-                            className="hover:opacity-80 transition-opacity"
-                            style={{
-                              filter: isActive ? 'drop-shadow(0 0 8px rgba(var(--color-primary-500), 0.5))' : undefined
-                            }}
-                          />
-                          {/* Label line */}
-                          <polyline
-                            points={`${innerX},${innerY} ${midX},${midY} ${outerX},${outerY}`}
-                            fill="none"
-                            stroke={colors[index]}
-                            strokeWidth="2"
-                          />
-                          {/* Label text - two lines */}
-                          <text
-                            x={textX}
-                            y={outerY - 6}
-                            textAnchor={textAnchor}
-                            dominantBaseline="middle"
-                            className="text-xs font-semibold pointer-events-none"
-                            fill="rgb(var(--color-text-primary))"
-                          >
-                            {displayName}
-                          </text>
-                          <text
-                            x={textX}
-                            y={outerY + 8}
-                            textAnchor={textAnchor}
-                            dominantBaseline="middle"
-                            className="text-xs font-bold pointer-events-none"
-                            fill="rgb(var(--color-text-primary))"
-                          >
-                            ({count})
-                          </text>
-                        </g>
-                      );
+                      return {
+                        pathway,
+                        count,
+                        index,
+                        isActive,
+                        startX,
+                        startY,
+                        endX,
+                        endY,
+                        largeArc,
+                        innerX,
+                        innerY,
+                        midX,
+                        midY,
+                        outerX,
+                        outerY,
+                        textX,
+                        textAnchor,
+                        displayName,
+                      };
                     });
+
+                    // Sort so active slice renders last (on top), but positions stay the same
+                    const sortedSlices = [...sliceData].sort((a, b) => {
+                      if (a.isActive) return 1;
+                      if (b.isActive) return -1;
+                      return 0;
+                    });
+
+                    return sortedSlices.map(({
+                      pathway,
+                      count,
+                      index,
+                      isActive,
+                      startX,
+                      startY,
+                      endX,
+                      endY,
+                      largeArc,
+                      innerX,
+                      innerY,
+                      midX,
+                      midY,
+                      outerX,
+                      outerY,
+                      textX,
+                      textAnchor,
+                      displayName,
+                    }) => (
+                      <g
+                        key={pathway}
+                        className="cursor-pointer"
+                        onClick={() => handleFilterClick('pathway', pathway)}
+                      >
+                        {/* Pie slice */}
+                        <path
+                          d={`M ${centerX} ${centerY} L ${startX} ${startY} A ${radius} ${radius} 0 ${largeArc} 1 ${endX} ${endY} Z`}
+                          fill={colors[index]}
+                          stroke={isActive ? 'rgb(var(--color-primary-500))' : 'white'}
+                          strokeWidth={isActive ? '4' : '2'}
+                          className="hover:opacity-80 transition-opacity"
+                          style={{
+                            filter: isActive ? 'drop-shadow(0 0 8px rgba(var(--color-primary-500), 0.5))' : undefined
+                          }}
+                        />
+                        {/* Label line */}
+                        <polyline
+                          points={`${innerX},${innerY} ${midX},${midY} ${outerX},${outerY}`}
+                          fill="none"
+                          stroke={colors[index]}
+                          strokeWidth="2"
+                        />
+                        {/* Label text - two lines */}
+                        <text
+                          x={textX}
+                          y={outerY - 6}
+                          textAnchor={textAnchor}
+                          dominantBaseline="middle"
+                          className="text-xs font-semibold pointer-events-none"
+                          fill="rgb(var(--color-text-primary))"
+                        >
+                          {displayName}
+                        </text>
+                        <text
+                          x={textX}
+                          y={outerY + 8}
+                          textAnchor={textAnchor}
+                          dominantBaseline="middle"
+                          className="text-xs font-bold pointer-events-none"
+                          fill="rgb(var(--color-text-primary))"
+                        >
+                          ({count})
+                        </text>
+                      </g>
+                    ));
                   })()}
                 </svg>
               </div>
