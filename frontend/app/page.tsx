@@ -56,8 +56,8 @@ export default function HomePage() {
             <div className="grid md:grid-cols-2 gap-[var(--space-8)] max-w-4xl mx-auto">
               {/* Staff Card */}
               <Link href="/staff?userId=staff-1" className="group block">
-                <Card className="h-full hover:shadow-[var(--shadow-lg)] transition-all duration-300 bg-[rgb(var(--color-surface))] overflow-hidden relative">
-                  <CardHeader className="text-center pt-[var(--space-10)] pb-[var(--space-8)] relative">
+                <Card className="h-full hover:shadow-[var(--shadow-lg)] transition-all duration-300 bg-[rgb(var(--color-surface))] overflow-hidden relative cursor-pointer">
+                  <CardHeader className="text-center py-[var(--space-12)] relative">
                     <div className="mb-[var(--space-6)] flex justify-center">
                       <div className="w-20 h-20 rounded-3xl bg-[rgb(var(--color-neutral-100))] flex items-center justify-center text-[rgb(var(--color-text-primary))] transform group-hover:scale-110 transition-transform duration-300 shadow-[var(--shadow-base)]">
                         <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.5}>
@@ -67,21 +67,13 @@ export default function HomePage() {
                     </div>
                     <CardTitle className="font-serif text-[length:var(--text-3xl)] text-[rgb(var(--color-text-primary))]">Staff</CardTitle>
                   </CardHeader>
-                  <div className="px-[var(--space-8)] pb-[var(--space-8)]">
-                    <Button className="w-full bg-[rgb(var(--color-primary-600))] hover:bg-[rgb(var(--color-primary-700))] text-white py-[var(--space-4)] text-[length:var(--text-base)] font-medium rounded-xl shadow-[var(--shadow-sm)] hover:shadow-[var(--shadow-md)] transition-all">
-                      Enter as Staff
-                      <svg className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                      </svg>
-                    </Button>
-                  </div>
                 </Card>
               </Link>
 
               {/* Manager Card */}
               <Link href="/manager?userId=manager-1" className="group block">
-                <Card className="h-full hover:shadow-[var(--shadow-lg)] transition-all duration-300 bg-[rgb(var(--color-surface))] overflow-hidden relative">
-                  <CardHeader className="text-center pt-[var(--space-10)] pb-[var(--space-8)] relative">
+                <Card className="h-full hover:shadow-[var(--shadow-lg)] transition-all duration-300 bg-[rgb(var(--color-surface))] overflow-hidden relative cursor-pointer">
+                  <CardHeader className="text-center py-[var(--space-12)] relative">
                     <div className="mb-[var(--space-6)] flex justify-center">
                       <div className="w-20 h-20 rounded-3xl bg-[rgb(var(--color-neutral-100))] flex items-center justify-center text-[rgb(var(--color-text-primary))] transform group-hover:scale-110 transition-transform duration-300 shadow-[var(--shadow-base)]">
                         <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.5}>
@@ -89,16 +81,10 @@ export default function HomePage() {
                         </svg>
                       </div>
                     </div>
-                    <CardTitle className="font-serif text-[length:var(--text-3xl)] text-[rgb(var(--color-text-primary))]">Manager/Practice Leads</CardTitle>
+                    <CardTitle className="font-serif text-[length:var(--text-2xl)] text-[rgb(var(--color-text-primary))] leading-tight">
+                      Manager/Practice<br />Leads
+                    </CardTitle>
                   </CardHeader>
-                  <div className="px-[var(--space-8)] pb-[var(--space-8)]">
-                    <Button className="w-full bg-[rgb(var(--color-primary-600))] hover:bg-[rgb(var(--color-primary-700))] text-white py-[var(--space-4)] text-[length:var(--text-base)] font-medium rounded-xl shadow-[var(--shadow-sm)] hover:shadow-[var(--shadow-md)] transition-all">
-                      Enter as Manager/Practice Leads
-                      <svg className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                      </svg>
-                    </Button>
-                  </div>
                 </Card>
               </Link>
             </div>
