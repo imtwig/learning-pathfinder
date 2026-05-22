@@ -377,56 +377,74 @@ export default function ManagerDashboard() {
             {/* Team by Functional Role - Pie Chart */}
             <div className="bg-[rgb(var(--color-surface))] rounded-xl p-6 shadow-[var(--shadow-sm)]">
               <h3 className="font-serif text-xl font-bold text-[rgb(var(--color-text-primary))] mb-6">Team by Functional Role</h3>
-              <div className="flex flex-col items-center">
-                {/* Pie Chart SVG */}
-                <svg viewBox="0 0 200 200" className="w-48 h-48 mb-6">
+              <div className="flex justify-center">
+                {/* Pie Chart SVG with Labels */}
+                <svg viewBox="0 0 400 300" className="w-full max-w-md">
                   {(() => {
                     const total = FAKE_STAFF_LIST.length;
                     let cumulativePercent = 0;
                     const colors = ['#6366f1', '#8b5cf6', '#ec4899', '#f59e0b'];
+                    const centerX = 200;
+                    const centerY = 150;
+                    const radius = 70;
 
                     return Object.entries(pathwayCounts).map(([pathway, count], index) => {
                       const percent = count / total;
                       const startAngle = cumulativePercent * 360;
                       const endAngle = startAngle + percent * 360;
+                      const midAngle = (startAngle + endAngle) / 2;
                       cumulativePercent += percent;
 
-                      const startX = 100 + 80 * Math.cos((startAngle - 90) * Math.PI / 180);
-                      const startY = 100 + 80 * Math.sin((startAngle - 90) * Math.PI / 180);
-                      const endX = 100 + 80 * Math.cos((endAngle - 90) * Math.PI / 180);
-                      const endY = 100 + 80 * Math.sin((endAngle - 90) * Math.PI / 180);
+                      // Pie slice
+                      const startX = centerX + radius * Math.cos((startAngle - 90) * Math.PI / 180);
+                      const startY = centerY + radius * Math.sin((startAngle - 90) * Math.PI / 180);
+                      const endX = centerX + radius * Math.cos((endAngle - 90) * Math.PI / 180);
+                      const endY = centerY + radius * Math.sin((endAngle - 90) * Math.PI / 180);
                       const largeArc = percent > 0.5 ? 1 : 0;
 
+                      // Label line points
+                      const innerX = centerX + radius * Math.cos((midAngle - 90) * Math.PI / 180);
+                      const innerY = centerY + radius * Math.sin((midAngle - 90) * Math.PI / 180);
+                      const midX = centerX + (radius + 20) * Math.cos((midAngle - 90) * Math.PI / 180);
+                      const midY = centerY + (radius + 20) * Math.sin((midAngle - 90) * Math.PI / 180);
+                      const outerX = midX + (midAngle > 180 && midAngle < 360 ? -30 : 30);
+                      const outerY = midY;
+
+                      const textAnchor = (midAngle > 180 && midAngle < 360) ? 'end' : 'start';
+                      const textX = outerX + (textAnchor === 'end' ? -5 : 5);
+
                       return (
-                        <path
-                          key={pathway}
-                          d={`M 100 100 L ${startX} ${startY} A 80 80 0 ${largeArc} 1 ${endX} ${endY} Z`}
-                          fill={colors[index]}
-                          stroke="white"
-                          strokeWidth="2"
-                        />
+                        <g key={pathway}>
+                          {/* Pie slice */}
+                          <path
+                            d={`M ${centerX} ${centerY} L ${startX} ${startY} A ${radius} ${radius} 0 ${largeArc} 1 ${endX} ${endY} Z`}
+                            fill={colors[index]}
+                            stroke="white"
+                            strokeWidth="2"
+                          />
+                          {/* Label line */}
+                          <polyline
+                            points={`${innerX},${innerY} ${midX},${midY} ${outerX},${outerY}`}
+                            fill="none"
+                            stroke={colors[index]}
+                            strokeWidth="2"
+                          />
+                          {/* Label text */}
+                          <text
+                            x={textX}
+                            y={outerY}
+                            textAnchor={textAnchor}
+                            dominantBaseline="middle"
+                            className="text-xs font-semibold"
+                            fill="rgb(var(--color-text-primary))"
+                          >
+                            {pathway.replace('UX Designer', 'Designer')} ({count})
+                          </text>
+                        </g>
                       );
                     });
                   })()}
                 </svg>
-
-                {/* Legend */}
-                <div className="grid grid-cols-2 gap-x-6 gap-y-2 w-full">
-                  {Object.entries(pathwayCounts).map(([pathway, count], index) => {
-                    const colors = ['#6366f1', '#8b5cf6', '#ec4899', '#f59e0b'];
-                    return (
-                      <div key={pathway} className="flex items-center gap-2">
-                        <div
-                          className="w-3 h-3 rounded-sm flex-shrink-0"
-                          style={{ backgroundColor: colors[index] }}
-                        ></div>
-                        <span className="text-xs font-medium text-[rgb(var(--color-text-primary))] truncate">
-                          {pathway.replace('UX Designer', 'Designer')} ({count})
-                        </span>
-                      </div>
-                    );
-                  })}
-                </div>
               </div>
             </div>
           </div>
