@@ -125,6 +125,13 @@ function StaffDashboardContent() {
   const [step3SampleCertificate, setStep3SampleCertificate] = useState<boolean>(
     userId === 'staff-1' || userId === 'staff-2' // John and Sarah have certificates
   );
+
+  // Reset pre-schema statuses when userId changes
+  useEffect(() => {
+    setPreSchemaStatuses(getInitialPreSchemaStatuses());
+    setStep3SampleCertificate(userId === 'staff-1' || userId === 'staff-2');
+    setStep3UploadedFile(null);
+  }, [userId]);
   const [endorsements, setEndorsements] = useState<{[key: string]: string}>({});
   const [showToast, setShowToast] = useState(false);
   const [toastMessage, setToastMessage] = useState('');
