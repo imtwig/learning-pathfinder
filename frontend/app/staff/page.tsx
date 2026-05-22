@@ -980,12 +980,15 @@ function StaffDashboardContent() {
                             </React.Fragment>
                           ))}
 
-                          {/* Show Focus View Button */}
+                          {/* Show Focus View Link */}
                           <button
                             onClick={() => setShowFullPathway(false)}
-                            className="flex items-center ml-4 px-3 py-1.5 text-xs sm:text-sm text-[rgb(var(--color-primary-600))] hover:text-[rgb(var(--color-primary-700))] hover:bg-[rgb(var(--color-primary-50))] font-medium rounded-lg transition-all border border-[rgb(var(--color-primary-300))] hover:border-[rgb(var(--color-primary-400))]"
+                            className="flex flex-col items-center gap-2 ml-4 cursor-pointer group"
                           >
-                            Show focus view
+                            <div className="w-10 h-10 sm:w-12 sm:h-12"></div>
+                            <p className="text-[10px] sm:text-xs font-medium text-[rgb(var(--color-primary-600))] hover:text-[rgb(var(--color-primary-700))] underline transition-colors whitespace-nowrap">
+                              Show focus view
+                            </p>
                           </button>
                         </>
                       )}
