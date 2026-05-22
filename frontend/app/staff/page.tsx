@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState, Suspense } from 'react';
+import { useEffect, useState, Suspense, useRef } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { apiClient } from '@/lib/api';
 import Link from 'next/link';
@@ -11,6 +11,7 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { FileInput } from '@/components/FileInput';
 import { Spinner } from '@/components/Spinner';
+import { createPortal } from 'react-dom';
 
 // LEVELS will be populated from the API data
 const UX_DESIGNER_LEVELS = [
@@ -96,6 +97,8 @@ function StaffDashboardContent() {
   const [demoState, setDemoState] = useState<string>('none');
   const [pathwaySearchOpen, setPathwaySearchOpen] = useState(false);
   const [pathwaySearchQuery, setPathwaySearchQuery] = useState('');
+  const pathwayButtonRef = useRef<HTMLButtonElement>(null);
+  const [dropdownStyle, setDropdownStyle] = useState<{top: number, left: number, width: number}>({ top: 0, left: 0, width: 0 });
 
   const handleStatusPopoverToggle = (stepId: string, event: React.MouseEvent<HTMLButtonElement>) => {
     if (openStatusPopover === stepId) {
@@ -663,7 +666,18 @@ function StaffDashboardContent() {
               {!isManagerView && (
                 <div className="sm:ml-[var(--space-4)] relative w-full sm:w-auto pathway-dropdown">
                   <button
-                    onClick={() => setPathwaySearchOpen(!pathwaySearchOpen)}
+                    ref={pathwayButtonRef}
+                    onClick={() => {
+                      if (pathwayButtonRef.current) {
+                        const rect = pathwayButtonRef.current.getBoundingClientRect();
+                        setDropdownStyle({
+                          top: rect.bottom + window.scrollY + 8,
+                          left: rect.left + window.scrollX,
+                          width: rect.width
+                        });
+                      }
+                      setPathwaySearchOpen(!pathwaySearchOpen);
+                    }}
                     className="
                       w-full sm:w-auto
                       pl-4 pr-10 py-2.5
@@ -691,10 +705,19 @@ function StaffDashboardContent() {
                       <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
                     </svg>
                   </div>
+                </div>
+              )}
 
-                  {/* Dropdown Menu */}
-                  {pathwaySearchOpen && (
-                    <div className="absolute top-full left-0 right-0 mt-2 bg-white border-2 border-[rgb(var(--color-border))] rounded-xl shadow-lg z-[100]">
+              {/* Dropdown Menu - Rendered with Portal */}
+              {!isManagerView && pathwaySearchOpen && typeof window !== 'undefined' && createPortal((
+                  <div
+                    className="fixed bg-white border-2 border-[rgb(var(--color-border))] rounded-xl shadow-lg z-[100]"
+                    style={{
+                      top: `${dropdownStyle.top}px`,
+                      left: `${dropdownStyle.left}px`,
+                      width: `${dropdownStyle.width}px`
+                    }}
+                  >
                       <div className="p-2">
                         <input
                           type="text"
@@ -755,9 +778,10 @@ function StaffDashboardContent() {
                         )}
                       </div>
                     </div>
-                  )}
-                </div>
-              )}
+                  ),
+                  document.body
+                ))
+              }
             </div>
 
             {/* Level Progress Indicator */}
