@@ -337,21 +337,29 @@ export default function ManagerDashboard() {
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            {/* Pathway Distribution */}
+            {/* Pathway Distribution - Bar Chart */}
             <div className="bg-[rgb(var(--color-surface))] rounded-xl p-6 shadow-[var(--shadow-sm)]">
-              <h3 className="font-serif text-xl font-bold text-[rgb(var(--color-text-primary))] mb-4">Team by Pathway</h3>
-              <div className="space-y-3">
+              <h3 className="font-serif text-xl font-bold text-[rgb(var(--color-text-primary))] mb-6">Team by Functional Role</h3>
+              <div className="space-y-4">
                 {Object.entries(pathwayCounts).map(([pathway, count]) => (
-                  <div key={pathway}>
-                    <div className="flex items-center justify-between mb-1">
+                  <div key={pathway} className="flex items-center gap-4">
+                    <div className="w-36 flex-shrink-0">
                       <span className="text-sm font-medium text-[rgb(var(--color-text-primary))]">{pathway}</span>
-                      <span className="text-sm font-semibold text-[rgb(var(--color-text-primary))]">{count}</span>
                     </div>
-                    <div className="w-full h-2 bg-[rgb(var(--color-neutral-200))] rounded-full overflow-hidden">
-                      <div
-                        className="h-full bg-[rgb(var(--color-primary-600))] rounded-full"
-                        style={{ width: `${(count / FAKE_STAFF_LIST.length) * 100}%` }}
-                      ></div>
+                    <div className="flex-1 flex items-center gap-3">
+                      <div className="flex-1 h-10 bg-[rgb(var(--color-neutral-100))] rounded-lg overflow-hidden">
+                        <div
+                          className="h-full bg-gradient-to-r from-[rgb(var(--color-primary-500))] to-[rgb(var(--color-primary-600))] flex items-center justify-end pr-3 transition-all duration-500"
+                          style={{ width: `${(count / Math.max(...Object.values(pathwayCounts))) * 100}%` }}
+                        >
+                          {count > 0 && (
+                            <span className="text-sm font-bold text-white">{count}</span>
+                          )}
+                        </div>
+                      </div>
+                      <div className="w-8 text-right">
+                        <span className="text-base font-bold text-[rgb(var(--color-text-primary))]">{count}</span>
+                      </div>
                     </div>
                   </div>
                 ))}
