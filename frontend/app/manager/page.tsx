@@ -181,6 +181,10 @@ export default function ManagerDashboard() {
               </div>
             </div>
             <div className="flex items-center gap-[var(--space-4)]">
+              <div className="text-right hidden sm:block">
+                <p className="text-sm font-semibold text-[rgb(var(--color-text-primary))]">Sarah Manager</p>
+                <p className="text-xs text-[rgb(var(--color-text-muted))]">sarah.manager@example.com</p>
+              </div>
               <Link href="/">
                 <Button variant="outline" size="sm" className="border-[rgb(var(--color-border))] hover:bg-[rgb(var(--color-neutral-100))]">
                   <svg className="w-4 h-4 sm:mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
