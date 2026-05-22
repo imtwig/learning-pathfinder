@@ -470,7 +470,7 @@ export default function ManagerDashboard() {
                       const outerX = midX + (midAngle > 180 && midAngle < 360 ? -50 : 50);
                       const outerY = midY;
 
-                      const textAnchor = (midAngle > 180 && midAngle < 360) ? 'end' : 'start';
+                      const textAnchor: 'end' | 'start' = (midAngle > 180 && midAngle < 360) ? 'end' : 'start';
                       const textX = outerX + (textAnchor === 'end' ? -5 : 5);
 
                       const displayName = pathway
