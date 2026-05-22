@@ -73,6 +73,23 @@
     z-index: 1;
   }
 
+  @media (max-width: 640px) {
+    :root {
+      --background: 255 255 255;
+      --color-background: var(--color-neutral-0);
+    }
+
+    html,
+    body {
+      background: rgb(var(--color-neutral-0));
+    }
+
+    html::before {
+      background-color: rgb(var(--color-neutral-0));
+      background-image: none;
+    }
+  }
+
   @keyframes fadeInUp {
     from {
       opacity: 0;
