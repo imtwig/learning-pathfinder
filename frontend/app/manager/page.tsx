@@ -311,26 +311,21 @@ export default function ManagerDashboard() {
                 { label: 'L6', count: levelCounts.level6, color: 'rgb(139, 92, 246)' },
                 { label: 'L7', count: levelCounts.level7, color: 'rgb(236, 72, 153)' },
               ].map(({ label, count, color }) => {
-                const maxCount = Math.max(...Object.values(levelCounts));
-                const height = maxCount > 0 ? (count / maxCount) * 100 : 0;
+                const maxCount = Math.max(...Object.values(levelCounts), 1); // Ensure at least 1 to avoid division by zero
+                const height = (count / maxCount) * 100;
                 return (
                   <div key={label} className="flex-1 flex flex-col items-center gap-2">
                     <div className="w-full flex flex-col items-center justify-end" style={{ height: '160px' }}>
-                      {count > 0 && (
-                        <>
-                          <span className="text-sm font-bold text-[rgb(var(--color-text-primary))] mb-1">{count}</span>
-                          <div
-                            className="w-full rounded-t-lg transition-all duration-500"
-                            style={{
-                              height: `${height}%`,
-                              backgroundColor: color,
-                              minHeight: count > 0 ? '20px' : '0'
-                            }}
-                          ></div>
-                        </>
-                      )}
+                      <span className="text-sm font-bold text-[rgb(var(--color-text-primary))] mb-1">{count}</span>
+                      <div
+                        className="w-full rounded-t-lg transition-all duration-500"
+                        style={{
+                          height: count > 0 ? `${Math.max(height, 12.5)}%` : '0%',
+                          backgroundColor: color,
+                        }}
+                      ></div>
                     </div>
-                    <span className="text-xs font-medium text-[rgb(var(--color-text-secondary))] text-center">{label}</span>
+                    <span className="text-xs font-medium text-[rgb(var(--color-text-secondary))] text-center whitespace-nowrap">{label}</span>
                   </div>
                 );
               })}
