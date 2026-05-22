@@ -837,32 +837,111 @@ function StaffDashboardContent() {
 
             {/* Level Progress Indicator - Focused View */}
             <div className="py-4 overflow-x-auto -mx-4 sm:mx-0 px-4 sm:px-2">
-              {!showFullPathway ? (
-                <>
-                  {/* Focused Progress Pathway */}
-                  <div className="flex items-center justify-start gap-3 sm:gap-4 mb-4 min-w-max">
-                    {(() => {
-                      // Calculate visible levels: completed + current + next 2
-                      const visibleLevels = [];
+              <div className="flex items-center justify-start gap-3 sm:gap-4 min-w-max">
+                {(() => {
+                  // Calculate visible levels: completed + current + next 2
+                  const visibleLevels = [];
+                  const remainingLevels = [];
 
-                      // Add all completed levels
-                      for (let i = 0; i < currentLevel; i++) {
-                        visibleLevels.push(levels[i]);
-                      }
+                  // Add all completed levels
+                  for (let i = 0; i < currentLevel; i++) {
+                    visibleLevels.push(levels[i]);
+                  }
 
-                      // Add current level
-                      visibleLevels.push(levels[currentLevel]);
+                  // Add current level
+                  visibleLevels.push(levels[currentLevel]);
 
-                      // Add next 2 levels (if they exist)
-                      if (levels[currentLevel + 1]) visibleLevels.push(levels[currentLevel + 1]);
-                      if (levels[currentLevel + 2]) visibleLevels.push(levels[currentLevel + 2]);
+                  // Add next 2 levels (if they exist)
+                  if (levels[currentLevel + 1]) visibleLevels.push(levels[currentLevel + 1]);
+                  if (levels[currentLevel + 2]) visibleLevels.push(levels[currentLevel + 2]);
 
-                      // Check if there are more levels after
-                      const hasMoreLevels = currentLevel + 3 < levels.length;
+                  // Remaining levels
+                  for (let i = currentLevel + 3; i < levels.length; i++) {
+                    remainingLevels.push(levels[i]);
+                  }
 
-                      return (
+                  const hasMoreLevels = remainingLevels.length > 0;
+
+                  return (
+                    <>
+                      {visibleLevels.map((level, index) => (
+                        <React.Fragment key={level.id}>
+                          <div className="flex flex-col items-center gap-2">
+                            <button
+                              onClick={() => setExpandedLevel(level.id)}
+                              className="group"
+                            >
+                              <div
+                                className={`
+                                  rounded-full inline-flex items-center justify-center font-serif font-bold
+                                  transition-all duration-300
+                                  ${level.id === currentLevel
+                                    ? 'w-14 h-14 sm:w-16 sm:h-16 bg-[rgb(34,197,94)] text-white shadow-lg ring-4 ring-[rgb(34,197,94)]/20'
+                                    : level.id < currentLevel
+                                    ? 'w-10 h-10 sm:w-12 sm:h-12 bg-[rgb(34,197,94)] text-white shadow-md'
+                                    : 'w-10 h-10 sm:w-12 sm:h-12 bg-[rgb(var(--color-neutral-200))] text-[rgb(var(--color-text-muted))] shadow-sm'
+                                  }
+                                  ${expandedLevel === level.id ? 'ring-2 ring-[rgb(var(--color-primary-400))]' : ''}
+                                  group-hover:scale-105 cursor-pointer
+                                `}
+                                style={{ lineHeight: '1' }}
+                              >
+                                <span className={level.id === currentLevel ? 'text-lg sm:text-xl' : 'text-base sm:text-lg'}>
+                                  {level.id === 0 ? '0' : level.label}
+                                </span>
+                              </div>
+                            </button>
+                            <button
+                              onClick={() => setExpandedLevel(level.id)}
+                              className="text-[10px] sm:text-xs font-medium text-center whitespace-nowrap cursor-pointer"
+                            >
+                              <p className={`
+                                ${level.id === currentLevel ? 'text-[rgb(34,197,94)] font-semibold' : level.id < currentLevel ? 'text-[rgb(34,197,94)]' : 'text-[rgb(var(--color-text-muted))]'}
+                              `}>
+                                {level.id === 0 ? 'Pre-Schema' : `Lvl ${level.label}`}
+                              </p>
+                            </button>
+                          </div>
+
+                          {/* Connecting Line */}
+                          {index < visibleLevels.length - 1 && (
+                            <div className="flex items-center -mt-6">
+                              <div className={`
+                                h-0.5 w-8 sm:w-12 transition-colors duration-300
+                                ${level.id < currentLevel ? 'bg-[rgb(34,197,94)]' : 'bg-[rgb(var(--color-neutral-300))]'}
+                              `}></div>
+                            </div>
+                          )}
+                        </React.Fragment>
+                      ))}
+
+                      {/* More Ahead Indicator (Clickable) or Remaining Levels */}
+                      {hasMoreLevels && !showFullPathway && (
                         <>
-                          {visibleLevels.map((level, index) => (
+                          <div className="flex items-center -mt-6">
+                            <div className="h-0.5 w-8 sm:w-12 bg-[rgb(var(--color-neutral-300))]"></div>
+                          </div>
+                          <button
+                            onClick={() => setShowFullPathway(true)}
+                            className="flex flex-col items-center gap-2 group cursor-pointer"
+                          >
+                            <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full inline-flex items-center justify-center bg-[rgb(var(--color-neutral-100))] text-[rgb(var(--color-text-muted))] opacity-60 group-hover:opacity-100 group-hover:bg-[rgb(var(--color-neutral-200))] transition-all">
+                              <span className="text-lg">⋯</span>
+                            </div>
+                            <p className="text-[10px] sm:text-xs font-medium text-[rgb(var(--color-text-muted))] opacity-60 group-hover:opacity-100 group-hover:text-[rgb(var(--color-primary-600))] transition-all">
+                              More ahead
+                            </p>
+                          </button>
+                        </>
+                      )}
+
+                      {/* Show Remaining Levels when expanded */}
+                      {hasMoreLevels && showFullPathway && (
+                        <>
+                          <div className="flex items-center -mt-6">
+                            <div className="h-0.5 w-8 sm:w-12 bg-[rgb(var(--color-neutral-300))]"></div>
+                          </div>
+                          {remainingLevels.map((level, index) => (
                             <React.Fragment key={level.id}>
                               <div className="flex flex-col items-center gap-2">
                                 <button
@@ -871,143 +950,49 @@ function StaffDashboardContent() {
                                 >
                                   <div
                                     className={`
-                                      rounded-full inline-flex items-center justify-center font-serif font-bold
-                                      transition-all duration-300
-                                      ${level.id === currentLevel
-                                        ? 'w-14 h-14 sm:w-16 sm:h-16 bg-[rgb(34,197,94)] text-white shadow-lg ring-4 ring-[rgb(34,197,94)]/20'
-                                        : level.id < currentLevel
-                                        ? 'w-10 h-10 sm:w-12 sm:h-12 bg-[rgb(34,197,94)] text-white shadow-md'
-                                        : 'w-10 h-10 sm:w-12 sm:h-12 bg-[rgb(var(--color-neutral-200))] text-[rgb(var(--color-text-muted))] shadow-sm'
-                                      }
+                                      w-10 h-10 sm:w-12 sm:h-12 rounded-full inline-flex items-center justify-center font-serif font-bold text-base sm:text-lg
+                                      transition-all duration-300 shadow-[var(--shadow-md)]
+                                      bg-[rgb(var(--color-neutral-200))] text-[rgb(var(--color-text-muted))]
                                       ${expandedLevel === level.id ? 'ring-2 ring-[rgb(var(--color-primary-400))]' : ''}
                                       group-hover:scale-105 cursor-pointer
                                     `}
                                     style={{ lineHeight: '1' }}
                                   >
-                                    <span className={level.id === currentLevel ? 'text-lg sm:text-xl' : 'text-base sm:text-lg'}>
-                                      {level.id === 0 ? '0' : level.label}
-                                    </span>
+                                    {level.id === 0 ? '0' : level.label}
                                   </div>
                                 </button>
                                 <button
                                   onClick={() => setExpandedLevel(level.id)}
                                   className="text-[10px] sm:text-xs font-medium text-center whitespace-nowrap cursor-pointer"
                                 >
-                                  <p className={`
-                                    ${level.id === currentLevel ? 'text-[rgb(34,197,94)] font-semibold' : level.id < currentLevel ? 'text-[rgb(34,197,94)]' : 'text-[rgb(var(--color-text-muted))]'}
-                                  `}>
+                                  <p className="text-[rgb(var(--color-text-muted))]">
                                     {level.id === 0 ? 'Pre-Schema' : `Lvl ${level.label}`}
                                   </p>
                                 </button>
                               </div>
 
                               {/* Connecting Line */}
-                              {index < visibleLevels.length - 1 && (
+                              {index < remainingLevels.length - 1 && (
                                 <div className="flex items-center -mt-6">
-                                  <div className={`
-                                    h-0.5 w-8 sm:w-12 transition-colors duration-300
-                                    ${level.id < currentLevel ? 'bg-[rgb(34,197,94)]' : 'bg-[rgb(var(--color-neutral-300))]'}
-                                  `}></div>
+                                  <div className="h-0.5 w-8 sm:w-12 bg-[rgb(var(--color-neutral-300))] transition-colors duration-300"></div>
                                 </div>
                               )}
                             </React.Fragment>
                           ))}
 
-                          {/* More Ahead Indicator */}
-                          {hasMoreLevels && (
-                            <>
-                              <div className="flex items-center -mt-6">
-                                <div className="h-0.5 w-8 sm:w-12 bg-[rgb(var(--color-neutral-300))]"></div>
-                              </div>
-                              <div className="flex flex-col items-center gap-2">
-                                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full inline-flex items-center justify-center bg-[rgb(var(--color-neutral-100))] text-[rgb(var(--color-text-muted))] opacity-60">
-                                  <span className="text-lg">⋯</span>
-                                </div>
-                                <p className="text-[10px] sm:text-xs font-medium text-[rgb(var(--color-text-muted))] opacity-60">
-                                  More ahead
-                                </p>
-                              </div>
-                            </>
-                          )}
+                          {/* Show Focus View Button */}
+                          <button
+                            onClick={() => setShowFullPathway(false)}
+                            className="flex items-center ml-4 px-3 py-1.5 text-xs sm:text-sm text-[rgb(var(--color-primary-600))] hover:text-[rgb(var(--color-primary-700))] hover:bg-[rgb(var(--color-primary-50))] font-medium rounded-lg transition-all border border-[rgb(var(--color-primary-300))] hover:border-[rgb(var(--color-primary-400))]"
+                          >
+                            Show focus view
+                          </button>
                         </>
-                      );
-                    })()}
-                  </div>
-
-                  {/* View Full Pathway Link */}
-                  <div className="flex justify-start">
-                    <button
-                      onClick={() => setShowFullPathway(true)}
-                      className="text-xs sm:text-sm text-[rgb(var(--color-primary-600))] hover:text-[rgb(var(--color-primary-700))] font-medium underline transition-colors"
-                    >
-                      View full pathway →
-                    </button>
-                  </div>
-                </>
-              ) : (
-                <>
-                  {/* Full Pathway View */}
-                  <div className="flex items-start justify-between min-w-max sm:min-w-0 mb-4">
-                    {levels.map((level, index) => (
-                      <div key={level.id} className="flex items-center flex-1">
-                        <div className="flex flex-col items-center">
-                          <button
-                            onClick={() => setExpandedLevel(level.id)}
-                            className="group mb-2"
-                          >
-                            <div
-                              className={`
-                                w-10 h-10 sm:w-12 sm:h-12 rounded-full inline-flex items-center justify-center font-serif font-bold text-base sm:text-lg
-                                transition-all duration-300 shadow-[var(--shadow-md)]
-                                ${level.id === currentLevel
-                                  ? 'bg-[rgb(34,197,94)] text-white scale-110 ring-2 sm:ring-4 ring-[rgb(34,197,94)]/20'
-                                  : level.id < currentLevel
-                                  ? 'bg-[rgb(34,197,94)] text-white'
-                                  : 'bg-[rgb(var(--color-neutral-200))] text-[rgb(var(--color-text-muted))]'
-                                }
-                                ${expandedLevel === level.id ? 'ring-2 ring-[rgb(var(--color-primary-400))]' : ''}
-                                group-hover:scale-105
-                              `}
-                              style={{ lineHeight: '1' }}
-                            >
-                              {level.id === 0 ? '0' : level.label}
-                            </div>
-                          </button>
-                          <button
-                            onClick={() => setExpandedLevel(level.id)}
-                            className="text-[10px] sm:text-xs font-medium text-center whitespace-nowrap"
-                          >
-                            <p className={`
-                              ${level.id === currentLevel ? 'text-[rgb(34,197,94)] font-semibold' : level.id < currentLevel ? 'text-[rgb(34,197,94)]' : 'text-[rgb(var(--color-text-muted))]'}
-                            `}>
-                              {level.id === 0 ? 'Pre-Schema' : `Lvl ${level.label}`}
-                            </p>
-                          </button>
-                        </div>
-                        {/* Connecting Line */}
-                        {index < levels.length - 1 && (
-                          <div className="flex items-center flex-1 px-2 sm:px-3 -mt-8">
-                            <div className={`
-                              h-0.5 w-full transition-colors duration-300 min-w-[20px] sm:min-w-0
-                              ${level.id < currentLevel ? 'bg-[rgb(34,197,94)]' : 'bg-[rgb(var(--color-neutral-300))]'}
-                            `}></div>
-                          </div>
-                        )}
-                      </div>
-                    ))}
-                  </div>
-
-                  {/* Collapse Link */}
-                  <div className="flex justify-start">
-                    <button
-                      onClick={() => setShowFullPathway(false)}
-                      className="text-xs sm:text-sm text-[rgb(var(--color-primary-600))] hover:text-[rgb(var(--color-primary-700))] font-medium underline transition-colors"
-                    >
-                      Show focused view
-                    </button>
-                  </div>
-                </>
-              )}
+                      )}
+                    </>
+                  );
+                })()}
+              </div>
             </div>
           </div>
         </header>
