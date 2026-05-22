@@ -879,10 +879,10 @@ function StaffDashboardContent() {
                                   ${level.id === currentLevel
                                     ? 'w-14 h-14 sm:w-16 sm:h-16 bg-[rgb(34,197,94)] text-white shadow-lg ring-4 ring-[rgb(34,197,94)]/20'
                                     : level.id < currentLevel
-                                    ? 'w-10 h-10 sm:w-12 sm:h-12 bg-[rgb(34,197,94)] text-white shadow-md'
+                                    ? 'w-10 h-10 sm:w-12 sm:h-12 bg-[rgb(22,163,74)] text-white shadow-md'
                                     : 'w-10 h-10 sm:w-12 sm:h-12 bg-[rgb(var(--color-neutral-200))] text-[rgb(var(--color-text-muted))] shadow-sm'
                                   }
-                                  ${expandedLevel === level.id ? 'ring-2 ring-[rgb(var(--color-primary-400))]' : ''}
+                                  ${expandedLevel === level.id ? 'ring-[3px] ring-black' : ''}
                                   group-hover:scale-105 cursor-pointer
                                 `}
                                 style={{ lineHeight: '1' }}
@@ -897,7 +897,7 @@ function StaffDashboardContent() {
                               className="text-[10px] sm:text-xs font-medium text-center whitespace-nowrap cursor-pointer"
                             >
                               <p className={`
-                                ${level.id === currentLevel ? 'text-[rgb(34,197,94)] font-semibold' : level.id < currentLevel ? 'text-[rgb(34,197,94)]' : 'text-[rgb(var(--color-text-muted))]'}
+                                ${level.id === currentLevel ? 'text-[rgb(34,197,94)] font-semibold' : level.id < currentLevel ? 'text-[rgb(22,163,74)]' : 'text-[rgb(var(--color-text-muted))]'}
                               `}>
                                 {level.id === 0 ? 'Pre-Schema' : `Lvl ${level.label}`}
                               </p>
@@ -909,7 +909,7 @@ function StaffDashboardContent() {
                             <div className="flex items-center -mt-6">
                               <div className={`
                                 h-0.5 w-8 sm:w-12 transition-colors duration-300
-                                ${level.id < currentLevel ? 'bg-[rgb(34,197,94)]' : 'bg-[rgb(var(--color-neutral-300))]'}
+                                ${level.id < currentLevel ? 'bg-[rgb(22,163,74)]' : 'bg-[rgb(var(--color-neutral-300))]'}
                               `}></div>
                             </div>
                           )}
@@ -939,7 +939,7 @@ function StaffDashboardContent() {
                       {/* Show Remaining Levels when expanded */}
                       {hasMoreLevels && (showFullPathway || isCollapsing) && (
                         <>
-                          <div className={`flex items-center -mt-6 ${isCollapsing ? 'animate-glideOutDown' : 'animate-fadeIn'}`} style={{ animationDelay: isCollapsing ? '0ms' : '0ms' }}>
+                          <div className={`flex items-center -mt-6 ${isCollapsing ? 'animate-glideOutDown' : 'animate-fadeIn'}`} style={{ animationDelay: isCollapsing ? `${(remainingLevels.length - 1) * 50 + 400}ms` : '0ms' }}>
                             <div className="h-0.5 w-8 sm:w-12 bg-[rgb(var(--color-neutral-300))]"></div>
                           </div>
                           {remainingLevels.map((level, index) => (
@@ -957,7 +957,7 @@ function StaffDashboardContent() {
                                       w-10 h-10 sm:w-12 sm:h-12 rounded-full inline-flex items-center justify-center font-serif font-bold text-base sm:text-lg
                                       transition-all duration-300 shadow-[var(--shadow-md)]
                                       bg-[rgb(var(--color-neutral-200))] text-[rgb(var(--color-text-muted))]
-                                      ${expandedLevel === level.id ? 'ring-2 ring-[rgb(var(--color-primary-400))]' : ''}
+                                      ${expandedLevel === level.id ? 'ring-[3px] ring-black' : ''}
                                       group-hover:scale-105 cursor-pointer
                                     `}
                                     style={{ lineHeight: '1' }}
