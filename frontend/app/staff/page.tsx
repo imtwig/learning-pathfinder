@@ -1088,7 +1088,7 @@ function StaffDashboardContent() {
 
                                   {step.id === '4' && (
                                     <button
-                                      className="bg-[rgb(var(--color-neutral-600))] hover:bg-[rgb(var(--color-neutral-700))] text-white shadow-sm h-10 px-4 inline-flex items-center justify-center text-sm font-medium rounded-lg transition-all shrink-0"
+                                      className="bg-[rgb(var(--color-neutral-600))] hover:bg-[rgb(var(--color-neutral-700))] text-white shadow-sm h-8 px-4 inline-flex items-center justify-center text-sm font-medium rounded-lg transition-all shrink-0"
                                     >
                                       View Apprenticeship Site
                                     </button>
