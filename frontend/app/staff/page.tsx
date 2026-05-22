@@ -94,6 +94,8 @@ function StaffDashboardContent() {
   const [toastMessage, setToastMessage] = useState('');
   const [demoDrawerOpen, setDemoDrawerOpen] = useState(false);
   const [demoState, setDemoState] = useState<string>('none');
+  const [pathwaySearchOpen, setPathwaySearchOpen] = useState(false);
+  const [pathwaySearchQuery, setPathwaySearchQuery] = useState('');
 
   const handleStatusPopoverToggle = (stepId: string, event: React.MouseEvent<HTMLButtonElement>) => {
     if (openStatusPopover === stepId) {
@@ -307,6 +309,20 @@ function StaffDashboardContent() {
       setLevels(SOFTWARE_ENGINEER_LEVELS);
     }
   }, [selectedPathway]);
+
+  // Close pathway dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      const target = event.target as HTMLElement;
+      if (pathwaySearchOpen && !target.closest('.pathway-dropdown')) {
+        setPathwaySearchOpen(false);
+        setPathwaySearchQuery('');
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, [pathwaySearchOpen]);
 
   const loadMockData = () => {
     setUser({
@@ -645,10 +661,9 @@ function StaffDashboardContent() {
 
               {/* Pathway Selector Dropdown - Hidden in manager view */}
               {!isManagerView && (
-                <div className="sm:ml-[var(--space-4)] relative w-full sm:w-auto">
-                  <select
-                    value={selectedPathway}
-                    onChange={(e) => setSelectedPathway(e.target.value)}
+                <div className="sm:ml-[var(--space-4)] relative w-full sm:w-auto pathway-dropdown">
+                  <button
+                    onClick={() => setPathwaySearchOpen(!pathwaySearchOpen)}
                     className="
                       w-full sm:w-auto
                       pl-4 pr-10 py-2.5
@@ -664,27 +679,83 @@ function StaffDashboardContent() {
                       focus:ring-[rgb(var(--color-primary-400))]
                       focus:border-[rgb(var(--color-primary-400))]
                       transition-all
-                      cursor-pointer
-                      appearance-none
                       shadow-sm
                       sm:min-w-[240px]
+                      text-left
                     "
-                    style={{
-                      WebkitAppearance: 'none',
-                      MozAppearance: 'none'
-                    }}
                   >
-                    {pathwayOptions.map((option) => (
-                      <option key={option.value} value={option.value}>
-                        {option.label}
-                      </option>
-                    ))}
-                  </select>
+                    {pathwayOptions.find(opt => opt.value === selectedPathway)?.label}
+                  </button>
                   <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none">
                     <svg className="w-5 h-5 text-[rgb(var(--color-text-muted))]" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5}>
                       <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
                     </svg>
                   </div>
+
+                  {/* Dropdown Menu */}
+                  {pathwaySearchOpen && (
+                    <div className="absolute top-full left-0 right-0 mt-2 bg-white border-2 border-[rgb(var(--color-border))] rounded-xl shadow-lg z-50">
+                      <div className="p-2">
+                        <input
+                          type="text"
+                          placeholder="Search pathways..."
+                          value={pathwaySearchQuery}
+                          onChange={(e) => setPathwaySearchQuery(e.target.value)}
+                          className="
+                            w-full
+                            px-3 py-2
+                            bg-[rgb(var(--color-neutral-50))]
+                            border border-[rgb(var(--color-border))]
+                            rounded-lg
+                            text-sm
+                            text-[rgb(var(--color-text-primary))]
+                            placeholder:text-[rgb(var(--color-text-muted))]
+                            focus:outline-none
+                            focus:ring-2
+                            focus:ring-[rgb(var(--color-primary-400))]
+                            focus:border-[rgb(var(--color-primary-400))]
+                          "
+                          autoFocus
+                        />
+                      </div>
+                      <div className="max-h-60 overflow-y-auto">
+                        {pathwayOptions
+                          .filter(option =>
+                            option.label.toLowerCase().includes(pathwaySearchQuery.toLowerCase())
+                          )
+                          .map((option) => (
+                            <button
+                              key={option.value}
+                              onClick={() => {
+                                setSelectedPathway(option.value);
+                                setPathwaySearchOpen(false);
+                                setPathwaySearchQuery('');
+                              }}
+                              className={`
+                                w-full
+                                text-left
+                                px-4 py-2.5
+                                text-sm
+                                transition-colors
+                                ${selectedPathway === option.value
+                                  ? 'bg-[rgb(var(--color-primary-50))] text-[rgb(var(--color-primary-700))] font-semibold'
+                                  : 'text-[rgb(var(--color-text-primary))] hover:bg-[rgb(var(--color-neutral-50))]'
+                                }
+                              `}
+                            >
+                              {option.label}
+                            </button>
+                          ))}
+                        {pathwayOptions.filter(option =>
+                          option.label.toLowerCase().includes(pathwaySearchQuery.toLowerCase())
+                        ).length === 0 && (
+                          <div className="px-4 py-6 text-center text-sm text-[rgb(var(--color-text-muted))]">
+                            No pathways found
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  )}
                 </div>
               )}
             </div>
