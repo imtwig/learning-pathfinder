@@ -13,7 +13,7 @@ const FAKE_STAFF_LIST = [
     email: 'john.tan@example.com',
     currentLevel: 0,
     pathway: 'UX Designer',
-    preSchemaCompletion: 75, // completed 3 out of 4 steps
+    preSchemaCompletion: 50, // currently at step 3
   },
   {
     id: 'staff-2',
@@ -21,7 +21,7 @@ const FAKE_STAFF_LIST = [
     email: 'sarah.chen@example.com',
     currentLevel: 0,
     pathway: 'UX Designer',
-    preSchemaCompletion: 50, // completed 2 out of 4 steps
+    preSchemaCompletion: 25, // currently at step 2
   },
   {
     id: 'staff-3',
@@ -225,15 +225,14 @@ export default function ManagerDashboard() {
     'Software Engineer': FAKE_STAFF_LIST.filter(s => s.pathway === 'Software Engineer').length,
   };
 
-  // Calculate actual pre-schema step completion based on real staff data
-  // John Tan (staff-1): Steps 1, 2, 3 completed (75%), Step 4 pending
-  // Sarah Chen (staff-2): Steps 1, 2 completed (50%), Step 3 ongoing
-  // All others: 0% completion
+  // Calculate how many people are currently AT each step (not completed)
+  // 0% = at step 1, 25% = at step 2, 50% = at step 3, 75% = at step 4
+  const preSchemaStaff = FAKE_STAFF_LIST.filter(s => s.currentLevel === 0);
   const preSchemaSteps = {
-    step1: 2, // John + Sarah completed step 1
-    step2: 2, // John + Sarah completed step 2
-    step3: 1, // Only John completed step 3 (Sarah is ongoing)
-    step4: 0, // John is pending, not completed
+    step1: preSchemaStaff.filter(s => (s.preSchemaCompletion || 0) === 0).length, // 6 people at 0%
+    step2: preSchemaStaff.filter(s => (s.preSchemaCompletion || 0) === 25).length, // Sarah at 25%
+    step3: preSchemaStaff.filter(s => (s.preSchemaCompletion || 0) === 50).length, // John at 50%
+    step4: preSchemaStaff.filter(s => (s.preSchemaCompletion || 0) === 75).length, // 0 people at 75%
   };
 
   // Calculate pre-schema completion percentage
@@ -373,7 +372,7 @@ export default function ManagerDashboard() {
               <div className="space-y-3">
                 <div>
                   <div className="flex items-center justify-between mb-1">
-                    <span className="text-sm font-medium text-[rgb(var(--color-text-primary))]">Completed Step 1</span>
+                    <span className="text-sm font-medium text-[rgb(var(--color-text-primary))]">Currently at Step 1</span>
                     <span className="text-sm font-semibold text-[rgb(var(--color-text-primary))]">{preSchemaSteps.step1} / {levelCounts.preSchema}</span>
                   </div>
                   <div className="w-full h-2 bg-[rgb(var(--color-neutral-200))] rounded-full overflow-hidden">
@@ -385,7 +384,7 @@ export default function ManagerDashboard() {
                 </div>
                 <div>
                   <div className="flex items-center justify-between mb-1">
-                    <span className="text-sm font-medium text-[rgb(var(--color-text-primary))]">Completed Step 2</span>
+                    <span className="text-sm font-medium text-[rgb(var(--color-text-primary))]">Currently at Step 2</span>
                     <span className="text-sm font-semibold text-[rgb(var(--color-text-primary))]">{preSchemaSteps.step2} / {levelCounts.preSchema}</span>
                   </div>
                   <div className="w-full h-2 bg-[rgb(var(--color-neutral-200))] rounded-full overflow-hidden">
@@ -397,7 +396,7 @@ export default function ManagerDashboard() {
                 </div>
                 <div>
                   <div className="flex items-center justify-between mb-1">
-                    <span className="text-sm font-medium text-[rgb(var(--color-text-primary))]">Completed Step 3</span>
+                    <span className="text-sm font-medium text-[rgb(var(--color-text-primary))]">Currently at Step 3</span>
                     <span className="text-sm font-semibold text-[rgb(var(--color-text-primary))]">{preSchemaSteps.step3} / {levelCounts.preSchema}</span>
                   </div>
                   <div className="w-full h-2 bg-[rgb(var(--color-neutral-200))] rounded-full overflow-hidden">
@@ -409,7 +408,7 @@ export default function ManagerDashboard() {
                 </div>
                 <div>
                   <div className="flex items-center justify-between mb-1">
-                    <span className="text-sm font-medium text-[rgb(var(--color-text-primary))]">Completed Step 4</span>
+                    <span className="text-sm font-medium text-[rgb(var(--color-text-primary))]">Currently at Step 4</span>
                     <span className="text-sm font-semibold text-[rgb(var(--color-text-primary))]">{preSchemaSteps.step4} / {levelCounts.preSchema}</span>
                   </div>
                   <div className="w-full h-2 bg-[rgb(var(--color-neutral-200))] rounded-full overflow-hidden">
