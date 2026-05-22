@@ -476,7 +476,7 @@ function StaffDashboardContent() {
 
       {/* Navigation */}
       <nav className="bg-[rgb(var(--color-surface))] border-b border-[rgb(var(--color-border))] shadow-[var(--shadow-sm)] sticky top-0 z-[var(--z-sticky)] backdrop-blur-sm bg-[rgb(var(--color-surface))]/95">
-        <div className="container mx-auto px-[var(--space-6)] py-[var(--space-5)]">
+        <div className="container mx-auto px-4 sm:px-[var(--space-6)] py-3 sm:py-[var(--space-5)]">
           <div className="flex justify-between items-center">
             {isManagerView ? (
               <>
@@ -486,7 +486,7 @@ function StaffDashboardContent() {
                     <div className="w-10 h-10 rounded-xl bg-[rgb(var(--color-text-primary))] flex items-center justify-center text-white font-serif font-bold text-sm shadow-[var(--shadow-base)]">
                       LP
                     </div>
-                    <div>
+                    <div className="hidden sm:block">
                       <h1 className="font-serif text-[length:var(--text-xl)] font-bold text-[rgb(var(--color-text-primary))] leading-none mb-0.5">
                         Learning Pathway
                       </h1>
@@ -548,7 +548,7 @@ function StaffDashboardContent() {
       </nav>
 
       {/* Main Content */}
-      <div className="container mx-auto px-[var(--space-6)] py-[var(--space-12)] max-w-7xl">
+      <div className="container mx-auto px-4 sm:px-[var(--space-6)] py-6 sm:py-[var(--space-12)] max-w-7xl">
 
         {/* Breadcrumb for Manager View */}
         {isManagerView && (
@@ -580,25 +580,26 @@ function StaffDashboardContent() {
         )}
 
         {/* Career Progression Header */}
-        <header className="mb-[var(--space-12)] animate-fadeInUp">
-          <div className="bg-[rgb(var(--color-surface))] rounded-2xl p-[var(--space-8)] shadow-[var(--shadow-lg)]">
-            <div className="mb-[var(--space-6)] flex items-center justify-between">
+        <header className="mb-6 sm:mb-[var(--space-12)] animate-fadeInUp">
+          <div className="bg-[rgb(var(--color-surface))] rounded-xl sm:rounded-2xl p-4 sm:p-[var(--space-8)] shadow-[var(--shadow-lg)]">
+            <div className="mb-4 sm:mb-[var(--space-6)] flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
               <div className="flex-1">
-                <h2 className="font-serif text-[length:var(--text-4xl)] font-bold text-[rgb(var(--color-text-primary))] mb-[var(--space-2)]">
+                <h2 className="font-serif text-2xl sm:text-[length:var(--text-4xl)] font-bold text-[rgb(var(--color-text-primary))] mb-2 sm:mb-[var(--space-2)]">
                   Career Progression Pathway
                 </h2>
-                <p className="text-[rgb(var(--color-text-secondary))] text-[length:var(--text-lg)]">
+                <p className="text-[rgb(var(--color-text-secondary))] text-sm sm:text-[length:var(--text-lg)]">
                   Your journey from Pre-Schema through Level 7 in {selectedPathway}
                 </p>
               </div>
 
               {/* Pathway Selector Dropdown - Hidden in manager view */}
               {!isManagerView && (
-                <div className="ml-[var(--space-4)] relative">
+                <div className="sm:ml-[var(--space-4)] relative w-full sm:w-auto">
                   <select
                     value={selectedPathway}
                     onChange={(e) => setSelectedPathway(e.target.value)}
                     className="
+                      w-full sm:w-auto
                       pl-4 pr-10 py-2.5
                       bg-white
                       border-2 border-[rgb(var(--color-border))]
@@ -615,7 +616,7 @@ function StaffDashboardContent() {
                       cursor-pointer
                       appearance-none
                       shadow-sm
-                      min-w-[240px]
+                      sm:min-w-[240px]
                     "
                     style={{
                       WebkitAppearance: 'none',
@@ -638,8 +639,8 @@ function StaffDashboardContent() {
             </div>
 
             {/* Level Progress Indicator */}
-            <div className="py-4 px-2">
-              <div className="flex items-start justify-between">
+            <div className="py-4 overflow-x-auto -mx-4 sm:mx-0 px-4 sm:px-2">
+              <div className="flex items-start justify-between min-w-max sm:min-w-0">
                 {levels.map((level, index) => (
                   <div key={level.id} className="flex items-center flex-1">
                     <div className="flex flex-col items-center">
@@ -649,10 +650,10 @@ function StaffDashboardContent() {
                       >
                         <div
                           className={`
-                            w-12 h-12 rounded-full inline-flex items-center justify-center font-serif font-bold text-lg
+                            w-10 h-10 sm:w-12 sm:h-12 rounded-full inline-flex items-center justify-center font-serif font-bold text-base sm:text-lg
                             transition-all duration-300 shadow-[var(--shadow-md)]
                             ${level.id === currentLevel
-                              ? 'bg-[rgb(var(--color-primary-600))] text-white scale-110 ring-4 ring-[rgb(var(--color-primary-200))]'
+                              ? 'bg-[rgb(var(--color-primary-600))] text-white scale-110 ring-2 sm:ring-4 ring-[rgb(var(--color-primary-200))]'
                               : level.id < currentLevel
                               ? 'bg-[rgb(var(--color-secondary-600))] text-white'
                               : 'bg-[rgb(var(--color-neutral-200))] text-[rgb(var(--color-text-muted))]'
@@ -667,20 +668,20 @@ function StaffDashboardContent() {
                       </button>
                       <button
                         onClick={() => setExpandedLevel(level.id)}
-                        className="text-xs font-medium text-center whitespace-nowrap"
+                        className="text-[10px] sm:text-xs font-medium text-center whitespace-nowrap"
                       >
                         <p className={`
                           ${level.id === currentLevel ? 'text-[rgb(var(--color-primary-600))]' : 'text-[rgb(var(--color-text-muted))]'}
                         `}>
-                          {level.id === 0 ? 'Pre-Schema' : `Level ${level.label}`}
+                          {level.id === 0 ? 'Pre-Schema' : `Lvl ${level.label}`}
                         </p>
                       </button>
                     </div>
                     {/* Connecting Line */}
                     {index < levels.length - 1 && (
-                      <div className="flex items-center flex-1 px-3 -mt-8">
+                      <div className="flex items-center flex-1 px-2 sm:px-3 -mt-8">
                         <div className={`
-                          h-0.5 w-full transition-colors duration-300
+                          h-0.5 w-full transition-colors duration-300 min-w-[20px] sm:min-w-0
                           ${level.id < currentLevel ? 'bg-[rgb(var(--color-secondary-600))]' : 'bg-[rgb(var(--color-neutral-300))]'}
                         `}></div>
                       </div>
@@ -1555,7 +1556,7 @@ function StaffDashboardContent() {
 
           {/* Demo Drawer Panel */}
           <div
-            className={`fixed right-0 top-0 h-full w-80 bg-white border-l-2 border-[rgb(var(--color-border))] shadow-[var(--shadow-xl)] z-[var(--z-modal)] transition-transform duration-300 flex flex-col ${
+            className={`fixed right-0 top-0 h-full w-full sm:w-80 bg-white border-l-2 border-[rgb(var(--color-border))] shadow-[var(--shadow-xl)] z-[var(--z-modal)] transition-transform duration-300 flex flex-col ${
               demoDrawerOpen ? 'translate-x-0' : 'translate-x-full'
             }`}
           >

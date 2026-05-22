@@ -56,8 +56,8 @@ export default function ManagerDashboard() {
     <div className="min-h-screen bg-[rgb(var(--color-background))]">
       {/* Navigation Bar */}
       <nav className="bg-white border-b border-[rgb(var(--color-border))] sticky top-0 z-50 shadow-[var(--shadow-xs)]">
-        <div className="container mx-auto px-[var(--space-6)]">
-          <div className="flex items-center justify-between h-20">
+        <div className="container mx-auto px-4 sm:px-[var(--space-6)]">
+          <div className="flex items-center justify-between h-16 sm:h-20">
             <div className="flex items-center gap-[var(--space-4)]">
               <div className="flex items-center gap-[var(--space-3)]">
                 <div className="w-10 h-10 rounded-xl bg-[rgb(var(--color-text-primary))] flex items-center justify-center text-white font-serif font-bold text-sm shadow-[var(--shadow-base)]">
@@ -85,13 +85,13 @@ export default function ManagerDashboard() {
         </div>
       </nav>
 
-      <div className="container mx-auto px-[var(--space-6)] py-[var(--space-12)] max-w-7xl">
+      <div className="container mx-auto px-4 sm:px-[var(--space-6)] py-6 sm:py-[var(--space-12)] max-w-7xl">
         {/* Header */}
-        <header className="mb-[var(--space-8)]">
-          <h1 className="font-serif text-[length:var(--text-4xl)] font-bold text-[rgb(var(--color-text-primary))] mb-[var(--space-2)]">
+        <header className="mb-6 sm:mb-[var(--space-8)]">
+          <h1 className="font-serif text-2xl sm:text-[length:var(--text-4xl)] font-bold text-[rgb(var(--color-text-primary))] mb-2 sm:mb-[var(--space-2)]">
             Manager Dashboard
           </h1>
-          <p className="text-[rgb(var(--color-text-secondary))] text-[length:var(--text-lg)]">
+          <p className="text-[rgb(var(--color-text-secondary))] text-base sm:text-[length:var(--text-lg)]">
             View and manage your team's learning pathways
           </p>
         </header>

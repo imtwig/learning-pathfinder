@@ -14,12 +14,12 @@ export default function HomePage() {
       <div className="absolute bottom-20 left-10 w-96 h-96 rounded-full bg-[rgb(var(--color-accent-600))] opacity-[0.02] blur-3xl"></div>
 
       {/* Main Content */}
-      <div className="container mx-auto px-[var(--space-6)] py-[var(--space-16)] sm:py-[var(--space-24)] relative">
+      <div className="container mx-auto px-4 sm:px-[var(--space-6)] py-8 sm:py-[var(--space-16)] lg:py-[var(--space-24)] relative">
         <div className="max-w-6xl mx-auto">
 
           {/* Hero Header */}
-          <header className="text-center mb-[var(--space-20)] animate-fadeInUp">
-            <div className="inline-flex items-center gap-[var(--space-2)] mb-[var(--space-8)]">
+          <header className="text-center mb-12 sm:mb-[var(--space-20)] animate-fadeInUp">
+            <div className="inline-flex items-center gap-[var(--space-2)] mb-6 sm:mb-[var(--space-8)]">
               <div className="h-px w-12 bg-[rgb(var(--color-border))]"></div>
               <Badge
                 variant="outline"
@@ -30,25 +30,25 @@ export default function HomePage() {
               <div className="h-px w-12 bg-[rgb(var(--color-border))]"></div>
             </div>
 
-            <h1 className="font-serif text-[length:var(--text-6xl)] sm:text-[clamp(3.5rem,8vw,5.5rem)] font-bold text-[rgb(var(--color-text-primary))] mb-[var(--space-8)] leading-[var(--leading-tight)] tracking-[var(--tracking-tighter)]">
+            <h1 className="font-serif text-4xl sm:text-[length:var(--text-6xl)] lg:text-[clamp(3.5rem,8vw,5.5rem)] font-bold text-[rgb(var(--color-text-primary))] mb-6 sm:mb-[var(--space-8)] leading-[var(--leading-tight)] tracking-[var(--tracking-tighter)]">
               Learning<br />
               <span className="text-[rgb(var(--color-primary-600))] relative inline-block">
                 Pathway
               </span>
             </h1>
 
-            <p className="text-[length:var(--text-xl)] text-[rgb(var(--color-text-secondary))] leading-[var(--leading-relaxed)] max-w-3xl mx-auto font-light">
+            <p className="text-base sm:text-lg lg:text-[length:var(--text-xl)] text-[rgb(var(--color-text-secondary))] leading-[var(--leading-relaxed)] max-w-3xl mx-auto font-light px-4">
               A sanctuary for professional growth: from foundational requirements through mastery, with oversight and recognition at every milestone.
             </p>
           </header>
 
           {/* Role Access Cards */}
-          <section className="mb-[var(--space-20)] animate-fadeInUp" style={{ animationDelay: '200ms' }}>
-            <div className="text-center mb-[var(--space-12)]">
-              <h2 className="font-serif text-[length:var(--text-3xl)] font-bold text-[rgb(var(--color-text-primary))] mb-[var(--space-3)]">
+          <section className="mb-12 sm:mb-[var(--space-20)] animate-fadeInUp" style={{ animationDelay: '200ms' }}>
+            <div className="text-center mb-8 sm:mb-[var(--space-12)]">
+              <h2 className="font-serif text-2xl sm:text-[length:var(--text-3xl)] font-bold text-[rgb(var(--color-text-primary))] mb-3 sm:mb-[var(--space-3)]">
                 Enter the Sanctuary
               </h2>
-              <p className="text-[rgb(var(--color-text-secondary))] text-[length:var(--text-lg)]">
+              <p className="text-[rgb(var(--color-text-secondary))] text-base sm:text-[length:var(--text-lg)]">
                 Choose your role to access your personalized learning dashboard
               </p>
             </div>
