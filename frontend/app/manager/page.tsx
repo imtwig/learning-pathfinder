@@ -13,6 +13,7 @@ const FAKE_STAFF_LIST = [
     email: 'john.tan@example.com',
     currentLevel: 0,
     pathway: 'UX Designer',
+    preSchemaCompletion: 75, // completed 3 out of 4 steps
   },
   {
     id: 'staff-2',
@@ -49,6 +50,7 @@ const FAKE_STAFF_LIST = [
     email: 'rachel.ng@example.com',
     currentLevel: 0,
     pathway: 'Product Manager',
+    preSchemaCompletion: 50, // completed 2 out of 4 steps
   },
   {
     id: 'staff-7',
@@ -85,6 +87,7 @@ const FAKE_STAFF_LIST = [
     email: 'marcus.lim@example.com',
     currentLevel: 0,
     pathway: 'Product Ops',
+    preSchemaCompletion: 25, // completed 1 out of 4 steps
   },
   {
     id: 'staff-12',
@@ -121,6 +124,7 @@ const FAKE_STAFF_LIST = [
     email: 'alex.chua@example.com',
     currentLevel: 0,
     pathway: 'Software Engineer',
+    preSchemaCompletion: 0, // completed 0 out of 4 steps
   },
   {
     id: 'staff-17',
@@ -424,7 +428,10 @@ export default function ManagerDashboard() {
                     <div className="flex-1">
                       <p className="text-xs text-[rgb(var(--color-text-muted))] mb-1">Current Level</p>
                       <p className="text-sm font-semibold text-[rgb(var(--color-text-primary))]">
-                        {staff.currentLevel === 0 ? 'Pre-Schema' : `Level ${staff.currentLevel}`}
+                        {staff.currentLevel === 0
+                          ? `Pre-Schema (${staff.preSchemaCompletion || 0}%)`
+                          : `Level ${staff.currentLevel}`
+                        }
                       </p>
                     </div>
                   </div>
