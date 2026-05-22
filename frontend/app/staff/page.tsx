@@ -88,16 +88,42 @@ function StaffDashboardContent() {
   const [competencies, setCompetencies] = useState<any[]>([]);
   const [levelCourses, setLevelCourses] = useState<{[key: string]: any[]}>({});
   const [selectedPathway, setSelectedPathway] = useState(urlPathway);
-  const [preSchemaStatuses, setPreSchemaStatuses] = useState<{[key: string]: string}>({
-    '1': 'Not Started',
-    '2': 'Not Yet',
-    '3': 'Not Yet',
-    '4': 'Not Yet',
-  });
+
+  // Initialize pre-schema statuses based on userId
+  const getInitialPreSchemaStatuses = () => {
+    if (userId === 'staff-1') {
+      // John Tan: completed step 3, pending emplacement on step 4
+      return {
+        '1': 'Completed',
+        '2': 'Passed',
+        '3': 'Completed',
+        '4': 'Pending Emplacement for Apprenticeship',
+      };
+    } else if (userId === 'staff-2') {
+      // Sarah Chen: completed step 2, ongoing step 3
+      return {
+        '1': 'Completed',
+        '2': 'Passed',
+        '3': 'Ongoing',
+        '4': 'Not Yet',
+      };
+    } else {
+      return {
+        '1': 'Not Started',
+        '2': 'Not Yet',
+        '3': 'Not Yet',
+        '4': 'Not Yet',
+      };
+    }
+  };
+
+  const [preSchemaStatuses, setPreSchemaStatuses] = useState<{[key: string]: string}>(getInitialPreSchemaStatuses());
   const [openStatusPopover, setOpenStatusPopover] = useState<string | null>(null);
   const [popoverDirection, setPopoverDirection] = useState<'down' | 'up'>('down');
   const [step3UploadedFile, setStep3UploadedFile] = useState<File | null>(null);
-  const [step3SampleCertificate, setStep3SampleCertificate] = useState<boolean>(false);
+  const [step3SampleCertificate, setStep3SampleCertificate] = useState<boolean>(
+    userId === 'staff-1' || userId === 'staff-2' // John and Sarah have certificates
+  );
   const [endorsements, setEndorsements] = useState<{[key: string]: string}>({});
   const [showToast, setShowToast] = useState(false);
   const [toastMessage, setToastMessage] = useState('');

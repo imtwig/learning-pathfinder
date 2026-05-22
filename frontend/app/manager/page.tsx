@@ -19,8 +19,9 @@ const FAKE_STAFF_LIST = [
     id: 'staff-2',
     name: 'Sarah Chen',
     email: 'sarah.chen@example.com',
-    currentLevel: 1,
+    currentLevel: 0,
     pathway: 'UX Designer',
+    preSchemaCompletion: 50, // completed 2 out of 4 steps
   },
   {
     id: 'staff-3',
@@ -50,7 +51,7 @@ const FAKE_STAFF_LIST = [
     email: 'rachel.ng@example.com',
     currentLevel: 0,
     pathway: 'Product Manager',
-    preSchemaCompletion: 50, // completed 2 out of 4 steps
+    preSchemaCompletion: 0, // completed 0 out of 4 steps
   },
   {
     id: 'staff-7',
@@ -87,7 +88,7 @@ const FAKE_STAFF_LIST = [
     email: 'marcus.lim@example.com',
     currentLevel: 0,
     pathway: 'Product Ops',
-    preSchemaCompletion: 25, // completed 1 out of 4 steps
+    preSchemaCompletion: 0, // completed 0 out of 4 steps
   },
   {
     id: 'staff-12',
