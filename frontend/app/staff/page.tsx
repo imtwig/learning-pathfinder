@@ -780,7 +780,7 @@ function StaffDashboardContent() {
                           href="https://appraise.tech.gov.sg/schemas/role/cmnd18pco001o0clbcz1vqx1f"
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="bg-[rgb(var(--color-primary-600))] hover:bg-[rgb(var(--color-primary-700))] text-white shadow-sm py-[var(--space-3)] px-[var(--space-4)] text-sm font-medium rounded-lg transition-all shrink-0"
+                          className="bg-[rgb(var(--color-primary-600))] hover:bg-[rgb(var(--color-primary-700))] text-white shadow-sm h-10 px-4 py-2 inline-flex items-center justify-center text-sm font-medium rounded-md transition-all shrink-0"
                         >
                           See Schema in Appraise
                         </a>
@@ -1110,9 +1110,8 @@ function StaffDashboardContent() {
                   ) : selectedPathway === 'UX Designer' && expandedLevel === 1 ? (
                     // Level 1 Designer (I)
                     <div className="space-y-[var(--space-6)]">
-                      <div className="border-t border-[rgb(var(--color-border))] pt-[var(--space-4)]">
-                        {/* Core */}
-                        <div className="mb-[var(--space-6)]">
+                      {/* Core */}
+                      <div className="mb-[var(--space-6)]">
                           <h4 className="font-serif text-[length:var(--text-xl)] font-bold text-[rgb(var(--color-text-primary))] mb-[var(--space-4)]">
                             Core
                           </h4>
@@ -1166,14 +1165,12 @@ function StaffDashboardContent() {
                             </a>
                           </div>
                         </div>
-                      </div>
                     </div>
                   ) : selectedPathway === 'UX Designer' && expandedLevel === 2 ? (
                     // Level 2: Developing content
                     <div className="space-y-[var(--space-6)]">
-                      <div className="border-t border-[rgb(var(--color-border))] pt-[var(--space-4)]">
-                        {/* Core */}
-                        <div className="mb-[var(--space-6)]">
+                      {/* Core */}
+                      <div className="mb-[var(--space-6)]">
                           <h4 className="font-serif text-[length:var(--text-xl)] font-bold text-[rgb(var(--color-text-primary))] mb-[var(--space-4)]">
                             Core
                           </h4>
@@ -1227,12 +1224,10 @@ function StaffDashboardContent() {
                             </a>
                           </div>
                         </div>
-                      </div>
                     </div>
                   ) : selectedPathway === 'UX Designer' && expandedLevel === 3 ? (
                     // Level 3 Senior Designer
                     <div className="space-y-[var(--space-6)]">
-                      <div className="border-t border-[rgb(var(--color-border))] pt-[var(--space-4)]">
                         {/* Core */}
                         <div className="mb-[var(--space-6)]">
                           <h4 className="font-serif text-[length:var(--text-xl)] font-bold text-[rgb(var(--color-text-primary))] mb-[var(--space-4)]">
@@ -1288,14 +1283,12 @@ function StaffDashboardContent() {
                             </a>
                           </div>
                         </div>
-                      </div>
                     </div>
                   ) : selectedPathway === 'UX Designer' && expandedLevel === 4 ? (
                     // Level 4 Lead Designer
                     <div className="space-y-[var(--space-6)]">
-                      <div className="border-t border-[rgb(var(--color-border))] pt-[var(--space-4)]">
-                        {/* Core */}
-                        <div className="mb-[var(--space-6)]">
+                      {/* Core */}
+                      <div className="mb-[var(--space-6)]">
                           <h4 className="font-serif text-[length:var(--text-xl)] font-bold text-[rgb(var(--color-text-primary))] mb-[var(--space-4)]">
                             Core
                           </h4>
@@ -1349,12 +1342,10 @@ function StaffDashboardContent() {
                             </a>
                           </div>
                         </div>
-                      </div>
                     </div>
                   ) : selectedPathway === 'UX Designer' && expandedLevel === 5 ? (
                     // Level 5 Principal Designer
                     <div className="space-y-[var(--space-6)]">
-                      <div className="border-t border-[rgb(var(--color-border))] pt-[var(--space-4)]">
                         {/* Core */}
                         <div className="mb-[var(--space-6)]">
                           <h4 className="font-serif text-[length:var(--text-xl)] font-bold text-[rgb(var(--color-text-primary))] mb-[var(--space-4)]">
@@ -1410,14 +1401,12 @@ function StaffDashboardContent() {
                             </a>
                           </div>
                         </div>
-                      </div>
                     </div>
                   ) : selectedPathway === 'UX Designer' && expandedLevel === 6 ? (
                     // Level 6 Distinguished Designer
                     <div className="space-y-[var(--space-6)]">
-                      <div className="border-t border-[rgb(var(--color-border))] pt-[var(--space-4)]">
-                        {/* Core */}
-                        <div className="mb-[var(--space-6)]">
+                      {/* Core */}
+                      <div className="mb-[var(--space-6)]">
                           <h4 className="font-serif text-[length:var(--text-xl)] font-bold text-[rgb(var(--color-text-primary))] mb-[var(--space-4)]">
                             Core
                           </h4>
