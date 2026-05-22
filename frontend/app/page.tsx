@@ -57,7 +57,7 @@ export default function HomePage() {
               {/* Staff Card */}
               <Link href="/staff?userId=staff-1" className="group block">
                 <Card className="h-full hover:shadow-[var(--shadow-lg)] transition-all duration-300 bg-[rgb(var(--color-surface))] overflow-hidden relative cursor-pointer">
-                  <CardHeader className="text-center py-[var(--space-12)] relative">
+                  <CardHeader className="text-center py-[var(--space-12)] relative px-4">
                     <div className="mb-[var(--space-6)] flex justify-center">
                       <div className="w-20 h-20 rounded-3xl bg-[rgb(var(--color-neutral-100))] flex items-center justify-center text-[rgb(var(--color-text-primary))] transform group-hover:scale-110 transition-transform duration-300 shadow-[var(--shadow-base)]">
                         <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.5}>
@@ -65,7 +65,7 @@ export default function HomePage() {
                         </svg>
                       </div>
                     </div>
-                    <CardTitle className="font-serif text-[length:var(--text-3xl)] text-[rgb(var(--color-text-primary))]">Staff</CardTitle>
+                    <CardTitle className="font-serif text-[length:var(--text-3xl)] text-[rgb(var(--color-text-primary))] leading-tight min-h-[3.5rem] flex items-center justify-center">Staff</CardTitle>
                   </CardHeader>
                 </Card>
               </Link>
@@ -81,7 +81,7 @@ export default function HomePage() {
                         </svg>
                       </div>
                     </div>
-                    <CardTitle className="font-serif text-xl sm:text-2xl text-[rgb(var(--color-text-primary))] leading-tight">
+                    <CardTitle className="font-serif text-[length:var(--text-3xl)] text-[rgb(var(--color-text-primary))] leading-tight min-h-[3.5rem] flex items-center justify-center">
                       Manager / Practice<br />Leads
                     </CardTitle>
                   </CardHeader>
