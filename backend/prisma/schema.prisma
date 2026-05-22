@@ -1,0 +1,226 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model User {
+  id          String   @id @default(uuid())
+  clerkUserId String   @unique
+  email       String   @unique
+  firstName   String?
+  lastName    String?
+  role        String   @default("STAFF")
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  staffAssignments   ManagerAssignment[]  @relation("StaffUser")
+  managerAssignments ManagerAssignment[]  @relation("ManagerUser")
+  pathwayAssignments PathwayAssignment[]
+  userProgress       UserProgress[]
+  managerReviews     ManagerReview[]
+  emailNotifications EmailNotification[]
+
+  @@index([role, isActive])
+}
+
+model ManagerAssignment {
+  id            String    @id @default(uuid())
+  staffUserId   String
+  managerUserId String
+  isPrimary     Boolean   @default(true)
+  assignedAt    DateTime  @default(now())
+  assignedBy    String
+  endedAt       DateTime?
+
+  staff   User @relation("StaffUser", fields: [staffUserId], references: [id])
+  manager User @relation("ManagerUser", fields: [managerUserId], references: [id])
+
+  @@index([staffUserId, isPrimary, endedAt])
+  @@index([managerUserId, endedAt])
+}
+
+model Pathway {
+  id          String   @id @default(uuid())
+  name        String
+  description String?
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  createdBy   String
+  updatedAt   DateTime @updatedAt
+
+  schemaLevels       SchemaLevel[]
+  pathwayAssignments PathwayAssignment[]
+  competencies       Competency[]
+}
+
+model SchemaLevel {
+  id          String  @id @default(uuid())
+  pathwayId   String
+  levelType   String
+  levelOrder  Int
+  name        String
+  description String?
+
+  pathway            Pathway             @relation(fields: [pathwayId], references: [id], onDelete: Cascade)
+  preSchemaSteps     PreSchemaStep[]
+  schemaLevelCourses SchemaLevelCourse[]
+  pathwayAssignments PathwayAssignment[]
+
+  @@unique([pathwayId, levelType])
+  @@index([pathwayId, levelOrder])
+}
+
+model PathwayAssignment {
+  id            String    @id @default(uuid())
+  userId        String
+  pathwayId     String
+  schemaLevelId String
+  assignedAt    DateTime  @default(now())
+  assignedBy    String
+  completedAt   DateTime?
+  status        String    @default("ACTIVE")
+  metadata      String?
+
+  user         User           @relation(fields: [userId], references: [id])
+  pathway      Pathway        @relation(fields: [pathwayId], references: [id])
+  schemaLevel  SchemaLevel    @relation(fields: [schemaLevelId], references: [id])
+  userProgress UserProgress[]
+
+  @@index([userId, status])
+  @@index([userId, assignedAt])
+}
+
+model Competency {
+  id          String   @id @default(uuid())
+  pathwayId   String
+  name        String
+  description String?
+  createdAt   DateTime @default(now())
+
+  pathway Pathway @relation(fields: [pathwayId], references: [id], onDelete: Cascade)
+}
+
+model Course {
+  id             String   @id @default(uuid())
+  name           String
+  description    String?
+  externalLink   String?
+  estimatedHours Int?
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  schemaLevelCourses SchemaLevelCourse[]
+  userProgress       UserProgress[]
+}
+
+model SchemaLevelCourse {
+  id            String  @id @default(uuid())
+  schemaLevelId String
+  courseId      String
+  isRequired    Boolean @default(false)
+  orderIndex    Int
+
+  schemaLevel SchemaLevel @relation(fields: [schemaLevelId], references: [id], onDelete: Cascade)
+  course      Course      @relation(fields: [courseId], references: [id], onDelete: Cascade)
+
+  @@unique([schemaLevelId, courseId])
+  @@index([schemaLevelId, orderIndex])
+}
+
+model PreSchemaStep {
+  id            String  @id @default(uuid())
+  schemaLevelId String
+  title         String
+  description   String?
+  requiresProof Boolean @default(true)
+  orderIndex    Int
+
+  schemaLevel  SchemaLevel    @relation(fields: [schemaLevelId], references: [id], onDelete: Cascade)
+  userProgress UserProgress[]
+
+  @@index([schemaLevelId, orderIndex])
+}
+
+model UserProgress {
+  id                  String    @id @default(uuid())
+  userId              String
+  pathwayAssignmentId String
+  preSchemaStepId     String?
+  courseId            String?
+  status              String    @default("NOT_STARTED")
+  startedAt           DateTime?
+  submittedAt         DateTime?
+  reviewedAt          DateTime?
+  reviewedBy          String?
+  notes               String?
+
+  user              User              @relation(fields: [userId], references: [id])
+  pathwayAssignment PathwayAssignment @relation(fields: [pathwayAssignmentId], references: [id])
+  preSchemaStep     PreSchemaStep?    @relation(fields: [preSchemaStepId], references: [id])
+  course            Course?           @relation(fields: [courseId], references: [id])
+  proofUploads      ProofUpload[]
+  managerReviews    ManagerReview[]
+
+  @@unique([userId, pathwayAssignmentId, preSchemaStepId])
+  @@unique([userId, pathwayAssignmentId, courseId])
+  @@index([userId, pathwayAssignmentId])
+  @@index([status, submittedAt])
+}
+
+model ProofUpload {
+  id             String   @id @default(uuid())
+  userProgressId String
+  fileName       String
+  fileSize       BigInt
+  fileType       String
+  storageKey     String
+  storageUrl     String
+  uploadedAt     DateTime @default(now())
+  uploadedBy     String
+
+  userProgress UserProgress @relation(fields: [userProgressId], references: [id], onDelete: Cascade)
+
+  @@index([userProgressId])
+}
+
+model ManagerReview {
+  id             String   @id @default(uuid())
+  userProgressId String
+  reviewerId     String
+  decision       String
+  comments       String?
+  reviewedAt     DateTime @default(now())
+
+  userProgress UserProgress @relation(fields: [userProgressId], references: [id])
+  reviewer     User         @relation(fields: [reviewerId], references: [id])
+
+  @@index([userProgressId, reviewedAt])
+  @@index([reviewerId, reviewedAt])
+}
+
+model EmailNotification {
+  id                  String   @id @default(uuid())
+  recipientUserId     String
+  emailAddress        String
+  templateName        String
+  subject             String?
+  userProgressId      String?
+  pathwayAssignmentId String?
+  status              String   @default("PENDING")
+  externalId          String?
+  sentAt              DateTime?
+  deliveredAt         DateTime?
+  failedReason        String?
+  retryCount          Int      @default(0)
+  createdAt           DateTime @default(now())
+
+  recipient User @relation(fields: [recipientUserId], references: [id])
+
+  @@index([recipientUserId, createdAt])
+  @@index([status, createdAt])
+}

@@ -1,0 +1,147 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import './design-tokens.css';
+
+@layer base {
+  :root {
+    /* Academic/Editorial Theme - Warm, refined, sophisticated */
+    --background: 250 249 246;   /* warm cream */
+    --foreground: 28 24 19;      /* deep charcoal */
+    --card: 255 255 255;         /* clean white surface */
+    --card-foreground: 28 24 19;
+    --popover: 255 255 255;
+    --popover-foreground: 28 24 19;
+    --primary: 5 150 105;        /* forest green */
+    --primary-foreground: 255 255 255;
+    --secondary: 5 150 105;      /* forest green */
+    --secondary-foreground: 255 255 255;
+    --muted: 245 243 238;        /* subtle cream */
+    --muted-foreground: 87 76 61;
+    --accent: 202 138 4;         /* warm gold */
+    --accent-foreground: 255 255 255;
+    --destructive: 185 28 28;
+    --destructive-foreground: 255 255 255;
+    --border: 232 227 217;       /* soft border */
+    --input: 255 255 255;
+    --ring: 5 150 105;
+    --radius: 0.375rem;          /* 6px */
+  }
+
+  .theme {
+    --font-heading: var(--font-sans);
+    --font-sans: var(--font-sans);
+  }
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    @apply font-sans bg-background;
+  }
+  body {
+    @apply bg-background text-foreground;
+    min-height: 100vh;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  /* Paper texture background - applied to html to cover overscroll */
+  html::before {
+    content: '';
+    position: fixed;
+    top: -100vh;
+    left: 0;
+    width: 100%;
+    height: 300vh;
+    background-image: var(--paper-texture);
+    background-color: rgb(var(--background));
+    opacity: 1;
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  body > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes slideInFromLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes decorativeFadeIn {
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  .animate-fadeInUp {
+    animation: fadeInUp 0.5s ease-out forwards;
+    opacity: 0;
+  }
+
+  .animate-slideInFromLeft {
+    animation: slideInFromLeft 0.6s ease-out forwards;
+    opacity: 0;
+  }
+
+  .animate-decorativeFadeIn {
+    animation: decorativeFadeIn 0.7s ease-out forwards;
+    opacity: 0;
+  }
+
+  /* Professional dropdown styling */
+  select {
+    background-color: white;
+  }
+
+  select option {
+    padding: 12px 16px;
+    background-color: white;
+    color: rgb(var(--color-text-primary));
+    font-weight: 500;
+    transition: all 0.15s ease;
+  }
+
+  select option:hover {
+    background-color: rgb(var(--color-primary-50));
+    color: rgb(var(--color-primary-700));
+  }
+
+  select option:checked {
+    background-color: rgb(var(--color-primary-100));
+    color: rgb(var(--color-primary-700));
+    font-weight: 600;
+  }
+}
