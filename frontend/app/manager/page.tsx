@@ -414,12 +414,12 @@ export default function ManagerDashboard() {
               <h3 className="font-serif text-xl font-bold text-[rgb(var(--color-text-primary))] mb-6">Team by Functional Role</h3>
               <div className="flex justify-center">
                 {/* Pie Chart SVG with Labels */}
-                <svg viewBox="0 0 400 300" className="w-full max-w-md">
+                <svg viewBox="0 0 500 300" className="w-full max-w-lg">
                   {(() => {
                     const total = FAKE_STAFF_LIST.length;
                     let cumulativePercent = 0;
                     const colors = ['#6366f1', '#8b5cf6', '#ec4899', '#f59e0b'];
-                    const centerX = 200;
+                    const centerX = 250;
                     const centerY = 150;
                     const radius = 70;
 
@@ -442,11 +442,15 @@ export default function ManagerDashboard() {
                       const innerY = centerY + radius * Math.sin((midAngle - 90) * Math.PI / 180);
                       const midX = centerX + (radius + 20) * Math.cos((midAngle - 90) * Math.PI / 180);
                       const midY = centerY + (radius + 20) * Math.sin((midAngle - 90) * Math.PI / 180);
-                      const outerX = midX + (midAngle > 180 && midAngle < 360 ? -30 : 30);
+                      const outerX = midX + (midAngle > 180 && midAngle < 360 ? -50 : 50);
                       const outerY = midY;
 
                       const textAnchor = (midAngle > 180 && midAngle < 360) ? 'end' : 'start';
                       const textX = outerX + (textAnchor === 'end' ? -5 : 5);
+
+                      const displayName = pathway
+                        .replace('UX Designer', 'Designer')
+                        .replace('Software Engineer', 'Software Eng.');
 
                       return (
                         <g key={pathway}>
@@ -473,7 +477,7 @@ export default function ManagerDashboard() {
                             className="text-xs font-semibold"
                             fill="rgb(var(--color-text-primary))"
                           >
-                            {pathway.replace('UX Designer', 'Designer')} ({count})
+                            {displayName} ({count})
                           </text>
                         </g>
                       );
