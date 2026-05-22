@@ -638,12 +638,9 @@ function StaffDashboardContent() {
           <div className="bg-[rgb(var(--color-surface))] rounded-xl sm:rounded-2xl p-4 sm:p-[var(--space-8)] shadow-[var(--shadow-lg)]">
             <div className="mb-4 sm:mb-[var(--space-6)] flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
               <div className="flex-1">
-                <h2 className="font-serif text-2xl sm:text-[length:var(--text-4xl)] font-bold text-[rgb(var(--color-text-primary))] mb-2 sm:mb-[var(--space-2)]">
+                <h2 className="font-serif text-2xl sm:text-[length:var(--text-4xl)] font-bold text-[rgb(var(--color-text-primary))]">
                   Career Progression Pathway
                 </h2>
-                <p className="text-[rgb(var(--color-text-secondary))] text-sm sm:text-[length:var(--text-lg)]">
-                  Your journey from Pre-Schema through Level 7 in {selectedPathway}
-                </p>
               </div>
 
               {/* Pathway Selector Dropdown - Hidden in manager view */}
