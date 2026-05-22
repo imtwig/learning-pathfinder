@@ -13,7 +13,7 @@ const FAKE_STAFF_LIST = [
     email: 'john.tan@example.com',
     currentLevel: 0,
     pathway: 'UX Designer',
-    preSchemaCompletion: 50, // currently at step 3
+    preSchemaCompletion: 75, // 3 out of 4 steps completed, currently at step 4
   },
   {
     id: 'staff-2',
@@ -21,7 +21,7 @@ const FAKE_STAFF_LIST = [
     email: 'sarah.chen@example.com',
     currentLevel: 0,
     pathway: 'UX Designer',
-    preSchemaCompletion: 25, // currently at step 2
+    preSchemaCompletion: 50, // 2 out of 4 steps completed, currently at step 3
   },
   {
     id: 'staff-3',
@@ -259,14 +259,18 @@ export default function ManagerDashboard() {
     'Software Engineer': FAKE_STAFF_LIST.filter(s => s.pathway === 'Software Engineer').length,
   };
 
-  // Calculate how many people are currently AT each step (not completed)
-  // 0% = at step 1, 25% = at step 2, 50% = at step 3, 75% = at step 4
+  // Calculate how many people are currently AT each step
+  // Completion % determines which step they're working on:
+  // 0% = 0 steps done, currently at step 1
+  // 25% = 1 step done, currently at step 2
+  // 50% = 2 steps done, currently at step 3
+  // 75% = 3 steps done, currently at step 4
   const preSchemaStaff = FAKE_STAFF_LIST.filter(s => s.currentLevel === 0);
   const preSchemaSteps = {
-    step1: preSchemaStaff.filter(s => (s.preSchemaCompletion || 0) === 0).length, // 6 people at 0%
-    step2: preSchemaStaff.filter(s => (s.preSchemaCompletion || 0) === 25).length, // Sarah at 25%
-    step3: preSchemaStaff.filter(s => (s.preSchemaCompletion || 0) === 50).length, // John at 50%
-    step4: preSchemaStaff.filter(s => (s.preSchemaCompletion || 0) === 75).length, // 0 people at 75%
+    step1: preSchemaStaff.filter(s => (s.preSchemaCompletion || 0) === 0).length,
+    step2: preSchemaStaff.filter(s => (s.preSchemaCompletion || 0) === 25).length,
+    step3: preSchemaStaff.filter(s => (s.preSchemaCompletion || 0) === 50).length,
+    step4: preSchemaStaff.filter(s => (s.preSchemaCompletion || 0) === 75).length,
   };
 
   // Get staff members at each step for the dots
