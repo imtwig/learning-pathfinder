@@ -1,10 +1,10 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, Suspense } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { apiClient } from '@/lib/api';
 
-export default function DashboardPage() {
+function DashboardContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const userId = searchParams.get('userId');
@@ -47,4 +47,19 @@ export default function DashboardPage() {
   }
 
   return null;
+}
+
+export default function DashboardPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen flex items-center justify-center bg-[rgb(var(--color-background))]">
+        <div className="flex flex-col items-center gap-[var(--space-4)]">
+          <div className="animate-spin rounded-full h-12 w-12 border-4 border-[rgb(var(--color-primary-200))] border-t-[rgb(var(--color-primary-600))]"></div>
+          <p className="text-[rgb(var(--color-text-secondary))] text-sm font-medium">Loading...</p>
+        </div>
+      </div>
+    }>
+      <DashboardContent />
+    </Suspense>
+  );
 }

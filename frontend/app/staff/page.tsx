@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { apiClient } from '@/lib/api';
 import Link from 'next/link';
@@ -24,7 +24,7 @@ const DEFAULT_LEVELS = [
   { id: 7, name: 'LEVEL OUT OF RANGE', label: '7', description: 'Your level is so high nobody knows what you are even', color: 'rgb(var(--color-primary-600))' },
 ];
 
-export default function StaffDashboard() {
+function StaffDashboardContent() {
   const searchParams = useSearchParams();
   const userId = searchParams.get('userId') || '';
   const managerId = searchParams.get('managerId') || null;
@@ -2109,5 +2109,20 @@ export default function StaffDashboard() {
         </>
       )}
     </div>
+  );
+}
+
+export default function StaffDashboard() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen flex items-center justify-center bg-[rgb(var(--color-background))]">
+        <div className="flex flex-col items-center gap-[var(--space-4)]">
+          <div className="animate-spin rounded-full h-12 w-12 border-4 border-[rgb(var(--color-primary-200))] border-t-[rgb(var(--color-primary-600))]"></div>
+          <p className="text-[rgb(var(--color-text-secondary))] text-sm font-medium">Loading dashboard...</p>
+        </div>
+      </div>
+    }>
+      <StaffDashboardContent />
+    </Suspense>
   );
 }
