@@ -13,7 +13,7 @@ import { FileInput } from '@/components/FileInput';
 import { Spinner } from '@/components/Spinner';
 
 // LEVELS will be populated from the API data
-const DEFAULT_LEVELS = [
+const UX_DESIGNER_LEVELS = [
   { id: 0, name: 'Pre-Schema', label: '0', description: 'Complete prerequisite requirements with manager approval', color: 'rgb(var(--color-neutral-500))' },
   { id: 1, name: 'Designer (I)', label: '1', description: "As an L1 Designer (I), you are a supporting-level player honing your craft and working to understand GovTech's organisational context, design standards, and workflows.", color: 'rgb(var(--color-primary-600))' },
   { id: 2, name: 'Designer (II)', label: '2', description: "As an L2 Designer (II), you are a key contributing member of the design team, applying your skills to create user-centered solutions and working with autonomy.", color: 'rgb(var(--color-primary-600))' },
@@ -21,6 +21,17 @@ const DEFAULT_LEVELS = [
   { id: 4, name: 'Lead Designer', label: '4', description: "As an L4 Lead Designer, you are an experienced leader of craft, expertise, and rigor, expertly solving complex problems, building strong partnerships, and owning cross-team, cross-program initiatives, all while multiplying impact through effective communication and mentorship.", color: 'rgb(var(--color-primary-600))' },
   { id: 5, name: 'Principal Designer', label: '5', description: "As a L5 Principal Designer, you are a leader in design strategy and execution — capable of navigating teams through complex large-scale, high-impact problems, and demonstrating domain leadership.", color: 'rgb(var(--color-primary-600))' },
   { id: 6, name: 'Distinguished Designer', label: '6', description: "As a L6 Distinguished Designer, you are a design leader not only in GovTech but in the Public Service. Your expertise and experience is tapped on in growing organisational design capabilities at scale.", color: 'rgb(var(--color-primary-600))' },
+  { id: 7, name: 'LEVEL OUT OF RANGE', label: '7', description: 'Your level is so high nobody knows what you are even', color: 'rgb(var(--color-primary-600))' },
+];
+
+const PRODUCT_MANAGER_LEVELS = [
+  { id: 0, name: 'Pre-Schema', label: '0', description: 'Complete prerequisite requirements with manager approval', color: 'rgb(var(--color-neutral-500))' },
+  { id: 1, name: 'Product Manager (I)', label: '1', description: "As an L1 Product Manager (I), you are an entry-level position designed for individuals new (0-2 years of experience) to product management.", color: 'rgb(var(--color-primary-600))' },
+  { id: 2, name: 'Product Manager (II)', label: '2', description: "As an L2 Product Manager (II), you are responsible for owning a product or feature area and driving its success from conception to launch.", color: 'rgb(var(--color-primary-600))' },
+  { id: 3, name: 'Senior Product Manager', label: '3', description: "As an L3 Senior Product Manager, you are expected to lead more complex products or initiatives, demonstrating a high degree of ownership and strategic thinking.", color: 'rgb(var(--color-primary-600))' },
+  { id: 4, name: 'Lead Product Manager', label: '4', description: "As an L4 Lead Product Manager, you are a senior leadership position that focuses on overseeing a product or a group of related products, ensuring successful execution and alignment with strategic goals. LPMs act as the primary owner of a product line, driving product vision, roadmapping, and prioritization while leading junior PMs.", color: 'rgb(var(--color-primary-600))' },
+  { id: 5, name: 'Principal Product Manager', label: '5', description: "As a L5 Principal Product Manager, you are a highly experienced product leader who drives strategic initiatives across multiple product areas or on a programme level. You operate at a higher strategic level, focusing on long-term product planning, business impact, and market positioning.", color: 'rgb(var(--color-primary-600))' },
+  { id: 6, name: 'Director, Product Management', label: '6', description: "As a L6 Director, Product Management, you take on high-level leadership roles, overseeing entire product areas or departments within GovTech.", color: 'rgb(var(--color-primary-600))' },
   { id: 7, name: 'LEVEL OUT OF RANGE', label: '7', description: 'Your level is so high nobody knows what you are even', color: 'rgb(var(--color-primary-600))' },
 ];
 
@@ -42,7 +53,7 @@ function StaffDashboardContent() {
   const [submitError, setSubmitError] = useState<string | null>(null);
   const [currentLevel, setCurrentLevel] = useState(0);
   const [expandedLevel, setExpandedLevel] = useState<number | null>(0);
-  const [levels, setLevels] = useState<any[]>(DEFAULT_LEVELS);
+  const [levels, setLevels] = useState<any[]>(UX_DESIGNER_LEVELS);
   const [competencies, setCompetencies] = useState<any[]>([]);
   const [levelCourses, setLevelCourses] = useState<{[key: string]: any[]}>({});
   const [selectedPathway, setSelectedPathway] = useState('UX Designer');
@@ -261,6 +272,15 @@ function StaffDashboardContent() {
 
     return () => clearTimeout(failsafeTimeout);
   }, [userId]);
+
+  // Update levels when pathway changes
+  useEffect(() => {
+    if (selectedPathway === 'UX Designer') {
+      setLevels(UX_DESIGNER_LEVELS);
+    } else if (selectedPathway === 'Product Manager') {
+      setLevels(PRODUCT_MANAGER_LEVELS);
+    }
+  }, [selectedPathway]);
 
   const loadMockData = () => {
     setUser({
@@ -778,7 +798,10 @@ function StaffDashboardContent() {
                       </div>
                       {expandedLevel >= 1 && expandedLevel <= 6 && (
                         <a
-                          href="https://appraise.tech.gov.sg/schemas/role/cmnd18pco001o0clbcz1vqx1f"
+                          href={selectedPathway === 'Product Manager'
+                            ? 'https://appraise.tech.gov.sg/schemas/role/cmnd18pf2002j0clbuvybnyxh'
+                            : 'https://appraise.tech.gov.sg/schemas/role/cmnd18pco001o0clbcz1vqx1f'
+                          }
                           target="_blank"
                           rel="noopener noreferrer"
                           className="bg-[rgb(var(--color-neutral-600))] hover:bg-[rgb(var(--color-neutral-700))] text-white shadow-sm h-8 px-2.5 inline-flex items-center justify-center text-sm font-medium rounded-lg transition-all shrink-0"
@@ -817,7 +840,20 @@ function StaffDashboardContent() {
                         </div>
                       </div>
 
-                      {selectedPathway === 'UX Designer' ? (
+                      {selectedPathway === 'Product Manager' ? (
+                        // Product Manager Pre-Schema - Coming Soon
+                        <div className="text-center py-[var(--space-16)]">
+                          <div className="w-20 h-20 rounded-2xl bg-[rgb(var(--color-neutral-100))] flex items-center justify-center mx-auto mb-[var(--space-4)]">
+                            <svg className="w-10 h-10 text-[rgb(var(--color-text-muted))]" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.5}>
+                              <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                          </div>
+                          <h3 className="font-serif text-2xl font-bold text-[rgb(var(--color-text-primary))] mb-2">Coming Soon</h3>
+                          <p className="text-[rgb(var(--color-text-secondary))] max-w-md mx-auto">
+                            Pre-Schema requirements for Product Manager pathway are currently being developed.
+                          </p>
+                        </div>
+                      ) : selectedPathway === 'UX Designer' ? (
                         // UX Designer Pre-Schema Steps
                         <>
                           {[
