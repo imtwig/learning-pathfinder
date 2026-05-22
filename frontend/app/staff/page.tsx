@@ -945,7 +945,7 @@ function StaffDashboardContent() {
                           {remainingLevels.map((level, index) => (
                             <React.Fragment key={level.id}>
                               <div
-                                className={`flex flex-col items-center gap-2 ${isCollapsing ? 'animate-glideOutToLeft' : 'animate-glideInFromRight'}`}
+                                className={`flex flex-col items-center gap-2 ${isCollapsing ? 'animate-glideOutDown' : 'animate-glideInUp'}`}
                                 style={{ animationDelay: isCollapsing ? `${(remainingLevels.length - index - 1) * 50}ms` : `${index * 60}ms` }}
                               >
                                 <button
@@ -978,7 +978,7 @@ function StaffDashboardContent() {
                               {/* Connecting Line */}
                               {index < remainingLevels.length - 1 && (
                                 <div
-                                  className={`flex items-center -mt-6 ${isCollapsing ? 'animate-glideOutToLeft' : 'animate-fadeIn'}`}
+                                  className={`flex items-center -mt-6 ${isCollapsing ? 'animate-glideOutDown' : 'animate-fadeIn'}`}
                                   style={{ animationDelay: isCollapsing ? `${(remainingLevels.length - index - 1) * 50 + 30}ms` : `${(index * 60) + 30}ms` }}
                                 >
                                   <div className="h-0.5 w-8 sm:w-12 bg-[rgb(var(--color-neutral-300))]"></div>
@@ -996,7 +996,7 @@ function StaffDashboardContent() {
                                 setIsCollapsing(false);
                               }, 500);
                             }}
-                            className={`flex items-center ml-4 cursor-pointer group -mt-6 ${isCollapsing ? 'animate-glideOutToLeft' : 'animate-fadeIn'}`}
+                            className={`flex items-center ml-4 cursor-pointer group -mt-6 ${isCollapsing ? 'animate-glideOutDown' : 'animate-fadeIn'}`}
                             style={{ animationDelay: isCollapsing ? '0ms' : `${remainingLevels.length * 60}ms` }}
                           >
                             <p className="text-xs sm:text-sm font-medium text-[rgb(var(--color-primary-600))] hover:text-[rgb(var(--color-primary-700))] underline transition-colors duration-200 whitespace-nowrap">
