@@ -216,6 +216,8 @@ function StaffDashboardContent() {
   const handleRegisterClick = () => {
     setPreSchemaStatuses(prev => ({ ...prev, '1': 'Registered' }));
     setDemoState('registered');
+    setToastMessage('You have been successfully registered for the Google UX Design Certification course!');
+    setShowToast(true);
   };
 
   const handleTakeAssessmentClick = () => {
