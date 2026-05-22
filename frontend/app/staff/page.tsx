@@ -231,8 +231,8 @@ function StaffDashboardContent() {
           '4': 'Completed',
         }));
         setStep3SampleCertificate(true);
-        setCurrentLevel(1);
-        setExpandedLevel(1);
+        setCurrentLevel(0);
+        setExpandedLevel(0);
         break;
     }
   };
