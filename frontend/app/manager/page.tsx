@@ -300,27 +300,35 @@ export default function ManagerDashboard() {
       {/* Navigation Bar */}
       <nav className="bg-white border-b border-[rgb(var(--color-border))] sticky top-0 z-50 shadow-[var(--shadow-xs)]">
         <div className="container mx-auto px-4 sm:px-[var(--space-6)]">
-          <div className="flex items-center justify-between h-16 sm:h-20">
-            <div className="flex items-center gap-[var(--space-4)]">
-              <div className="flex items-center gap-[var(--space-3)]">
-                <div className="w-10 h-10 rounded-xl bg-[rgb(var(--color-text-primary))] flex items-center justify-center text-white font-serif font-bold text-sm shadow-[var(--shadow-base)]">
+          <div className="flex items-center justify-between gap-3 h-16 sm:h-20">
+            <div className="flex min-w-0 items-center gap-[var(--space-4)]">
+              <div className="flex min-w-0 items-center gap-[var(--space-3)]">
+                <div className="w-10 h-10 shrink-0 rounded-xl bg-[rgb(var(--color-text-primary))] flex items-center justify-center text-white font-serif font-bold text-sm shadow-[var(--shadow-base)]">
                   LP
                 </div>
-                <div>
-                  <h1 className="font-serif text-[length:var(--text-xl)] font-bold text-[rgb(var(--color-text-primary))] leading-none mb-0.5">
+                <div className="min-w-0">
+                  <h1 className="truncate font-serif text-lg sm:text-[length:var(--text-xl)] font-bold text-[rgb(var(--color-text-primary))] leading-none mb-0.5">
                     Learning Pathway
                   </h1>
-                  <p className="text-xs text-[rgb(var(--color-text-muted))]">Manager / Practice Lead Dashboard</p>
+                  <p className="hidden sm:block text-xs text-[rgb(var(--color-text-muted))]">Manager / Practice Lead Dashboard</p>
                 </div>
               </div>
             </div>
-            <div className="flex items-center gap-[var(--space-4)]">
+            <div className="flex shrink-0 items-center gap-2 sm:gap-[var(--space-4)]">
               <div className="hidden lg:flex items-center gap-2 text-sm text-[rgb(var(--color-text-secondary))]">
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
                 </svg>
                 <span className="font-medium">Sarah Manager</span>
               </div>
+              <Link href="/" className="shrink-0">
+                <Button variant="outline" size="sm" className="h-10 w-10 p-0 sm:h-7 sm:w-auto sm:px-2.5 border-[rgb(var(--color-border))] hover:bg-[rgb(var(--color-neutral-100))]">
+                  <svg className="w-4 h-4 sm:mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15M12 9l-3 3m0 0l3 3m-3-3h12.75" />
+                  </svg>
+                  <span className="hidden sm:inline">Switch</span>
+                </Button>
+              </Link>
             </div>
           </div>
         </div>

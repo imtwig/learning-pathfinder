@@ -12,6 +12,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { FileInput } from '@/components/FileInput';
 import { Spinner } from '@/components/Spinner';
 import { createPortal } from 'react-dom';
+import { X } from 'lucide-react';
 
 // LEVELS will be populated from the API data
 const UX_DESIGNER_LEVELS = [
@@ -149,6 +150,7 @@ function StaffDashboardContent() {
   const [demoState, setDemoState] = useState<string>('none');
   const [pathwaySearchOpen, setPathwaySearchOpen] = useState(false);
   const [pathwaySearchQuery, setPathwaySearchQuery] = useState('');
+  const [pathwayPickerMobile, setPathwayPickerMobile] = useState(false);
   const pathwayButtonRef = useRef<HTMLButtonElement>(null);
   const [dropdownStyle, setDropdownStyle] = useState<{top: number, left: number, width: number}>({ top: 0, left: 0, width: 0 });
 
@@ -364,6 +366,16 @@ function StaffDashboardContent() {
       setLevels(SOFTWARE_ENGINEER_LEVELS);
     }
   }, [selectedPathway]);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(max-width: 639px)');
+    const updatePathwayPickerMode = () => setPathwayPickerMobile(mediaQuery.matches);
+
+    updatePathwayPickerMode();
+    mediaQuery.addEventListener('change', updatePathwayPickerMode);
+
+    return () => mediaQuery.removeEventListener('change', updatePathwayPickerMode);
+  }, []);
 
   // Close pathway dropdown when clicking outside
   useEffect(() => {
@@ -720,7 +732,7 @@ function StaffDashboardContent() {
                   <button
                     ref={pathwayButtonRef}
                     onClick={() => {
-                      if (pathwayButtonRef.current) {
+                      if (pathwayButtonRef.current && !pathwayPickerMobile) {
                         const rect = pathwayButtonRef.current.getBoundingClientRect();
                         setDropdownStyle({
                           top: rect.bottom + window.scrollY + 8,
@@ -764,14 +776,40 @@ function StaffDashboardContent() {
               {!isManagerView && pathwaySearchOpen && typeof window !== 'undefined' && (
                 createPortal(
                   <div
-                    className="pathway-dropdown-menu fixed bg-white border-2 border-[rgb(var(--color-border))] rounded-xl shadow-lg z-[100]"
-                    style={{
+                    className={`pathway-dropdown-menu fixed bg-white z-[100] ${
+                      pathwayPickerMobile
+                        ? 'inset-0 flex flex-col border-0 rounded-none shadow-none'
+                        : 'border-2 border-[rgb(var(--color-border))] rounded-xl shadow-lg'
+                    }`}
+                    style={pathwayPickerMobile ? undefined : {
                       top: `${dropdownStyle.top}px`,
                       left: `${dropdownStyle.left}px`,
                       width: `${dropdownStyle.width}px`
                     }}
+                    role={pathwayPickerMobile ? 'dialog' : 'listbox'}
+                    aria-modal={pathwayPickerMobile ? true : undefined}
+                    aria-label="Select pathway"
                   >
-                      <div className="p-2">
+                      {pathwayPickerMobile && (
+                        <div className="flex items-center justify-between gap-4 border-b border-[rgb(var(--color-border))] px-4 py-4 pt-[calc(env(safe-area-inset-top)+1rem)]">
+                          <div>
+                            <p className="text-sm font-medium text-[rgb(var(--color-text-muted))]">Pathway</p>
+                            <h3 className="text-lg font-semibold text-[rgb(var(--color-text-primary))]">Choose a pathway</h3>
+                          </div>
+                          <button
+                            type="button"
+                            onClick={() => {
+                              setPathwaySearchOpen(false);
+                              setPathwaySearchQuery('');
+                            }}
+                            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[rgb(var(--color-border))] bg-white text-[rgb(var(--color-text-primary))] shadow-sm"
+                            aria-label="Close pathway picker"
+                          >
+                            <X className="h-5 w-5" />
+                          </button>
+                        </div>
+                      )}
+                      <div className={pathwayPickerMobile ? 'p-4' : 'p-2'}>
                         <input
                           type="text"
                           placeholder="Search pathways..."
@@ -783,7 +821,7 @@ function StaffDashboardContent() {
                             bg-[rgb(var(--color-neutral-50))]
                             border border-[rgb(var(--color-border))]
                             rounded-lg
-                            text-sm
+                            text-base sm:text-sm
                             text-[rgb(var(--color-text-primary))]
                             placeholder:text-[rgb(var(--color-text-muted))]
                             focus:outline-none
@@ -791,10 +829,10 @@ function StaffDashboardContent() {
                             focus:ring-[rgb(var(--color-primary-400))]
                             focus:border-[rgb(var(--color-primary-400))]
                           "
-                          autoFocus
+                          autoFocus={!pathwayPickerMobile}
                         />
                       </div>
-                      <div className="max-h-60 overflow-y-auto">
+                      <div className={pathwayPickerMobile ? 'flex-1 overflow-y-auto px-3 pb-[calc(env(safe-area-inset-bottom)+1rem)]' : 'max-h-60 overflow-y-auto'}>
                         {pathwayOptions
                           .filter(option =>
                             option.label.toLowerCase().includes(pathwaySearchQuery.toLowerCase())
@@ -810,8 +848,8 @@ function StaffDashboardContent() {
                               className={`
                                 w-full
                                 text-left
-                                px-4 py-2.5
-                                text-sm
+                                px-4
+                                ${pathwayPickerMobile ? 'py-3 rounded-lg text-base' : 'py-2.5 text-sm'}
                                 transition-colors
                                 ${selectedPathway === option.value
                                   ? 'bg-[rgb(var(--color-primary-50))] text-[rgb(var(--color-primary-700))] font-semibold'
@@ -825,7 +863,7 @@ function StaffDashboardContent() {
                         {pathwayOptions.filter(option =>
                           option.label.toLowerCase().includes(pathwaySearchQuery.toLowerCase())
                         ).length === 0 && (
-                          <div className="px-4 py-6 text-center text-sm text-[rgb(var(--color-text-muted))]">
+                          <div className="px-4 py-6 text-center text-base sm:text-sm text-[rgb(var(--color-text-muted))]">
                             No pathways found
                           </div>
                         )}
@@ -1158,7 +1196,7 @@ function StaffDashboardContent() {
                     // Pre-Schema Steps
                     <div className="space-y-[var(--space-6)] overflow-visible">
                       <div className="mb-[var(--space-6)]">
-                        <h4 className="font-serif text-[length:var(--text-xl)] font-bold text-[rgb(var(--color-text-primary))] mb-[var(--space-2)]">
+                        <h4 className="font-serif text-[length:var(--text-xl)] font-bold leading-[1.2] sm:leading-[1.22] text-[rgb(var(--color-text-primary))] mb-[var(--space-2)]">
                           Pre-Schema Requirements
                         </h4>
                         <p className="text-sm text-[rgb(var(--color-text-secondary))]">
