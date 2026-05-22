@@ -882,7 +882,6 @@ function StaffDashboardContent() {
                                     ? 'w-10 h-10 sm:w-12 sm:h-12 bg-[rgb(22,163,74)] text-white shadow-md'
                                     : 'w-10 h-10 sm:w-12 sm:h-12 bg-[rgb(var(--color-neutral-200))] text-[rgb(var(--color-text-muted))] shadow-sm'
                                   }
-                                  ${expandedLevel === level.id ? 'ring-[3px] ring-black' : ''}
                                   group-hover:scale-105 cursor-pointer
                                 `}
                                 style={{ lineHeight: '1' }}
@@ -902,6 +901,14 @@ function StaffDashboardContent() {
                                 {level.id === 0 ? 'Pre-Schema' : `Lvl ${level.label}`}
                               </p>
                             </button>
+                            {/* Active Level Indicator Triangle */}
+                            {expandedLevel === level.id && (
+                              <div className="mt-1">
+                                <svg width="8" height="6" viewBox="0 0 8 6" fill="none">
+                                  <path d="M4 0L8 6H0L4 0Z" fill="rgb(34, 197, 94)" />
+                                </svg>
+                              </div>
+                            )}
                           </div>
 
                           {/* Connecting Line */}
@@ -957,7 +964,6 @@ function StaffDashboardContent() {
                                       w-10 h-10 sm:w-12 sm:h-12 rounded-full inline-flex items-center justify-center font-serif font-bold text-base sm:text-lg
                                       transition-all duration-300 shadow-[var(--shadow-md)]
                                       bg-[rgb(var(--color-neutral-200))] text-[rgb(var(--color-text-muted))]
-                                      ${expandedLevel === level.id ? 'ring-[3px] ring-black' : ''}
                                       group-hover:scale-105 cursor-pointer
                                     `}
                                     style={{ lineHeight: '1' }}
@@ -973,6 +979,14 @@ function StaffDashboardContent() {
                                     {level.id === 0 ? 'Pre-Schema' : `Lvl ${level.label}`}
                                   </p>
                                 </button>
+                                {/* Active Level Indicator Triangle */}
+                                {expandedLevel === level.id && (
+                                  <div className="mt-1">
+                                    <svg width="8" height="6" viewBox="0 0 8 6" fill="none">
+                                      <path d="M4 0L8 6H0L4 0Z" fill="rgb(34, 197, 94)" />
+                                    </svg>
+                                  </div>
+                                )}
                               </div>
 
                               {/* Connecting Line */}
