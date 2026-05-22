@@ -939,7 +939,7 @@ function StaffDashboardContent() {
                       {/* Show Remaining Levels when expanded */}
                       {hasMoreLevels && (showFullPathway || isCollapsing) && (
                         <>
-                          <div className={`flex items-center -mt-6 ${isCollapsing ? 'animate-glideOutDown' : 'animate-fadeIn'}`} style={{ animationDelay: isCollapsing ? `${(remainingLevels.length - 1) * 50 + 400}ms` : '0ms' }}>
+                          <div className="flex items-center -mt-6">
                             <div className="h-0.5 w-8 sm:w-12 bg-[rgb(var(--color-neutral-300))]"></div>
                           </div>
                           {remainingLevels.map((level, index) => (
