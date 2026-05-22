@@ -317,7 +317,7 @@ function StaffDashboardContent() {
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       const target = event.target as HTMLElement;
-      if (pathwaySearchOpen && !target.closest('.pathway-dropdown')) {
+      if (pathwaySearchOpen && !target.closest('.pathway-dropdown') && !target.closest('.pathway-dropdown-menu')) {
         setPathwaySearchOpen(false);
         setPathwaySearchQuery('');
       }
@@ -712,7 +712,7 @@ function StaffDashboardContent() {
               {!isManagerView && pathwaySearchOpen && typeof window !== 'undefined' && (
                 createPortal(
                   <div
-                    className="fixed bg-white border-2 border-[rgb(var(--color-border))] rounded-xl shadow-lg z-[100]"
+                    className="pathway-dropdown-menu fixed bg-white border-2 border-[rgb(var(--color-border))] rounded-xl shadow-lg z-[100]"
                     style={{
                       top: `${dropdownStyle.top}px`,
                       left: `${dropdownStyle.left}px`,
