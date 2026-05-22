@@ -1098,64 +1098,17 @@ function StaffDashboardContent() {
                   ) : selectedPathway === 'UX Designer' && expandedLevel === 1 ? (
                     // Level 1 Designer (I)
                     <div className="space-y-[var(--space-6)]">
-                      <div className="prose prose-sm max-w-none">
-                        <p className="text-sm text-[rgb(var(--color-text-secondary))] leading-relaxed mb-[var(--space-2)]">
-                          <strong>Scope & Direction</strong>
-                        </p>
-                        <p className="text-sm text-[rgb(var(--color-text-secondary))] leading-relaxed mb-[var(--space-3)]">
-                          Working on well-defined tasks within established processes and guidelines, you receive direction and oversight from senior designers or a manager, ensuring your work is aligned with project requirements and GovTech's standards.
-                        </p>
-                        <p className="text-sm text-[rgb(var(--color-text-secondary))] leading-relaxed mb-[var(--space-2)]">
-                          <strong>Impact At Level</strong>
-                        </p>
-                        <p className="text-sm text-[rgb(var(--color-text-secondary))] leading-relaxed">
-                          You reliably contribute to the team's productivity by completing assigned tasks on time, with attention to detail, learning and adhering to GovTech's standards. You actively seek and integrate feedback for your work, setting the foundation for your growth as a designer.
-                        </p>
-                      </div>
-
-                      <div className="border-t border-[rgb(var(--color-border))] pt-[var(--space-4)]">
-                        <div className="space-y-[var(--space-4)]">
-                          <div>
-                            <h5 className="text-sm font-semibold text-[rgb(var(--color-text-primary))] mb-[var(--space-2)]">Craft & Execution</h5>
-                            <p className="text-sm text-[rgb(var(--color-text-secondary))] italic mb-[var(--space-2)]">Builds foundational skills, delivers well-scoped work, learns and applies</p>
-                            <ul className="text-sm text-[rgb(var(--color-text-secondary))] space-y-1 list-disc pl-5">
-                              <li>Uses basic research, evidence, and testing to understand user needs and assess design effectiveness.</li>
-                              <li>Understands service context and constraints; asks useful questions when problem boundaries are unclear.</li>
-                              <li>Produces well-scoped work with guidance; improves quality through feedback, iteration, standards, and accessibility.</li>
-                            </ul>
-                          </div>
-
-                          <div>
-                            <h5 className="text-sm font-semibold text-[rgb(var(--color-text-primary))] mb-[var(--space-2)]">Ownership</h5>
-                            <p className="text-sm text-[rgb(var(--color-text-secondary))] italic mb-[var(--space-2)]">Work with manager guidance, take ownership of well-defined tasks, seek and apply feedback for growth.</p>
-                            <ul className="text-sm text-[rgb(var(--color-text-secondary))] space-y-1 list-disc pl-5">
-                              <li>Proactively seek clarity on assigned tasks</li>
-                              <li>Complete tasks accurately and on time</li>
-                              <li>Actively seek feedback and listen to others' ideas, incorporate learnings for growth</li>
-                            </ul>
-                          </div>
-
-                          <div>
-                            <h5 className="text-sm font-semibold text-[rgb(var(--color-text-primary))] mb-[var(--space-2)]">Strategic Alignment</h5>
-                            <p className="text-sm text-[rgb(var(--color-text-secondary))] italic mb-[var(--space-2)]">Learn and align with team direction</p>
-                            <ul className="text-sm text-[rgb(var(--color-text-secondary))] space-y-1 list-disc pl-5">
-                              <li>Seek to understand the purpose behind their work and how it fits into the team's objectives.</li>
-                              <li>Adapt to changes in project scope and priorities with guidance</li>
-                            </ul>
-                          </div>
-
-                          <div>
-                            <h5 className="text-sm font-semibold text-[rgb(var(--color-text-primary))] mb-[var(--space-2)]">Culture and Organisational Influence</h5>
-                            <p className="text-sm text-[rgb(var(--color-text-secondary))] italic mb-[var(--space-2)]">Adopt org values, engage with others</p>
-                            <ul className="text-sm text-[rgb(var(--color-text-secondary))] space-y-1 list-disc pl-5">
-                              <li>Take initiative to learn new skills</li>
-                              <li>Focus on solutions when problems arise</li>
-                              <li>Proactively offer help to colleagues</li>
-                              <li>Participate in information-sharing activities within your team or with peers</li>
-                            </ul>
-                          </div>
-                        </div>
-                      </div>
+                      <a
+                        href="https://appraise.tech.gov.sg/schemas/role/cmnd18pco001o0clbcz1vqx1f"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-[var(--space-2)] px-[var(--space-5)] py-[var(--space-3)] bg-[rgb(var(--color-primary-600))] hover:bg-[rgb(var(--color-primary-700))] text-white font-medium rounded-lg shadow-sm hover:shadow-md transition-all"
+                      >
+                        See Schema in Appraise
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+                        </svg>
+                      </a>
 
                       <div className="border-t border-[rgb(var(--color-border))] pt-[var(--space-4)]">
                         {/* Core */}
@@ -1218,62 +1171,17 @@ function StaffDashboardContent() {
                   ) : selectedPathway === 'UX Designer' && expandedLevel === 2 ? (
                     // Level 2: Developing content
                     <div className="space-y-[var(--space-6)]">
-                      <div className="prose prose-sm max-w-none">
-                        <p className="text-sm text-[rgb(var(--color-text-secondary))] leading-relaxed mb-[var(--space-2)]">
-                          <strong>Scope & Direction</strong>
-                        </p>
-                        <p className="text-sm text-[rgb(var(--color-text-secondary))] leading-relaxed mb-[var(--space-3)]">
-                          You confidently take on broader responsibilities, leading key projects and making independent decisions that align with user needs and product goals. Your strong communication and collaboration skills enable you to mentor junior designers and work effectively with stakeholders.
-                        </p>
-                        <p className="text-sm text-[rgb(var(--color-text-secondary))] leading-relaxed mb-[var(--space-2)]">
-                          <strong>Impact At Level</strong>
-                        </p>
-                        <p className="text-sm text-[rgb(var(--color-text-secondary))] leading-relaxed">
-                          You consistently deliver high-quality work while seeking ways to improve and innovate within the team. At this stage, you're competent and successfully shipping good products and features.
-                        </p>
-                      </div>
-
-                      <div className="border-t border-[rgb(var(--color-border))] pt-[var(--space-4)]">
-                        <div className="space-y-[var(--space-4)]">
-                          <div>
-                            <h5 className="text-sm font-semibold text-[rgb(var(--color-text-primary))] mb-[var(--space-2)]">Craft & Execution</h5>
-                            <p className="text-sm text-[rgb(var(--color-text-secondary))] italic mb-[var(--space-2)]">Applies best practices to problem-solving and solutions development</p>
-                            <ul className="text-sm text-[rgb(var(--color-text-secondary))] space-y-1 list-disc pl-5">
-                              <li>Independently moves from defined problem to validated solution using evidence, iteration, and testing.</li>
-                              <li>Produces accessible, coherent designs within product, service, and operational constraints; uses AI tools with critical judgment.</li>
-                              <li>Makes sound trade-offs in moderately complex situations and explains decisions using evidence.</li>
-                            </ul>
-                          </div>
-                          <div>
-                            <h5 className="text-sm font-semibold text-[rgb(var(--color-text-primary))] mb-[var(--space-2)]">Ownership</h5>
-                            <p className="text-sm text-[rgb(var(--color-text-secondary))] italic mb-[var(--space-2)]">Own problem outcomes, help peers</p>
-                            <ul className="text-sm text-[rgb(var(--color-text-secondary))] space-y-1 list-disc pl-5">
-                              <li>Independently own assigned tasks and projects</li>
-                              <li>Identify and address issues proactively with minimal guidance, and know when to engage appropriate help</li>
-                              <li>Identify opportunities and recommend next steps to improve processes or outcomes in own work</li>
-                            </ul>
-                          </div>
-                          <div>
-                            <h5 className="text-sm font-semibold text-[rgb(var(--color-text-primary))] mb-[var(--space-2)]">Strategic Alignment</h5>
-                            <p className="text-sm text-[rgb(var(--color-text-secondary))] italic mb-[var(--space-2)]">Align own work with team strategy</p>
-                            <ul className="text-sm text-[rgb(var(--color-text-secondary))] space-y-1 list-disc pl-5">
-                              <li>Align tasks with team goals and priorities</li>
-                              <li>Focus on tasks that provide most expected business value</li>
-                              <li>Adapt to changing priorities independently</li>
-                            </ul>
-                          </div>
-                          <div>
-                            <h5 className="text-sm font-semibold text-[rgb(var(--color-text-primary))] mb-[var(--space-2)]">Culture and Organizational Influence</h5>
-                            <p className="text-sm text-[rgb(var(--color-text-secondary))] italic mb-[var(--space-2)]">Contribute to team culture</p>
-                            <ul className="text-sm text-[rgb(var(--color-text-secondary))] space-y-1 list-disc pl-5">
-                              <li>Collaborate with peers and stakeholders to ensure tasks are executed effectively</li>
-                              <li>Address minor conflicts constructively and respectfully</li>
-                              <li>Suggest improvements that enhance team effectiveness</li>
-                              <li>Share knowledge, resources, as well as successes and failures openly to ensure team success</li>
-                            </ul>
-                          </div>
-                        </div>
-                      </div>
+                      <a
+                        href="https://appraise.tech.gov.sg/schemas/role/cmnd18pco001o0clbcz1vqx1f"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-[var(--space-2)] px-[var(--space-5)] py-[var(--space-3)] bg-[rgb(var(--color-primary-600))] hover:bg-[rgb(var(--color-primary-700))] text-white font-medium rounded-lg shadow-sm hover:shadow-md transition-all"
+                      >
+                        See Schema in Appraise
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+                        </svg>
+                      </a>
 
                       <div className="border-t border-[rgb(var(--color-border))] pt-[var(--space-4)]">
                         {/* Core */}
@@ -1336,77 +1244,17 @@ function StaffDashboardContent() {
                   ) : selectedPathway === 'UX Designer' && expandedLevel === 3 ? (
                     // Level 3 Senior Designer
                     <div className="space-y-[var(--space-6)]">
-                      <div className="prose prose-sm max-w-none">
-                        <p className="text-sm text-[rgb(var(--color-text-secondary))] leading-relaxed mb-[var(--space-2)]">
-                          <strong>Scope & Direction</strong>
-                        </p>
-                        <p className="text-sm text-[rgb(var(--color-text-secondary))] leading-relaxed mb-[var(--space-3)]">
-                          You are comfortable with complexity and ambiguity; and can lead multiple projects confidently. Your experience allows you to work independently while guiding others to grow. You take full ownership of product strategy and designs and have a growing influence on the planning and objectives of larger programs.
-                        </p>
-                        <p className="text-sm text-[rgb(var(--color-text-secondary))] leading-relaxed mb-[var(--space-2)]">
-                          <strong>Impact At Level</strong>
-                        </p>
-                        <p className="text-sm text-[rgb(var(--color-text-secondary))] leading-relaxed">
-                          Your leadership strengthens the team by sharing knowledge, improving workflows, and driving design excellence. Your expertise shapes key projects and your team's design culture. You consistently deliver outstanding work that creates measurable value and impact.
-                        </p>
-                      </div>
-
-                      <div className="border-t border-[rgb(var(--color-border))] pt-[var(--space-4)]">
-                        <div className="space-y-[var(--space-4)]">
-                          <div>
-                            <h5 className="text-sm font-semibold text-[rgb(var(--color-text-primary))] mb-[var(--space-2)]">Craft & Execution</h5>
-                            <p className="text-sm text-[rgb(var(--color-text-secondary))] italic mb-[var(--space-2)]">Shapes problems, leads complex work, delivers advanced quality</p>
-                            <ul className="text-sm text-[rgb(var(--color-text-secondary))] space-y-1 list-disc pl-5">
-                              <li>Shapes problems as well as solutions, using user-centered methods to influence direction and identify the right questions.</li>
-                              <li>Delivers high-quality work across complex journeys, balancing user needs, service quality, accessibility, constraints, and feasibility.</li>
-                              <li>Raises team design quality through critique, mentoring, experimentation, and strong judgment under ambiguity.</li>
-                            </ul>
-                          </div>
-
-                          <div>
-                            <h5 className="text-sm font-semibold text-[rgb(var(--color-text-primary))] mb-[var(--space-2)]">Ownership</h5>
-                            <p className="text-sm text-[rgb(var(--color-text-secondary))] italic mb-[var(--space-2)]">Lead end-to-end delivery, mentor others</p>
-                            <ul className="text-sm text-[rgb(var(--color-text-secondary))] space-y-1 list-disc pl-5">
-                              <li>Take full ownership of broad, ambiguously-scoped projects, ensuring successful outcomes.</li>
-                              <li>Take calculated risks, learning from both successes and failures</li>
-                              <li>Mentor and support junior team members through sharing knowledge, breaking down problems, and providing constructive feedback - actively raising team productivity</li>
-                            </ul>
-                          </div>
-
-                          <div>
-                            <h5 className="text-sm font-semibold text-[rgb(var(--color-text-primary))] mb-[var(--space-2)]">Strategic Alignment</h5>
-                            <p className="text-sm text-[rgb(var(--color-text-secondary))] italic mb-[var(--space-2)]">Contribute to team strategy and planning</p>
-                            <ul className="text-sm text-[rgb(var(--color-text-secondary))] space-y-1 list-disc pl-5">
-                              <li>Translate team goals into actionable plans including breaking down and prioritising tasks, and contribute to project strategy</li>
-                              <li>Proactively identify opportunities and drive workstreams, synthesize data into clear recommendations, and connect analyses to organisational impact</li>
-                              <li>Identify and mitigate risks at the project level, anticipating potential challenges</li>
-                            </ul>
-                          </div>
-
-                          <div>
-                            <h5 className="text-sm font-semibold text-[rgb(var(--color-text-primary))] mb-[var(--space-2)]">Culture and Organisational Influence</h5>
-                            <p className="text-sm text-[rgb(var(--color-text-secondary))] italic mb-[var(--space-2)]">Influence and reinforce team culture</p>
-                            <ul className="text-sm text-[rgb(var(--color-text-secondary))] space-y-1 list-disc pl-5">
-                              <li>Coordinate cross-functional collaboration and guide team members to ensure projects are delivered effectively</li>
-                              <li>Navigate and help resolve disagreements constructively, facilitating alignment among team members and stakeholders</li>
-                              <li>Constructively challenge existing processes for continuous improvement and drive change initiatives at the team/division level</li>
-                              <li>Actively share successes and failures and provide recommendations to enhance team performance and learning</li>
-                            </ul>
-                          </div>
-
-                          <div>
-                            <h5 className="text-sm font-semibold text-[rgb(var(--color-text-primary))] mb-[var(--space-2)]">People Management</h5>
-                            <p className="text-sm text-[rgb(var(--color-text-secondary))] italic mb-[var(--space-2)]">Transitional People Management</p>
-                            <ul className="text-sm text-[rgb(var(--color-text-secondary))] space-y-1 list-disc pl-5">
-                              <li>This is a transitional people management stage. You continue to contribute technically while learning the basics of people management. With manager's close guidance, you:</li>
-                              <li>Support team coordination by communicating simple project goals and priorities to team members and how individual tasks connect to broader objectives</li>
-                              <li>Conduct check-ins with 1/2 direct or indirect team members, focusing on immediate work progress and basic feedback delivery</li>
-                              <li>Help team members with day-to-day blockers and provide technical mentoring</li>
-                              <li>Participate in recruitment activities where applicable</li>
-                            </ul>
-                          </div>
-                        </div>
-                      </div>
+                      <a
+                        href="https://appraise.tech.gov.sg/schemas/role/cmnd18pco001o0clbcz1vqx1f"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-[var(--space-2)] px-[var(--space-5)] py-[var(--space-3)] bg-[rgb(var(--color-primary-600))] hover:bg-[rgb(var(--color-primary-700))] text-white font-medium rounded-lg shadow-sm hover:shadow-md transition-all"
+                      >
+                        See Schema in Appraise
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+                        </svg>
+                      </a>
 
                       <div className="border-t border-[rgb(var(--color-border))] pt-[var(--space-4)]">
                         {/* Core */}
@@ -1469,76 +1317,17 @@ function StaffDashboardContent() {
                   ) : selectedPathway === 'UX Designer' && expandedLevel === 4 ? (
                     // Level 4 Lead Designer
                     <div className="space-y-[var(--space-6)]">
-                      <div className="prose prose-sm max-w-none">
-                        <p className="text-sm text-[rgb(var(--color-text-secondary))] leading-relaxed mb-[var(--space-2)]">
-                          <strong>Scope & Direction</strong>
-                        </p>
-                        <p className="text-sm text-[rgb(var(--color-text-secondary))] leading-relaxed mb-[var(--space-3)]">
-                          You take charge of significant product initiatives that require coordination across multiple teams and domains. Your exemplary craft and collaborative approach inspire others, helping teams achieve ambitious goals. Your influence shapes not just your immediate team, but extends across the organization.
-                        </p>
-                        <p className="text-sm text-[rgb(var(--color-text-secondary))] leading-relaxed mb-[var(--space-2)]">
-                          <strong>Impact At Level</strong>
-                        </p>
-                        <p className="text-sm text-[rgb(var(--color-text-secondary))] leading-relaxed">
-                          You're an active force in driving innovation, identifying opportunities, and delivering on strategic initiatives. Your work shapes product direction and contributes significantly to the GovTech's broader vision and success.
-                        </p>
-                      </div>
-
-                      <div className="border-t border-[rgb(var(--color-border))] pt-[var(--space-4)]">
-                        <div className="space-y-[var(--space-4)]">
-                          <div>
-                            <h5 className="text-sm font-semibold text-[rgb(var(--color-text-primary))] mb-[var(--space-2)]">Craft & Execution</h5>
-                            <p className="text-sm text-[rgb(var(--color-text-secondary))] italic mb-[var(--space-2)]">Solves higher-order problems, establishes quality standards across teams</p>
-                            <ul className="text-sm text-[rgb(var(--color-text-secondary))] space-y-1 list-disc pl-5">
-                              <li>Tackles ambiguous, higher-order problems requiring new framing, systems thinking, and cross-functional alignment.</li>
-                              <li>Establishes quality standards across teams, covering discovery, accessibility, experimentation, service coherence, and evidence-based decisions.</li>
-                              <li>Delivers consistently excellent design work while establishing and upholding quality standards across multiple teams or product areas. Builds repeatable quality through reviews, methods, patterns, coaching, and disciplined AI use.</li>
-                            </ul>
-                          </div>
-
-                          <div>
-                            <h5 className="text-sm font-semibold text-[rgb(var(--color-text-primary))] mb-[var(--space-2)]">Ownership</h5>
-                            <p className="text-sm text-[rgb(var(--color-text-secondary))] italic mb-[var(--space-2)]">Support division's strategic agenda, drive key projects, work through others</p>
-                            <ul className="text-sm text-[rgb(var(--color-text-secondary))] space-y-1 list-disc pl-5">
-                              <li>Independently identify key projects that support divisional strategic objectives and take proactive steps to drive them forward</li>
-                              <li>Actively invest in the growth of peers and junior team members through mentorship, sponsorship, and knowledge sharing.</li>
-                              <li>Mentor L3 and below officers beyond your immediate team, measurably improving the capability of colleagues across levels.</li>
-                            </ul>
-                          </div>
-
-                          <div>
-                            <h5 className="text-sm font-semibold text-[rgb(var(--color-text-primary))] mb-[var(--space-2)]">Strategic Alignment</h5>
-                            <p className="text-sm text-[rgb(var(--color-text-secondary))] italic mb-[var(--space-2)]">Execute initiatives to further department's strategy</p>
-                            <ul className="text-sm text-[rgb(var(--color-text-secondary))] space-y-1 list-disc pl-5">
-                              <li>Provide direction on initiatives with a strong ability to measure outcomes and adjust strategies when needed</li>
-                              <li>Develop roadmaps for complex initiatives, breaking down workstreams and coordinating with team members and partners across teams to deliver.</li>
-                              <li>Identify and manage risk for their team</li>
-                            </ul>
-                          </div>
-
-                          <div>
-                            <h5 className="text-sm font-semibold text-[rgb(var(--color-text-primary))] mb-[var(--space-2)]">Culture and Organisational Influence</h5>
-                            <p className="text-sm text-[rgb(var(--color-text-secondary))] italic mb-[var(--space-2)]">Build cross-team collaboration</p>
-                            <ul className="text-sm text-[rgb(var(--color-text-secondary))] space-y-1 list-disc pl-5">
-                              <li>Lead cross-functional collaboration across multiple teams and/or within department to ensure projects are executed in alignment with department goals.</li>
-                              <li>Resolve complex stakeholder conflicts and facilitate solutioning across multiple teams and/or within department to achieve strategic outcomes</li>
-                              <li>Champion and role model continuous improvement, anticipating future needs and challenges for your area and the wider function, and actively building capability in your areas of expertise.</li>
-                            </ul>
-                          </div>
-
-                          <div>
-                            <h5 className="text-sm font-semibold text-[rgb(var(--color-text-primary))] mb-[var(--space-2)]">People Management</h5>
-                            <p className="text-sm text-[rgb(var(--color-text-secondary))] italic mb-[var(--space-2)]">Team Leadership</p>
-                            <ul className="text-sm text-[rgb(var(--color-text-secondary))] space-y-1 list-disc pl-5">
-                              <li>Align team goals with departmental objectives</li>
-                              <li>Contribute to hiring standards and expectations, improving hiring and interview processes</li>
-                              <li>Conduct regular 1:1s with direct/indirect reports to align and coach performance, reinforcing and improving team's performance standards aligned to schema</li>
-                              <li>Provide opportunities to stretch and grow direct/indirect reports to the next level by delegating/empowering teams for better outcomes and identify reports with management potential</li>
-                              <li>Create a productive environment by providing resources, removing barriers, setting up the right team structure, norms, and motivating teams to perform at their best</li>
-                            </ul>
-                          </div>
-                        </div>
-                      </div>
+                      <a
+                        href="https://appraise.tech.gov.sg/schemas/role/cmnd18pco001o0clbcz1vqx1f"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-[var(--space-2)] px-[var(--space-5)] py-[var(--space-3)] bg-[rgb(var(--color-primary-600))] hover:bg-[rgb(var(--color-primary-700))] text-white font-medium rounded-lg shadow-sm hover:shadow-md transition-all"
+                      >
+                        See Schema in Appraise
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+                        </svg>
+                      </a>
 
                       <div className="border-t border-[rgb(var(--color-border))] pt-[var(--space-4)]">
                         {/* Core */}
@@ -1601,77 +1390,17 @@ function StaffDashboardContent() {
                   ) : selectedPathway === 'UX Designer' && expandedLevel === 5 ? (
                     // Level 5 Principal Designer
                     <div className="space-y-[var(--space-6)]">
-                      <div className="prose prose-sm max-w-none">
-                        <p className="text-sm text-[rgb(var(--color-text-secondary))] leading-relaxed mb-[var(--space-2)]">
-                          <strong>Scope & Direction</strong>
-                        </p>
-                        <p className="text-sm text-[rgb(var(--color-text-secondary))] leading-relaxed mb-[var(--space-3)]">
-                          You shape and communicate a clear design vision, collaborate with leaders from other departments, and mentor senior designers and emerging design leaders. You provide thought leadership and strategic direction to your program and teams in your care. You operate with a high degree of autonomy and are responsible for the overall design direction and impact of the organization.
-                        </p>
-                        <p className="text-sm text-[rgb(var(--color-text-secondary))] leading-relaxed mb-[var(--space-2)]">
-                          <strong>Impact At Level</strong>
-                        </p>
-                        <p className="text-sm text-[rgb(var(--color-text-secondary))] leading-relaxed">
-                          You ensure the long-term success of your teams by mentoring and developing future design leaders. You drive significant improvements in user experience across your programme and domain, and exert substantial influence on programme's overall direction, shaping product strategy and culture — driving GovTech's strategic goals.
-                        </p>
-                      </div>
-
-                      <div className="border-t border-[rgb(var(--color-border))] pt-[var(--space-4)]">
-                        <div className="space-y-[var(--space-4)]">
-                          <div>
-                            <h5 className="text-sm font-semibold text-[rgb(var(--color-text-primary))] mb-[var(--space-2)]">Craft & Execution</h5>
-                            <p className="text-sm text-[rgb(var(--color-text-secondary))] italic mb-[var(--space-2)]">Leads quality at organizational scale, demonstrates domain leadership</p>
-                            <ul className="text-sm text-[rgb(var(--color-text-secondary))] space-y-1 list-disc pl-5">
-                              <li>Defines standards and practices that strengthen design quality at organizational scale; develops emerging design leaders.</li>
-                              <li>Directs problem-solving for entire domains or strategic projects; ensures evidence-based, user-centric approach throughout.</li>
-                              <li>Shapes design vision and strategy across programs; establishes relationships with agency leadership to drive transformational outcomes.</li>
-                            </ul>
-                          </div>
-
-                          <div>
-                            <h5 className="text-sm font-semibold text-[rgb(var(--color-text-primary))] mb-[var(--space-2)]">Ownership</h5>
-                            <p className="text-sm text-[rgb(var(--color-text-secondary))] italic mb-[var(--space-2)]">Own department strategy and outcomes, drive key projects across teams, grow leaders</p>
-                            <ul className="text-sm text-[rgb(var(--color-text-secondary))] space-y-1 list-disc pl-5">
-                              <li>Take accountability for the success of the department, contributing to the definition of outcomes and goals and driving their achievement.</li>
-                              <li>Identify and remove systemic inefficiencies and barriers, advocating for the resources, tools and processes teams need to work effectively.</li>
-                              <li>Drive accountability and ownership across multiple teams, taking decisive action to navigate challenges and seize opportunities.</li>
-                              <li>Cultivate a high-performing team, focusing on long-term growth and talent development.</li>
-                              <li>Mentor future leaders within the organization</li>
-                            </ul>
-                          </div>
-
-                          <div>
-                            <h5 className="text-sm font-semibold text-[rgb(var(--color-text-primary))] mb-[var(--space-2)]">Strategic Alignment</h5>
-                            <p className="text-sm text-[rgb(var(--color-text-secondary))] italic mb-[var(--space-2)]">Influence department strategy</p>
-                            <ul className="text-sm text-[rgb(var(--color-text-secondary))] space-y-1 list-disc pl-5">
-                              <li>Take initiative to lead workstreams and guide colleagues towards achieving these outcomes. Translate divisional goals into a theory of success and OKRs, working with teams to align effort.</li>
-                              <li>Develop long-term roadmaps and executes within and across teams to deliver</li>
-                              <li>Anticipate and manage systemic risks and changes across teams</li>
-                            </ul>
-                          </div>
-
-                          <div>
-                            <h5 className="text-sm font-semibold text-[rgb(var(--color-text-primary))] mb-[var(--space-2)]">Culture and Organisational Influence</h5>
-                            <p className="text-sm text-[rgb(var(--color-text-secondary))] italic mb-[var(--space-2)]">Shape department culture</p>
-                            <ul className="text-sm text-[rgb(var(--color-text-secondary))] space-y-1 list-disc pl-5">
-                              <li>Build and maintain stategic cross-functional and/or departmental partnerships to effectively navigate matrix relationships and competing priorities</li>
-                              <li>Lead through influence, facilitates strategic discussions, build alignment</li>
-                              <li>Drive a culture of continuous improvement and innovation across multiple teams, champion open communication and collaboration, by ensuring that diverse perspectives are heard and implementing structural changes that enable teams to operate more effectively</li>
-                            </ul>
-                          </div>
-
-                          <div>
-                            <h5 className="text-sm font-semibold text-[rgb(var(--color-text-primary))] mb-[var(--space-2)]">People Management</h5>
-                            <p className="text-sm text-[rgb(var(--color-text-secondary))] italic mb-[var(--space-2)]">Departmental Leadership</p>
-                            <ul className="text-sm text-[rgb(var(--color-text-secondary))] space-y-1 list-disc pl-5">
-                              <li>Align departmental goals with organizational objectives, setting high standards while empowering teams and coaching people managers and leaders to maintain the bar.</li>
-                              <li>Lead recruitment efforts, ensuring top talent is brought in and continuously developed, set hiring standards and expectations, improve hiring and interview processes.</li>
-                              <li>Conduct regular 1:1s with direct/indirect reports to align and coach performance, setting the standards for leaders and people managers to align across the department</li>
-                              <li>Create a productive environment on wider scope eg. gather feedback from across department on team health, provide the resources and infrastructure for optimal productivity, while motivating teams to stay engaged and perform consistently.</li>
-                            </ul>
-                          </div>
-                        </div>
-                      </div>
+                      <a
+                        href="https://appraise.tech.gov.sg/schemas/role/cmnd18pco001o0clbcz1vqx1f"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-[var(--space-2)] px-[var(--space-5)] py-[var(--space-3)] bg-[rgb(var(--color-primary-600))] hover:bg-[rgb(var(--color-primary-700))] text-white font-medium rounded-lg shadow-sm hover:shadow-md transition-all"
+                      >
+                        See Schema in Appraise
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+                        </svg>
+                      </a>
 
                       <div className="border-t border-[rgb(var(--color-border))] pt-[var(--space-4)]">
                         {/* Core */}
@@ -1734,75 +1463,17 @@ function StaffDashboardContent() {
                   ) : selectedPathway === 'UX Designer' && expandedLevel === 6 ? (
                     // Level 6 Distinguished Designer
                     <div className="space-y-[var(--space-6)]">
-                      <div className="prose prose-sm max-w-none">
-                        <p className="text-sm text-[rgb(var(--color-text-secondary))] leading-relaxed mb-[var(--space-2)]">
-                          <strong>Scope & Direction</strong>
-                        </p>
-                        <p className="text-sm text-[rgb(var(--color-text-secondary))] leading-relaxed mb-[var(--space-3)]">
-                          You lead transformational initiatives and projects of strategic or national significance. You serve as a thought leader and advisor on design strategy and innovation to senior leaders in GovTech and agency partners. Your work is evaluated based on its long-term impact on the organization, the industry, and society as a whole.
-                        </p>
-                        <p className="text-sm text-[rgb(var(--color-text-secondary))] leading-relaxed mb-[var(--space-2)]">
-                          <strong>Impact Made At Level</strong>
-                        </p>
-                        <p className="text-sm text-[rgb(var(--color-text-secondary))] leading-relaxed">
-                          You shape the future of design in Government by developing emerging design leaders and setting design standards across GovTech and the Public Service. Your influence reaches senior leadership and across programmes — driving design excellence and user-centricity across every level of GovTech and beyond.
-                        </p>
-                      </div>
-
-                      <div className="border-t border-[rgb(var(--color-border))] pt-[var(--space-4)]">
-                        <div className="space-y-[var(--space-4)]">
-                          <div>
-                            <h5 className="text-sm font-semibold text-[rgb(var(--color-text-primary))] mb-[var(--space-2)]">Craft & Execution</h5>
-                            <p className="text-sm text-[rgb(var(--color-text-secondary))] italic mb-[var(--space-2)]">Shapes design standards and experience strategy in GovTech and/or public service</p>
-                            <ul className="text-sm text-[rgb(var(--color-text-secondary))] space-y-1 list-disc pl-5">
-                              <li>Sets direction for design quality across GovTech and/or public service, including discovery, accessibility, service quality, experimentation, and AI. Builds institutional conditions for quality at scale through standards, leadership, and cross-government influence.</li>
-                              <li>Leads framing of systemic service problems and strategic direction spanning agencies, policies, operations, and citizen experience.</li>
-                              <li>Delivers outcomes that fundamentally improve public service at national scale. Champions innovative approaches to systemic challenges.</li>
-                            </ul>
-                          </div>
-
-                          <div>
-                            <h5 className="text-sm font-semibold text-[rgb(var(--color-text-primary))] mb-[var(--space-2)]">Ownership</h5>
-                            <p className="text-sm text-[rgb(var(--color-text-secondary))] italic mb-[var(--space-2)]">Set vision for division, forward org agenda, develop leadership pipeline.</p>
-                            <ul className="text-sm text-[rgb(var(--color-text-secondary))] space-y-1 list-disc pl-5">
-                              <li>Set and take full ownership and accountability of the long term division's vision, strategy, outcomes and performance, aligned to the organisational overall vision and strategy</li>
-                              <li>Proactively identify opportunities to forward organisational agenda, aligned with org goals and strategy</li>
-                              <li>Develop a leadership pipeline and champion a culture of growth and empowerment</li>
-                            </ul>
-                          </div>
-
-                          <div>
-                            <h5 className="text-sm font-semibold text-[rgb(var(--color-text-primary))] mb-[var(--space-2)]">Strategic Alignment</h5>
-                            <p className="text-sm text-[rgb(var(--color-text-secondary))] italic mb-[var(--space-2)]">Influence org strategy, represent division strategy</p>
-                            <ul className="text-sm text-[rgb(var(--color-text-secondary))] space-y-1 list-disc pl-5">
-                              <li>Communicate the overaching organisational strategy and vision, set clear theory of success and OKRs, aligning all teams under your division</li>
-                              <li>Foresee and manage large-scale, org-wide risks and uncertainties.</li>
-                            </ul>
-                          </div>
-
-                          <div>
-                            <h5 className="text-sm font-semibold text-[rgb(var(--color-text-primary))] mb-[var(--space-2)]">Culture and Organisational Influence</h5>
-                            <p className="text-sm text-[rgb(var(--color-text-secondary))] italic mb-[var(--space-2)]">Shape and steward the overall organizational culture</p>
-                            <ul className="text-sm text-[rgb(var(--color-text-secondary))] space-y-1 list-disc pl-5">
-                              <li>Lead by example in navigating complex relationships with peers, senior leadership, and external stakeholders across functions/departments/divisions to effectively manage matrix relationships and resolve competing organisational priorities</li>
-                              <li>Foster a culture of open communication and collaboration across the organisation</li>
-                              <li>Drive divisional transformation by championing innovative practices and implementing fundamental and systemic/structural changes that align with organisational priorities</li>
-                            </ul>
-                          </div>
-
-                          <div>
-                            <h5 className="text-sm font-semibold text-[rgb(var(--color-text-primary))] mb-[var(--space-2)]">People Management</h5>
-                            <p className="text-sm text-[rgb(var(--color-text-secondary))] italic mb-[var(--space-2)]">Divisional Leadership</p>
-                            <ul className="text-sm text-[rgb(var(--color-text-secondary))] space-y-1 list-disc pl-5">
-                              <li>Set and communicate strategic goals aligned with organisational priorities throughout division, empowering teams to take ownership and achieve ambitious outcomes</li>
-                              <li>Lead talent strategy, driving recruitment, development, and retention of top performers for division</li>
-                              <li>Conduct regular 1:1s to align and coach performance, setting the standards for leaders and people managers to align across the division while improving the schema</li>
-                              <li>Identify and grow effective leaders within the division, delegate and empower teams for better outcomes while contributing to managerial and leadership growth throughout the organisation.</li>
-                              <li>Gather feedback on org health of division from all levels and ensure the department has the resources, tools, processes and environment necessary for high performance, while inspiring teams to maintain strong motivation and engagement.</li>
-                            </ul>
-                          </div>
-                        </div>
-                      </div>
+                      <a
+                        href="https://appraise.tech.gov.sg/schemas/role/cmnd18pco001o0clbcz1vqx1f"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-[var(--space-2)] px-[var(--space-5)] py-[var(--space-3)] bg-[rgb(var(--color-primary-600))] hover:bg-[rgb(var(--color-primary-700))] text-white font-medium rounded-lg shadow-sm hover:shadow-md transition-all"
+                      >
+                        See Schema in Appraise
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+                        </svg>
+                      </a>
 
                       <div className="border-t border-[rgb(var(--color-border))] pt-[var(--space-4)]">
                         {/* Core */}
