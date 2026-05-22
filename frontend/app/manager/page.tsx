@@ -447,7 +447,18 @@ export default function ManagerDashboard() {
                     const centerY = 150;
                     const radius = 70;
 
-                    return Object.entries(pathwayCounts).map(([pathway, count], index) => {
+                    // Sort entries so active slice renders last (on top)
+                    const entries = Object.entries(pathwayCounts);
+                    const sortedEntries = [...entries].sort(([pathwayA], [pathwayB]) => {
+                      const isActiveA = activeFilter.type === 'pathway' && activeFilter.value === pathwayA;
+                      const isActiveB = activeFilter.type === 'pathway' && activeFilter.value === pathwayB;
+                      if (isActiveA) return 1; // Move active to end
+                      if (isActiveB) return -1;
+                      return 0;
+                    });
+
+                    return sortedEntries.map(([pathway, count]) => {
+                      const index = entries.findIndex(([p]) => p === pathway);
                       const percent = count / total;
                       const startAngle = cumulativePercent * 360;
                       const endAngle = startAngle + percent * 360;
