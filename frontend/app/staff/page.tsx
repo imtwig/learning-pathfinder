@@ -207,9 +207,7 @@ function StaffDashboardContent() {
     // Check all possible status options
     const allOptions = [
       ...statusOptions,
-      { value: 'Not Started', color: 'rgb(156, 163, 175)' },
       { value: 'Not Yet', color: 'rgb(156, 163, 175)' },
-      { value: 'Not yet', color: 'rgb(156, 163, 175)' },
       { value: 'Pending Assessment', color: 'rgb(249, 115, 22)' }, // orange
       { value: 'Passed', color: 'rgb(34, 197, 94)' },
       { value: 'Failed', color: 'rgb(239, 68, 68)' },
@@ -241,7 +239,7 @@ function StaffDashboardContent() {
     switch(state) {
       case 'none':
         setPreSchemaStatuses({
-          '1': 'Not Started',
+          '1': 'Not Yet',
           '2': 'Not Yet',
           '3': 'Not Yet',
           '4': 'Not Yet',
@@ -1061,7 +1059,7 @@ function StaffDashboardContent() {
                                   </div>
 
                                   {/* Action Buttons - Top Right */}
-                                  {!isManagerView && step.id === '1' && preSchemaStatuses['1'] === 'Not Started' && (
+                                  {!isManagerView && step.id === '1' && preSchemaStatuses['1'] === 'Not Yet' && (
                                     <Button
                                       onClick={handleRegisterClick}
                                       className="
