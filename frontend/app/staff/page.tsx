@@ -764,14 +764,26 @@ function StaffDashboardContent() {
                     </svg>
                   </div>
                   <div className="flex-1">
-                    <div className="flex items-center gap-[var(--space-2)] mb-1">
-                      <CardTitle className="font-serif text-[length:var(--text-2xl)] text-[rgb(var(--color-text-primary))] leading-tight">
-                        {levels[expandedLevel]?.id === 0 ? levels[expandedLevel]?.name : `${levels[expandedLevel]?.name}`}
-                      </CardTitle>
-                      {levels[expandedLevel]?.id === currentLevel && (
-                        <Badge className="bg-[rgb(var(--color-primary-600))] text-white uppercase tracking-[var(--tracking-wide)] text-xs font-semibold px-2.5 py-1 leading-none">
-                          Current Level
-                        </Badge>
+                    <div className="flex items-center justify-between gap-[var(--space-3)] mb-1">
+                      <div className="flex items-center gap-[var(--space-2)]">
+                        <CardTitle className="font-serif text-[length:var(--text-2xl)] text-[rgb(var(--color-text-primary))] leading-tight">
+                          {levels[expandedLevel]?.id === 0 ? levels[expandedLevel]?.name : `${levels[expandedLevel]?.name}`}
+                        </CardTitle>
+                        {levels[expandedLevel]?.id === currentLevel && (
+                          <Badge className="bg-[rgb(var(--color-primary-600))] text-white uppercase tracking-[var(--tracking-wide)] text-xs font-semibold px-2.5 py-1 leading-none">
+                            Current Level
+                          </Badge>
+                        )}
+                      </div>
+                      {expandedLevel >= 1 && expandedLevel <= 6 && (
+                        <a
+                          href="https://appraise.tech.gov.sg/schemas/role/cmnd18pco001o0clbcz1vqx1f"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="bg-[rgb(var(--color-primary-600))] hover:bg-[rgb(var(--color-primary-700))] text-white shadow-sm py-[var(--space-3)] px-[var(--space-4)] text-sm font-medium rounded-lg transition-all shrink-0"
+                        >
+                          See Schema in Appraise
+                        </a>
                       )}
                     </div>
                     <CardDescription className="text-[rgb(var(--color-text-secondary))] text-sm">
@@ -1098,18 +1110,6 @@ function StaffDashboardContent() {
                   ) : selectedPathway === 'UX Designer' && expandedLevel === 1 ? (
                     // Level 1 Designer (I)
                     <div className="space-y-[var(--space-6)]">
-                      <a
-                        href="https://appraise.tech.gov.sg/schemas/role/cmnd18pco001o0clbcz1vqx1f"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-[var(--space-2)] px-[var(--space-5)] py-[var(--space-3)] bg-[rgb(var(--color-primary-600))] hover:bg-[rgb(var(--color-primary-700))] text-white font-medium rounded-lg shadow-sm hover:shadow-md transition-all"
-                      >
-                        See Schema in Appraise
-                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
-                        </svg>
-                      </a>
-
                       <div className="border-t border-[rgb(var(--color-border))] pt-[var(--space-4)]">
                         {/* Core */}
                         <div className="mb-[var(--space-6)]">
@@ -1171,18 +1171,6 @@ function StaffDashboardContent() {
                   ) : selectedPathway === 'UX Designer' && expandedLevel === 2 ? (
                     // Level 2: Developing content
                     <div className="space-y-[var(--space-6)]">
-                      <a
-                        href="https://appraise.tech.gov.sg/schemas/role/cmnd18pco001o0clbcz1vqx1f"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-[var(--space-2)] px-[var(--space-5)] py-[var(--space-3)] bg-[rgb(var(--color-primary-600))] hover:bg-[rgb(var(--color-primary-700))] text-white font-medium rounded-lg shadow-sm hover:shadow-md transition-all"
-                      >
-                        See Schema in Appraise
-                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
-                        </svg>
-                      </a>
-
                       <div className="border-t border-[rgb(var(--color-border))] pt-[var(--space-4)]">
                         {/* Core */}
                         <div className="mb-[var(--space-6)]">
@@ -1244,18 +1232,6 @@ function StaffDashboardContent() {
                   ) : selectedPathway === 'UX Designer' && expandedLevel === 3 ? (
                     // Level 3 Senior Designer
                     <div className="space-y-[var(--space-6)]">
-                      <a
-                        href="https://appraise.tech.gov.sg/schemas/role/cmnd18pco001o0clbcz1vqx1f"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-[var(--space-2)] px-[var(--space-5)] py-[var(--space-3)] bg-[rgb(var(--color-primary-600))] hover:bg-[rgb(var(--color-primary-700))] text-white font-medium rounded-lg shadow-sm hover:shadow-md transition-all"
-                      >
-                        See Schema in Appraise
-                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
-                        </svg>
-                      </a>
-
                       <div className="border-t border-[rgb(var(--color-border))] pt-[var(--space-4)]">
                         {/* Core */}
                         <div className="mb-[var(--space-6)]">
@@ -1317,18 +1293,6 @@ function StaffDashboardContent() {
                   ) : selectedPathway === 'UX Designer' && expandedLevel === 4 ? (
                     // Level 4 Lead Designer
                     <div className="space-y-[var(--space-6)]">
-                      <a
-                        href="https://appraise.tech.gov.sg/schemas/role/cmnd18pco001o0clbcz1vqx1f"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-[var(--space-2)] px-[var(--space-5)] py-[var(--space-3)] bg-[rgb(var(--color-primary-600))] hover:bg-[rgb(var(--color-primary-700))] text-white font-medium rounded-lg shadow-sm hover:shadow-md transition-all"
-                      >
-                        See Schema in Appraise
-                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
-                        </svg>
-                      </a>
-
                       <div className="border-t border-[rgb(var(--color-border))] pt-[var(--space-4)]">
                         {/* Core */}
                         <div className="mb-[var(--space-6)]">
@@ -1390,18 +1354,6 @@ function StaffDashboardContent() {
                   ) : selectedPathway === 'UX Designer' && expandedLevel === 5 ? (
                     // Level 5 Principal Designer
                     <div className="space-y-[var(--space-6)]">
-                      <a
-                        href="https://appraise.tech.gov.sg/schemas/role/cmnd18pco001o0clbcz1vqx1f"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-[var(--space-2)] px-[var(--space-5)] py-[var(--space-3)] bg-[rgb(var(--color-primary-600))] hover:bg-[rgb(var(--color-primary-700))] text-white font-medium rounded-lg shadow-sm hover:shadow-md transition-all"
-                      >
-                        See Schema in Appraise
-                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
-                        </svg>
-                      </a>
-
                       <div className="border-t border-[rgb(var(--color-border))] pt-[var(--space-4)]">
                         {/* Core */}
                         <div className="mb-[var(--space-6)]">
@@ -1463,18 +1415,6 @@ function StaffDashboardContent() {
                   ) : selectedPathway === 'UX Designer' && expandedLevel === 6 ? (
                     // Level 6 Distinguished Designer
                     <div className="space-y-[var(--space-6)]">
-                      <a
-                        href="https://appraise.tech.gov.sg/schemas/role/cmnd18pco001o0clbcz1vqx1f"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-[var(--space-2)] px-[var(--space-5)] py-[var(--space-3)] bg-[rgb(var(--color-primary-600))] hover:bg-[rgb(var(--color-primary-700))] text-white font-medium rounded-lg shadow-sm hover:shadow-md transition-all"
-                      >
-                        See Schema in Appraise
-                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
-                        </svg>
-                      </a>
-
                       <div className="border-t border-[rgb(var(--color-border))] pt-[var(--space-4)]">
                         {/* Core */}
                         <div className="mb-[var(--space-6)]">
