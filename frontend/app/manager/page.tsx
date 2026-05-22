@@ -296,40 +296,22 @@ export default function ManagerDashboard() {
           <div className="bg-[rgb(var(--color-surface))] rounded-xl p-6 shadow-[var(--shadow-sm)]">
             <h3 className="font-serif text-xl font-bold text-[rgb(var(--color-text-primary))] mb-4">Team Level Distribution</h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <div className="bg-[rgb(var(--color-neutral-50))] rounded-lg p-4 border-2 border-[rgb(var(--color-border))]">
-                <div className="flex items-center justify-between mb-2">
+              <div className="bg-[rgb(var(--color-neutral-50))] rounded-lg p-6 border-2 border-[rgb(var(--color-border))]">
+                <div className="flex items-center justify-between">
                   <span className="text-base font-medium text-[rgb(var(--color-text-secondary))]">Pre-Schema</span>
                   <span className="text-2xl font-bold text-[rgb(var(--color-text-primary))]">{levelCounts.preSchema}</span>
                 </div>
-                <div className="w-full h-2 bg-[rgb(var(--color-neutral-200))] rounded-full overflow-hidden">
-                  <div
-                    className="h-full bg-[rgb(var(--color-neutral-500))] rounded-full"
-                    style={{ width: `${(levelCounts.preSchema / FAKE_STAFF_LIST.length) * 100}%` }}
-                  ></div>
-                </div>
               </div>
-              <div className="bg-[rgb(var(--color-primary-50))] rounded-lg p-4 border-2 border-[rgb(var(--color-primary-200))]">
-                <div className="flex items-center justify-between mb-2">
+              <div className="bg-[rgb(var(--color-primary-50))] rounded-lg p-6 border-2 border-[rgb(var(--color-primary-200))]">
+                <div className="flex items-center justify-between">
                   <span className="text-base font-medium text-[rgb(var(--color-text-secondary))]">Level 1</span>
                   <span className="text-2xl font-bold text-[rgb(var(--color-primary-700))]">{levelCounts.level1}</span>
                 </div>
-                <div className="w-full h-2 bg-[rgb(var(--color-primary-100))] rounded-full overflow-hidden">
-                  <div
-                    className="h-full bg-[rgb(var(--color-primary-600))] rounded-full"
-                    style={{ width: `${(levelCounts.level1 / FAKE_STAFF_LIST.length) * 100}%` }}
-                  ></div>
-                </div>
               </div>
-              <div className="bg-[rgb(var(--color-accent-50))] rounded-lg p-4 border-2 border-[rgb(var(--color-accent-200))]">
-                <div className="flex items-center justify-between mb-2">
+              <div className="bg-[rgb(var(--color-accent-50))] rounded-lg p-6 border-2 border-[rgb(var(--color-accent-200))]">
+                <div className="flex items-center justify-between">
                   <span className="text-base font-medium text-[rgb(var(--color-text-secondary))]">Level 2</span>
                   <span className="text-2xl font-bold text-[rgb(var(--color-accent-700))]">{levelCounts.level2}</span>
-                </div>
-                <div className="w-full h-2 bg-[rgb(var(--color-accent-100))] rounded-full overflow-hidden">
-                  <div
-                    className="h-full bg-[rgb(var(--color-accent-600))] rounded-full"
-                    style={{ width: `${(levelCounts.level2 / FAKE_STAFF_LIST.length) * 100}%` }}
-                  ></div>
                 </div>
               </div>
             </div>
