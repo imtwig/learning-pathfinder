@@ -1046,7 +1046,7 @@ function StaffDashboardContent() {
                     hover:border-[rgb(var(--color-primary-400))]
                     hover:bg-[rgb(var(--color-primary-50))]
                     transition-all
-                    flex items-center justify-center
+                    hidden sm:flex items-center justify-center
                     text-[rgb(var(--color-text-primary))]
                     hover:text-[rgb(var(--color-primary-600))]
                     z-10
@@ -1074,7 +1074,7 @@ function StaffDashboardContent() {
                     hover:border-[rgb(var(--color-primary-400))]
                     hover:bg-[rgb(var(--color-primary-50))]
                     transition-all
-                    flex items-center justify-center
+                    hidden sm:flex items-center justify-center
                     text-[rgb(var(--color-text-primary))]
                     hover:text-[rgb(var(--color-primary-600))]
                     z-10
