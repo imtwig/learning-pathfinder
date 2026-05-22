@@ -182,6 +182,8 @@ function StaffDashboardContent() {
         setPreSchemaStatuses(prev => ({
           ...prev,
           '1': 'Completed',
+          '3': 'Not Yet',
+          '4': 'Not Yet',
         }));
         setStep3SampleCertificate(false);
         setCurrentLevel(0);
