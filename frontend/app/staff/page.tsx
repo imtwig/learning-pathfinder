@@ -63,6 +63,8 @@ function StaffDashboardContent() {
   const userId = searchParams.get('userId') || '';
   const managerId = searchParams.get('managerId') || null;
   const managerName = searchParams.get('managerName') || 'Manager';
+  const urlPathway = searchParams.get('pathway') || 'UX Designer';
+  const urlLevel = searchParams.get('level') ? parseInt(searchParams.get('level')!) : 0;
   const isManagerView = !!managerId;
   const [user, setUser] = useState<any>(null);
   const [pathway, setPathway] = useState<any>(null);
@@ -74,12 +76,17 @@ function StaffDashboardContent() {
   const [completedSelf, setCompletedSelf] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState<string | null>(null);
   const [submitError, setSubmitError] = useState<string | null>(null);
-  const [currentLevel, setCurrentLevel] = useState(0);
-  const [expandedLevel, setExpandedLevel] = useState<number | null>(0);
-  const [levels, setLevels] = useState<any[]>(UX_DESIGNER_LEVELS);
+  const [currentLevel, setCurrentLevel] = useState(urlLevel);
+  const [expandedLevel, setExpandedLevel] = useState<number | null>(urlLevel);
+  const [levels, setLevels] = useState<any[]>(
+    urlPathway === 'Product Manager' ? PRODUCT_MANAGER_LEVELS :
+    urlPathway === 'Product Ops' ? PRODUCT_OPS_LEVELS :
+    urlPathway === 'Software Engineer' ? SOFTWARE_ENGINEER_LEVELS :
+    UX_DESIGNER_LEVELS
+  );
   const [competencies, setCompetencies] = useState<any[]>([]);
   const [levelCourses, setLevelCourses] = useState<{[key: string]: any[]}>({});
-  const [selectedPathway, setSelectedPathway] = useState('UX Designer');
+  const [selectedPathway, setSelectedPathway] = useState(urlPathway);
   const [preSchemaStatuses, setPreSchemaStatuses] = useState<{[key: string]: string}>({
     '1': 'Not Started',
     '2': 'Not Yet',
