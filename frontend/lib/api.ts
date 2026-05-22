@@ -9,9 +9,9 @@ export async function apiClient(endpoint: string, userId: string, options: Reque
     headers.set('Content-Type', 'application/json');
   }
 
-  // Add timeout to prevent hanging
+  // Add timeout to prevent hanging while allowing slower hosted backends to respond.
   const controller = new AbortController();
-  const timeoutId = setTimeout(() => controller.abort(), 2000); // 2 second timeout
+  const timeoutId = setTimeout(() => controller.abort(), 10000);
 
   try {
     const response = await fetch(`${API_URL}${endpoint}`, {
