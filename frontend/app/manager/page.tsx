@@ -216,6 +216,11 @@ export default function ManagerDashboard() {
     preSchema: FAKE_STAFF_LIST.filter(s => s.currentLevel === 0).length,
     level1: FAKE_STAFF_LIST.filter(s => s.currentLevel === 1).length,
     level2: FAKE_STAFF_LIST.filter(s => s.currentLevel === 2).length,
+    level3: FAKE_STAFF_LIST.filter(s => s.currentLevel === 3).length,
+    level4: FAKE_STAFF_LIST.filter(s => s.currentLevel === 4).length,
+    level5: FAKE_STAFF_LIST.filter(s => s.currentLevel === 5).length,
+    level6: FAKE_STAFF_LIST.filter(s => s.currentLevel === 6).length,
+    level7: FAKE_STAFF_LIST.filter(s => s.currentLevel === 7).length,
   };
 
   const pathwayCounts = {
@@ -295,23 +300,53 @@ export default function ManagerDashboard() {
           {/* Level Distribution */}
           <div className="bg-[rgb(var(--color-surface))] rounded-xl p-6 shadow-[var(--shadow-sm)]">
             <h3 className="font-serif text-xl font-bold text-[rgb(var(--color-text-primary))] mb-4">Team Level Distribution</h3>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <div className="bg-[rgb(var(--color-neutral-50))] rounded-lg p-6 border-2 border-[rgb(var(--color-border))]">
-                <div className="flex items-center justify-between">
-                  <span className="text-base font-medium text-[rgb(var(--color-text-secondary))]">Pre-Schema</span>
-                  <span className="text-2xl font-bold text-[rgb(var(--color-text-primary))]">{levelCounts.preSchema}</span>
+            <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-8 gap-3">
+              <div className="bg-[rgb(var(--color-neutral-50))] rounded-lg p-4 border-2 border-[rgb(var(--color-border))]">
+                <div className="flex flex-col items-center text-center">
+                  <span className="text-xs font-medium text-[rgb(var(--color-text-secondary))] mb-1">Pre-Schema</span>
+                  <span className="text-xl font-bold text-[rgb(var(--color-text-primary))]">{levelCounts.preSchema}</span>
                 </div>
               </div>
-              <div className="bg-[rgb(var(--color-primary-50))] rounded-lg p-6 border-2 border-[rgb(var(--color-primary-200))]">
-                <div className="flex items-center justify-between">
-                  <span className="text-base font-medium text-[rgb(var(--color-text-secondary))]">Level 1</span>
-                  <span className="text-2xl font-bold text-[rgb(var(--color-primary-700))]">{levelCounts.level1}</span>
+              <div className="bg-[rgb(var(--color-primary-50))] rounded-lg p-4 border-2 border-[rgb(var(--color-primary-200))]">
+                <div className="flex flex-col items-center text-center">
+                  <span className="text-xs font-medium text-[rgb(var(--color-text-secondary))] mb-1">Level 1</span>
+                  <span className="text-xl font-bold text-[rgb(var(--color-primary-700))]">{levelCounts.level1}</span>
                 </div>
               </div>
-              <div className="bg-[rgb(var(--color-accent-50))] rounded-lg p-6 border-2 border-[rgb(var(--color-accent-200))]">
-                <div className="flex items-center justify-between">
-                  <span className="text-base font-medium text-[rgb(var(--color-text-secondary))]">Level 2</span>
-                  <span className="text-2xl font-bold text-[rgb(var(--color-accent-700))]">{levelCounts.level2}</span>
+              <div className="bg-[rgb(var(--color-accent-50))] rounded-lg p-4 border-2 border-[rgb(var(--color-accent-200))]">
+                <div className="flex flex-col items-center text-center">
+                  <span className="text-xs font-medium text-[rgb(var(--color-text-secondary))] mb-1">Level 2</span>
+                  <span className="text-xl font-bold text-[rgb(var(--color-accent-700))]">{levelCounts.level2}</span>
+                </div>
+              </div>
+              <div className="bg-[rgb(var(--color-primary-50))] rounded-lg p-4 border-2 border-[rgb(var(--color-primary-200))]">
+                <div className="flex flex-col items-center text-center">
+                  <span className="text-xs font-medium text-[rgb(var(--color-text-secondary))] mb-1">Level 3</span>
+                  <span className="text-xl font-bold text-[rgb(var(--color-primary-700))]">{levelCounts.level3}</span>
+                </div>
+              </div>
+              <div className="bg-[rgb(var(--color-accent-50))] rounded-lg p-4 border-2 border-[rgb(var(--color-accent-200))]">
+                <div className="flex flex-col items-center text-center">
+                  <span className="text-xs font-medium text-[rgb(var(--color-text-secondary))] mb-1">Level 4</span>
+                  <span className="text-xl font-bold text-[rgb(var(--color-accent-700))]">{levelCounts.level4}</span>
+                </div>
+              </div>
+              <div className="bg-[rgb(var(--color-primary-50))] rounded-lg p-4 border-2 border-[rgb(var(--color-primary-200))]">
+                <div className="flex flex-col items-center text-center">
+                  <span className="text-xs font-medium text-[rgb(var(--color-text-secondary))] mb-1">Level 5</span>
+                  <span className="text-xl font-bold text-[rgb(var(--color-primary-700))]">{levelCounts.level5}</span>
+                </div>
+              </div>
+              <div className="bg-[rgb(var(--color-accent-50))] rounded-lg p-4 border-2 border-[rgb(var(--color-accent-200))]">
+                <div className="flex flex-col items-center text-center">
+                  <span className="text-xs font-medium text-[rgb(var(--color-text-secondary))] mb-1">Level 6</span>
+                  <span className="text-xl font-bold text-[rgb(var(--color-accent-700))]">{levelCounts.level6}</span>
+                </div>
+              </div>
+              <div className="bg-[rgb(var(--color-primary-50))] rounded-lg p-4 border-2 border-[rgb(var(--color-primary-200))]">
+                <div className="flex flex-col items-center text-center">
+                  <span className="text-xs font-medium text-[rgb(var(--color-text-secondary))] mb-1">Level 7</span>
+                  <span className="text-xl font-bold text-[rgb(var(--color-primary-700))]">{levelCounts.level7}</span>
                 </div>
               </div>
             </div>
