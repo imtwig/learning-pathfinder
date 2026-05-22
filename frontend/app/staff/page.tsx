@@ -1014,7 +1014,7 @@ function StaffDashboardContent() {
                             style={{ animationDelay: isCollapsing ? '0ms' : `${remainingLevels.length * 60}ms` }}
                           >
                             <p className="text-xs sm:text-sm font-medium text-[rgb(var(--color-primary-600))] hover:text-[rgb(var(--color-primary-700))] underline transition-colors duration-200 whitespace-nowrap">
-                              Show focus view
+                              Focus view
                             </p>
                           </button>
                         </>
