@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 
 const FAKE_STAFF_LIST = [
+  // Designers
   {
     id: 'staff-1',
     name: 'John Tan',
@@ -24,22 +25,130 @@ const FAKE_STAFF_LIST = [
     id: 'staff-3',
     name: 'Michael Wong',
     email: 'michael.wong@example.com',
-    currentLevel: 0,
+    currentLevel: 2,
     pathway: 'UX Designer',
   },
   {
     id: 'staff-4',
     name: 'Emily Lim',
     email: 'emily.lim@example.com',
-    currentLevel: 2,
+    currentLevel: 1,
     pathway: 'UX Designer',
   },
   {
     id: 'staff-5',
     name: 'David Kumar',
     email: 'david.kumar@example.com',
-    currentLevel: 1,
+    currentLevel: 2,
     pathway: 'UX Designer',
+  },
+  // Product Managers
+  {
+    id: 'staff-6',
+    name: 'Rachel Ng',
+    email: 'rachel.ng@example.com',
+    currentLevel: 0,
+    pathway: 'Product Manager',
+  },
+  {
+    id: 'staff-7',
+    name: 'Kevin Lee',
+    email: 'kevin.lee@example.com',
+    currentLevel: 1,
+    pathway: 'Product Manager',
+  },
+  {
+    id: 'staff-8',
+    name: 'Priya Sharma',
+    email: 'priya.sharma@example.com',
+    currentLevel: 2,
+    pathway: 'Product Manager',
+  },
+  {
+    id: 'staff-9',
+    name: 'Daniel Teo',
+    email: 'daniel.teo@example.com',
+    currentLevel: 1,
+    pathway: 'Product Manager',
+  },
+  {
+    id: 'staff-10',
+    name: 'Amanda Goh',
+    email: 'amanda.goh@example.com',
+    currentLevel: 2,
+    pathway: 'Product Manager',
+  },
+  // Product Ops Specialists
+  {
+    id: 'staff-11',
+    name: 'Marcus Lim',
+    email: 'marcus.lim@example.com',
+    currentLevel: 0,
+    pathway: 'Product Ops',
+  },
+  {
+    id: 'staff-12',
+    name: 'Jessica Tan',
+    email: 'jessica.tan@example.com',
+    currentLevel: 1,
+    pathway: 'Product Ops',
+  },
+  {
+    id: 'staff-13',
+    name: 'Ryan Ong',
+    email: 'ryan.ong@example.com',
+    currentLevel: 2,
+    pathway: 'Product Ops',
+  },
+  {
+    id: 'staff-14',
+    name: 'Sophie Koh',
+    email: 'sophie.koh@example.com',
+    currentLevel: 1,
+    pathway: 'Product Ops',
+  },
+  {
+    id: 'staff-15',
+    name: 'Benjamin Yap',
+    email: 'benjamin.yap@example.com',
+    currentLevel: 1,
+    pathway: 'Product Ops',
+  },
+  // Software Engineers
+  {
+    id: 'staff-16',
+    name: 'Alex Chua',
+    email: 'alex.chua@example.com',
+    currentLevel: 0,
+    pathway: 'Software Engineer',
+  },
+  {
+    id: 'staff-17',
+    name: 'Melissa Wong',
+    email: 'melissa.wong@example.com',
+    currentLevel: 1,
+    pathway: 'Software Engineer',
+  },
+  {
+    id: 'staff-18',
+    name: 'Jonathan Sim',
+    email: 'jonathan.sim@example.com',
+    currentLevel: 2,
+    pathway: 'Software Engineer',
+  },
+  {
+    id: 'staff-19',
+    name: 'Victoria Tan',
+    email: 'victoria.tan@example.com',
+    currentLevel: 1,
+    pathway: 'Software Engineer',
+  },
+  {
+    id: 'staff-20',
+    name: 'Nicholas Liu',
+    email: 'nicholas.liu@example.com',
+    currentLevel: 2,
+    pathway: 'Software Engineer',
   },
 ];
 
