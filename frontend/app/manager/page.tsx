@@ -318,7 +318,7 @@ export default function ManagerDashboard() {
                     <div className="w-full flex flex-col items-center justify-end" style={{ height: '160px' }}>
                       <span className="text-sm font-bold text-[rgb(var(--color-text-primary))] mb-1">{count}</span>
                       <div
-                        className="w-full rounded-t-lg transition-all duration-500"
+                        className="w-full rounded-t-lg"
                         style={{
                           height: count > 0 ? `${Math.max(height, 12.5)}%` : '0%',
                           backgroundColor: color,
