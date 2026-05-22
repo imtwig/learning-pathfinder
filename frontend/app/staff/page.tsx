@@ -235,7 +235,7 @@ function StaffDashboardContent() {
           '4': 'Completed',
         }));
         setStep3SampleCertificate(true);
-        setCurrentLevel(0);
+        setCurrentLevel(1);
         setExpandedLevel(0);
         break;
     }
