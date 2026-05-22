@@ -983,10 +983,9 @@ function StaffDashboardContent() {
                           {/* Show Focus View Link */}
                           <button
                             onClick={() => setShowFullPathway(false)}
-                            className="flex flex-col items-center gap-2 ml-4 cursor-pointer group"
+                            className="flex items-center ml-4 cursor-pointer group -mt-6"
                           >
-                            <div className="w-10 h-10 sm:w-12 sm:h-12"></div>
-                            <p className="text-[10px] sm:text-xs font-medium text-[rgb(var(--color-primary-600))] hover:text-[rgb(var(--color-primary-700))] underline transition-colors whitespace-nowrap">
+                            <p className="text-xs sm:text-sm font-medium text-[rgb(var(--color-primary-600))] hover:text-[rgb(var(--color-primary-700))] underline transition-colors whitespace-nowrap">
                               Show focus view
                             </p>
                           </button>
