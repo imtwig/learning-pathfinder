@@ -318,35 +318,6 @@ export default function ManagerDashboard() {
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            {/* Pathway Distribution - Bar Chart */}
-            <div className="bg-[rgb(var(--color-surface))] rounded-xl p-6 shadow-[var(--shadow-sm)]">
-              <h3 className="font-serif text-xl font-bold text-[rgb(var(--color-text-primary))] mb-6">Team by Functional Role</h3>
-              <div className="space-y-4">
-                {Object.entries(pathwayCounts).map(([pathway, count]) => (
-                  <div key={pathway} className="flex items-center gap-4">
-                    <div className="w-36 flex-shrink-0">
-                      <span className="text-sm font-medium text-[rgb(var(--color-text-primary))]">{pathway}</span>
-                    </div>
-                    <div className="flex-1 flex items-center gap-3">
-                      <div className="flex-1 h-10 bg-[rgb(var(--color-neutral-100))] rounded-lg overflow-hidden">
-                        <div
-                          className="h-full bg-gradient-to-r from-[rgb(var(--color-primary-500))] to-[rgb(var(--color-primary-600))] flex items-center justify-end pr-3 transition-all duration-500"
-                          style={{ width: `${(count / Math.max(...Object.values(pathwayCounts))) * 100}%` }}
-                        >
-                          {count > 0 && (
-                            <span className="text-sm font-bold text-white">{count}</span>
-                          )}
-                        </div>
-                      </div>
-                      <div className="w-8 text-right">
-                        <span className="text-base font-bold text-[rgb(var(--color-text-primary))]">{count}</span>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
             {/* Pre-Schema Step Progress */}
             <div className="bg-[rgb(var(--color-surface))] rounded-xl p-6 shadow-[var(--shadow-sm)]">
               <h3 className="font-serif text-xl font-bold text-[rgb(var(--color-text-primary))] mb-4">Pre-Schema Progress</h3>
@@ -355,7 +326,7 @@ export default function ManagerDashboard() {
                 <div>
                   <div className="flex items-center justify-between mb-1">
                     <span className="text-sm font-medium text-[rgb(var(--color-text-primary))]">Currently at Step 1</span>
-                    <span className="text-sm font-semibold text-[rgb(var(--color-text-primary))]">{preSchemaSteps.step1} / {levelCounts.preSchema}</span>
+                    <span className="text-sm font-semibold text-[rgb(var(--color-text-primary))]">{preSchemaSteps.step1}</span>
                   </div>
                   <div className="w-full h-2 bg-[rgb(var(--color-neutral-200))] rounded-full overflow-hidden">
                     <div
@@ -367,7 +338,7 @@ export default function ManagerDashboard() {
                 <div>
                   <div className="flex items-center justify-between mb-1">
                     <span className="text-sm font-medium text-[rgb(var(--color-text-primary))]">Currently at Step 2</span>
-                    <span className="text-sm font-semibold text-[rgb(var(--color-text-primary))]">{preSchemaSteps.step2} / {levelCounts.preSchema}</span>
+                    <span className="text-sm font-semibold text-[rgb(var(--color-text-primary))]">{preSchemaSteps.step2}</span>
                   </div>
                   <div className="w-full h-2 bg-[rgb(var(--color-neutral-200))] rounded-full overflow-hidden">
                     <div
@@ -379,7 +350,7 @@ export default function ManagerDashboard() {
                 <div>
                   <div className="flex items-center justify-between mb-1">
                     <span className="text-sm font-medium text-[rgb(var(--color-text-primary))]">Currently at Step 3</span>
-                    <span className="text-sm font-semibold text-[rgb(var(--color-text-primary))]">{preSchemaSteps.step3} / {levelCounts.preSchema}</span>
+                    <span className="text-sm font-semibold text-[rgb(var(--color-text-primary))]">{preSchemaSteps.step3}</span>
                   </div>
                   <div className="w-full h-2 bg-[rgb(var(--color-neutral-200))] rounded-full overflow-hidden">
                     <div
@@ -391,7 +362,7 @@ export default function ManagerDashboard() {
                 <div>
                   <div className="flex items-center justify-between mb-1">
                     <span className="text-sm font-medium text-[rgb(var(--color-text-primary))]">Currently at Step 4</span>
-                    <span className="text-sm font-semibold text-[rgb(var(--color-text-primary))]">{preSchemaSteps.step4} / {levelCounts.preSchema}</span>
+                    <span className="text-sm font-semibold text-[rgb(var(--color-text-primary))]">{preSchemaSteps.step4}</span>
                   </div>
                   <div className="w-full h-2 bg-[rgb(var(--color-neutral-200))] rounded-full overflow-hidden">
                     <div
@@ -399,6 +370,62 @@ export default function ManagerDashboard() {
                       style={{ width: `${(preSchemaSteps.step4 / levelCounts.preSchema) * 100}%` }}
                     ></div>
                   </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Team by Functional Role - Pie Chart */}
+            <div className="bg-[rgb(var(--color-surface))] rounded-xl p-6 shadow-[var(--shadow-sm)]">
+              <h3 className="font-serif text-xl font-bold text-[rgb(var(--color-text-primary))] mb-6">Team by Functional Role</h3>
+              <div className="flex flex-col items-center">
+                {/* Pie Chart SVG */}
+                <svg viewBox="0 0 200 200" className="w-48 h-48 mb-6">
+                  {(() => {
+                    const total = FAKE_STAFF_LIST.length;
+                    let cumulativePercent = 0;
+                    const colors = ['#6366f1', '#8b5cf6', '#ec4899', '#f59e0b'];
+
+                    return Object.entries(pathwayCounts).map(([pathway, count], index) => {
+                      const percent = count / total;
+                      const startAngle = cumulativePercent * 360;
+                      const endAngle = startAngle + percent * 360;
+                      cumulativePercent += percent;
+
+                      const startX = 100 + 80 * Math.cos((startAngle - 90) * Math.PI / 180);
+                      const startY = 100 + 80 * Math.sin((startAngle - 90) * Math.PI / 180);
+                      const endX = 100 + 80 * Math.cos((endAngle - 90) * Math.PI / 180);
+                      const endY = 100 + 80 * Math.sin((endAngle - 90) * Math.PI / 180);
+                      const largeArc = percent > 0.5 ? 1 : 0;
+
+                      return (
+                        <path
+                          key={pathway}
+                          d={`M 100 100 L ${startX} ${startY} A 80 80 0 ${largeArc} 1 ${endX} ${endY} Z`}
+                          fill={colors[index]}
+                          stroke="white"
+                          strokeWidth="2"
+                        />
+                      );
+                    });
+                  })()}
+                </svg>
+
+                {/* Legend */}
+                <div className="grid grid-cols-2 gap-x-6 gap-y-2 w-full">
+                  {Object.entries(pathwayCounts).map(([pathway, count], index) => {
+                    const colors = ['#6366f1', '#8b5cf6', '#ec4899', '#f59e0b'];
+                    return (
+                      <div key={pathway} className="flex items-center gap-2">
+                        <div
+                          className="w-3 h-3 rounded-sm flex-shrink-0"
+                          style={{ backgroundColor: colors[index] }}
+                        ></div>
+                        <span className="text-xs font-medium text-[rgb(var(--color-text-primary))] truncate">
+                          {pathway.replace('UX Designer', 'Designer')} ({count})
+                        </span>
+                      </div>
+                    );
+                  })}
                 </div>
               </div>
             </div>
