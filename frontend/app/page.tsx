@@ -55,7 +55,7 @@ export default function HomePage() {
 
             <div className="grid md:grid-cols-2 gap-[var(--space-8)] max-w-4xl mx-auto">
               {/* Staff Card */}
-              <Link href="/staff?userId=staff-1" className="group block">
+              <Link href="/staff?userId=staff-0" className="group block">
                 <Card className="h-full hover:shadow-[var(--shadow-lg)] transition-all duration-300 bg-[rgb(var(--color-surface))] overflow-hidden relative cursor-pointer min-h-[280px] flex items-center justify-center">
                   <CardHeader className="text-center relative px-6">
                     <div className="mb-[var(--space-4)] flex justify-center">

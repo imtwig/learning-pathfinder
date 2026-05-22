@@ -6,6 +6,15 @@ import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 
 const FAKE_STAFF_LIST = [
+  // Demo User
+  {
+    id: 'staff-0',
+    name: 'Demo User',
+    email: 'demo.user@example.com',
+    currentLevel: 0,
+    pathway: 'UX Designer',
+    preSchemaCompletion: 0, // Demo user with no progress
+  },
   // Designers
   {
     id: 'staff-1',

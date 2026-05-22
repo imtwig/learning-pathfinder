@@ -91,7 +91,15 @@ function StaffDashboardContent() {
 
   // Initialize pre-schema statuses based on userId
   const getInitialPreSchemaStatuses = () => {
-    if (userId === 'staff-1') {
+    if (userId === 'staff-0') {
+      // Demo User: all steps at "Not Yet"
+      return {
+        '1': 'Not Yet',
+        '2': 'Not Yet',
+        '3': 'Not Yet',
+        '4': 'Not Yet',
+      };
+    } else if (userId === 'staff-1') {
       // John Tan: completed step 3, pending emplacement on step 4
       return {
         '1': 'Completed',
@@ -129,7 +137,7 @@ function StaffDashboardContent() {
   // Reset pre-schema statuses when userId changes
   useEffect(() => {
     setPreSchemaStatuses(getInitialPreSchemaStatuses());
-    setStep3SampleCertificate(userId === 'staff-1' || userId === 'staff-2');
+    setStep3SampleCertificate(userId === 'staff-1' || userId === 'staff-2'); // Only John and Sarah have certificates
     setStep3UploadedFile(null);
   }, [userId]);
   const [endorsements, setEndorsements] = useState<{[key: string]: string}>({});
