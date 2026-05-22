@@ -57,8 +57,9 @@ const FAKE_STAFF_LIST = [
     id: 'staff-7',
     name: 'Kevin Lee',
     email: 'kevin.lee@example.com',
-    currentLevel: 1,
+    currentLevel: 0,
     pathway: 'Product Manager',
+    preSchemaCompletion: 0,
   },
   {
     id: 'staff-8',
@@ -94,8 +95,9 @@ const FAKE_STAFF_LIST = [
     id: 'staff-12',
     name: 'Jessica Tan',
     email: 'jessica.tan@example.com',
-    currentLevel: 1,
+    currentLevel: 0,
     pathway: 'Product Ops',
+    preSchemaCompletion: 0,
   },
   {
     id: 'staff-13',
@@ -131,8 +133,9 @@ const FAKE_STAFF_LIST = [
     id: 'staff-17',
     name: 'Melissa Wong',
     email: 'melissa.wong@example.com',
-    currentLevel: 1,
+    currentLevel: 0,
     pathway: 'Software Engineer',
+    preSchemaCompletion: 0,
   },
   {
     id: 'staff-18',
