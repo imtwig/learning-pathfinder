@@ -844,7 +844,7 @@ function StaffDashboardContent() {
                                     </Button>
                                   )}
 
-                                  {!isManagerView && step.id === '2' && (
+                                  {!isManagerView && step.id === '2' && preSchemaStatuses['2'] === 'Not Yet' && (
                                     <Button
                                       onClick={handleTakeAssessmentClick}
                                       disabled={preSchemaStatuses['1'] !== 'Completed'}
