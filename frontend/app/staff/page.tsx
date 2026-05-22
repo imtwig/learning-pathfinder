@@ -879,7 +879,7 @@ function StaffDashboardContent() {
                                   ${level.id === currentLevel
                                     ? 'bg-[rgb(34,197,94)] text-white shadow-lg ring-4 ring-[rgb(34,197,94)]/20'
                                     : level.id < currentLevel
-                                    ? 'bg-[rgb(22,163,74)] text-white shadow-md'
+                                    ? 'bg-[rgb(21,128,61)] text-white shadow-md'
                                     : 'bg-[rgb(var(--color-neutral-200))] text-[rgb(var(--color-text-muted))] shadow-sm'
                                   }
                                   group-hover:scale-105 cursor-pointer
@@ -896,7 +896,7 @@ function StaffDashboardContent() {
                               className="text-[10px] sm:text-xs font-medium text-center whitespace-nowrap cursor-pointer"
                             >
                               <p className={`
-                                ${level.id === currentLevel ? 'text-[rgb(34,197,94)] font-semibold' : level.id < currentLevel ? 'text-[rgb(22,163,74)]' : 'text-[rgb(var(--color-text-muted))]'}
+                                ${level.id === currentLevel ? 'text-[rgb(34,197,94)] font-semibold' : level.id < currentLevel ? 'text-[rgb(21,128,61)]' : 'text-[rgb(var(--color-text-muted))]'}
                               `}>
                                 {level.id === 0 ? 'Pre-Schema' : `Lvl ${level.label}`}
                               </p>
@@ -916,7 +916,7 @@ function StaffDashboardContent() {
                             <div className="flex items-center -mt-6">
                               <div className={`
                                 h-0.5 w-8 sm:w-12 transition-colors duration-300
-                                ${level.id < currentLevel ? 'bg-[rgb(22,163,74)]' : 'bg-[rgb(var(--color-neutral-300))]'}
+                                ${level.id < currentLevel ? 'bg-[rgb(21,128,61)]' : 'bg-[rgb(var(--color-neutral-300))]'}
                               `}></div>
                             </div>
                           )}
