@@ -780,7 +780,7 @@ function StaffDashboardContent() {
                           href="https://appraise.tech.gov.sg/schemas/role/cmnd18pco001o0clbcz1vqx1f"
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="bg-[rgb(var(--color-primary-600))] hover:bg-[rgb(var(--color-primary-700))] text-white shadow-sm h-8 px-2.5 inline-flex items-center justify-center text-sm font-medium rounded-lg transition-all shrink-0"
+                          className="bg-[rgb(var(--color-neutral-600))] hover:bg-[rgb(var(--color-neutral-700))] text-white shadow-sm h-8 px-2.5 inline-flex items-center justify-center text-sm font-medium rounded-lg transition-all shrink-0"
                         >
                           See Schema in Appraise
                         </a>
