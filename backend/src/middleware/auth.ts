@@ -1,11 +1,11 @@
 import { Request, Response, NextFunction } from 'express';
-import { UserRole } from '@prisma/client';
+import prisma from '../services/prisma.js';
 import { UnauthorizedError, ForbiddenError } from '../utils/errors.js';
 
 // Mock authenticate is imported from mockAuth.ts
 export { mockAuthenticate } from './mockAuth.js';
 
-export const authorize = (...allowedRoles: UserRole[]) => {
+export const authorize = (...allowedRoles: string[]) => {
   return (req: Request, res: Response, next: NextFunction) => {
     if (!req.user) {
       return next(new UnauthorizedError('User not authenticated'));

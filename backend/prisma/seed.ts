@@ -32,6 +32,19 @@ async function main() {
     },
   });
 
+  const demoStaffUser = await prisma.user.upsert({
+    where: { email: 'demo@example.com' },
+    update: {},
+    create: {
+      id: 'staff-0',
+      clerkUserId: 'clerk_staff_0',
+      email: 'demo@example.com',
+      firstName: 'Demo',
+      lastName: 'User',
+      role: 'STAFF',
+    },
+  });
+
   const staffUser = await prisma.user.upsert({
     where: { email: 'staff@example.com' },
     update: {},
@@ -45,7 +58,7 @@ async function main() {
     },
   });
 
-  console.log('✓ Created users:', { admin: adminUser.email, manager: managerUser.email, staff: staffUser.email });
+  console.log('✓ Created users:', { admin: adminUser.email, manager: managerUser.email, demo: demoStaffUser.email, staff: staffUser.email });
 
   // Create a Design pathway
   const designPathway = await prisma.pathway.upsert({
@@ -409,6 +422,19 @@ async function main() {
     },
   });
 
+  const demoPathwayAssignment = await prisma.pathwayAssignment.upsert({
+    where: { id: 'assignment-demo-0' },
+    update: {},
+    create: {
+      id: 'assignment-demo-0',
+      userId: demoStaffUser.id,
+      pathwayId: designPathway.id,
+      schemaLevelId: preSchemaLevel.id,
+      assignedBy: adminUser.id,
+      status: 'ACTIVE',
+    },
+  });
+
   console.log('✓ Assigned staff to pathway');
 
   // Create user progress for Pre-Schema steps
@@ -466,6 +492,27 @@ async function main() {
     });
   }
 
+  for (const step of [step1, step2, step3]) {
+    const demoProgress = await prisma.userProgress.findFirst({
+      where: {
+        userId: demoStaffUser.id,
+        pathwayAssignmentId: demoPathwayAssignment.id,
+        preSchemaStepId: step.id,
+      },
+    });
+
+    if (!demoProgress) {
+      await prisma.userProgress.create({
+        data: {
+          userId: demoStaffUser.id,
+          pathwayAssignmentId: demoPathwayAssignment.id,
+          preSchemaStepId: step.id,
+          status: 'NOT_STARTED',
+        },
+      });
+    }
+  }
+
   console.log('✓ Created user progress records');
 
   // Assign manager to staff
@@ -480,6 +527,24 @@ async function main() {
     await prisma.managerAssignment.create({
       data: {
         staffUserId: staffUser.id,
+        managerUserId: managerUser.id,
+        isPrimary: true,
+        assignedBy: adminUser.id,
+      },
+    });
+  }
+
+  const existingDemoAssignment = await prisma.managerAssignment.findFirst({
+    where: {
+      staffUserId: demoStaffUser.id,
+      managerUserId: managerUser.id,
+      endedAt: null,
+    },
+  });
+  if (!existingDemoAssignment) {
+    await prisma.managerAssignment.create({
+      data: {
+        staffUserId: demoStaffUser.id,
         managerUserId: managerUser.id,
         isPrimary: true,
         assignedBy: adminUser.id,
