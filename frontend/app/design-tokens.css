@@ -121,7 +121,7 @@
   --color-info-900: 12 74 110;
 
   /* Surface Colors */
-  --color-background: var(--color-neutral-0);
+  --color-background: var(--color-neutral-50);
   --color-surface: var(--color-neutral-0);
   --color-surface-secondary: var(--color-neutral-100);
   --color-border: var(--color-neutral-200);

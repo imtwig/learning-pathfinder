@@ -329,7 +329,7 @@ export default function ManagerDashboard() {
       <div className="container mx-auto px-4 sm:px-[var(--space-6)] py-6 sm:py-[var(--space-12)] max-w-7xl">
         {/* Header */}
         <header className="mb-6 sm:mb-[var(--space-8)]">
-          <h1 className="font-serif text-2xl sm:text-[length:var(--text-4xl)] font-bold leading-[1.18] sm:leading-[1.14] text-[rgb(var(--color-text-primary))]">
+          <h1 className="font-serif text-2xl sm:text-[length:var(--text-4xl)] font-bold leading-[1.2] sm:leading-[1.22] text-[rgb(var(--color-text-primary))]">
             Manager / Practice Lead Dashboard
           </h1>
         </header>

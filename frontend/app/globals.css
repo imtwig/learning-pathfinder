@@ -7,7 +7,7 @@
 @layer base {
   :root {
     /* Academic/Editorial Theme - Warm, refined, sophisticated */
-    --background: 255 255 255;   /* white */
+    --background: 250 249 246;   /* warm cream */
     --foreground: 28 24 19;      /* deep charcoal */
     --card: 255 255 255;         /* clean white surface */
     --card-foreground: 28 24 19;
@@ -39,11 +39,13 @@
   html {
     @apply font-sans;
     background-color: rgb(var(--background));
+    background-image: var(--paper-texture);
     min-height: 100%;
     min-width: 100%;
   }
   body {
     background-color: rgb(var(--background));
+    background-image: var(--paper-texture);
     color: rgb(var(--foreground));
     min-height: 100vh;
     min-width: 100%;
@@ -62,22 +64,18 @@
 
   /* Viewport background layer - applied to html to cover overscroll */
   html::before {
-    content: '';
-    position: fixed;
-    top: -100vh;
-    left: 0;
-    width: 100%;
-    height: 300vh;
-    background-image: none;
-    background-color: rgb(var(--background));
-    opacity: 1;
-    pointer-events: none;
-    z-index: -1;
+    content: none;
   }
 
   body > * {
     position: relative;
     z-index: 1;
+  }
+
+  nav [data-slot="button"],
+  nav [data-slot="button"]:hover,
+  nav [data-slot="button"][aria-expanded="true"] {
+    background-color: white !important;
   }
 
   @keyframes fadeInUp {

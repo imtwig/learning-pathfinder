@@ -709,7 +709,7 @@ function StaffDashboardContent() {
           <div className="bg-[rgb(var(--color-surface))] border-2 border-[rgb(var(--color-border))] rounded-xl sm:rounded-2xl p-4 sm:p-[var(--space-8)] shadow-[var(--shadow-lg)] overflow-visible">
             <div className="mb-4 sm:mb-[var(--space-6)] flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 overflow-visible">
               <div className="flex-1">
-                <h2 className="font-serif text-2xl sm:text-[length:var(--text-4xl)] font-bold text-[rgb(var(--color-text-primary))]">
+                <h2 className="font-serif text-2xl sm:text-[length:var(--text-4xl)] font-bold leading-[1.2] sm:leading-[1.22] text-[rgb(var(--color-text-primary))]">
                   {staffName ? `${staffName.split(' ')[0]}'s Progress` : user?.firstName ? `${user.firstName}'s Progress` : 'Career Progression Pathway'}
                 </h2>
               </div>
