@@ -302,7 +302,7 @@ export default function ManagerDashboard() {
             <h3 className="font-serif text-xl font-bold text-[rgb(var(--color-text-primary))] mb-6">Team Level Distribution</h3>
             <div className="flex items-end justify-between gap-2 h-48">
               {[
-                { label: 'Pre-Schema', count: levelCounts.preSchema, color: 'rgb(156, 163, 175)' },
+                { label: 'Pre', count: levelCounts.preSchema, color: 'rgb(156, 163, 175)' },
                 { label: 'L1', count: levelCounts.level1, color: 'rgb(99, 102, 241)' },
                 { label: 'L2', count: levelCounts.level2, color: 'rgb(139, 92, 246)' },
                 { label: 'L3', count: levelCounts.level3, color: 'rgb(236, 72, 153)' },
