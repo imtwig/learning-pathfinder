@@ -867,26 +867,26 @@ function StaffDashboardContent() {
                     <>
                       {visibleLevels.map((level, index) => (
                         <React.Fragment key={level.id}>
-                          <div className="flex flex-col items-center gap-2">
+                          <div className="flex flex-col items-center gap-2 relative">
                             <button
                               onClick={() => setExpandedLevel(level.id)}
                               className="group"
                             >
                               <div
                                 className={`
-                                  rounded-full inline-flex items-center justify-center font-serif font-bold
+                                  w-12 h-12 sm:w-14 sm:h-14 rounded-full inline-flex items-center justify-center font-serif font-bold text-base sm:text-lg
                                   transition-all duration-300
                                   ${level.id === currentLevel
-                                    ? 'w-14 h-14 sm:w-16 sm:h-16 bg-[rgb(34,197,94)] text-white shadow-lg ring-4 ring-[rgb(34,197,94)]/20'
+                                    ? 'bg-[rgb(34,197,94)] text-white shadow-lg ring-4 ring-[rgb(34,197,94)]/20'
                                     : level.id < currentLevel
-                                    ? 'w-10 h-10 sm:w-12 sm:h-12 bg-[rgb(22,163,74)] text-white shadow-md'
-                                    : 'w-10 h-10 sm:w-12 sm:h-12 bg-[rgb(var(--color-neutral-200))] text-[rgb(var(--color-text-muted))] shadow-sm'
+                                    ? 'bg-[rgb(22,163,74)] text-white shadow-md'
+                                    : 'bg-[rgb(var(--color-neutral-200))] text-[rgb(var(--color-text-muted))] shadow-sm'
                                   }
                                   group-hover:scale-105 cursor-pointer
                                 `}
                                 style={{ lineHeight: '1' }}
                               >
-                                <span className={level.id === currentLevel ? 'text-lg sm:text-xl' : 'text-base sm:text-lg'}>
+                                <span>
                                   {level.id === 0 ? '0' : level.label}
                                 </span>
                               </div>
@@ -903,7 +903,7 @@ function StaffDashboardContent() {
                             </button>
                             {/* Active Level Indicator Triangle */}
                             {expandedLevel === level.id && (
-                              <div className="mt-1">
+                              <div className="absolute -bottom-3">
                                 <svg width="8" height="6" viewBox="0 0 8 6" fill="none">
                                   <path d="M4 0L8 6H0L4 0Z" fill="rgb(34, 197, 94)" />
                                 </svg>
@@ -952,7 +952,7 @@ function StaffDashboardContent() {
                           {remainingLevels.map((level, index) => (
                             <React.Fragment key={level.id}>
                               <div
-                                className={`flex flex-col items-center gap-2 ${isCollapsing ? 'animate-glideOutDown' : 'animate-glideInUp'}`}
+                                className={`flex flex-col items-center gap-2 relative ${isCollapsing ? 'animate-glideOutDown' : 'animate-glideInUp'}`}
                                 style={{ animationDelay: isCollapsing ? `${(remainingLevels.length - index - 1) * 50}ms` : `${index * 60}ms` }}
                               >
                                 <button
@@ -961,7 +961,7 @@ function StaffDashboardContent() {
                                 >
                                   <div
                                     className={`
-                                      w-10 h-10 sm:w-12 sm:h-12 rounded-full inline-flex items-center justify-center font-serif font-bold text-base sm:text-lg
+                                      w-12 h-12 sm:w-14 sm:h-14 rounded-full inline-flex items-center justify-center font-serif font-bold text-base sm:text-lg
                                       transition-all duration-300 shadow-[var(--shadow-md)]
                                       bg-[rgb(var(--color-neutral-200))] text-[rgb(var(--color-text-muted))]
                                       group-hover:scale-105 cursor-pointer
@@ -981,7 +981,7 @@ function StaffDashboardContent() {
                                 </button>
                                 {/* Active Level Indicator Triangle */}
                                 {expandedLevel === level.id && (
-                                  <div className="mt-1">
+                                  <div className="absolute -bottom-3">
                                     <svg width="8" height="6" viewBox="0 0 8 6" fill="none">
                                       <path d="M4 0L8 6H0L4 0Z" fill="rgb(34, 197, 94)" />
                                     </svg>
