@@ -338,8 +338,9 @@ function StaffDashboardContent() {
       // Transform schema levels from API into the format needed for the UI
       if (pathwayData.data?.pathway?.schemaLevels) {
         const transformedLevels = pathwayData.data.pathway.schemaLevels.map((level: any, index: number) => {
-          // Use DEFAULT_LEVELS for name and description to ensure correct content
-          const defaultLevel = DEFAULT_LEVELS.find(dl => dl.id === level.levelOrder);
+          // Use appropriate levels array based on pathway
+          const levelsArray = selectedPathway === 'Product Manager' ? PRODUCT_MANAGER_LEVELS : UX_DESIGNER_LEVELS;
+          const defaultLevel = levelsArray.find(dl => dl.id === level.levelOrder);
           return {
             id: level.levelOrder,
             name: defaultLevel?.name || level.name,
