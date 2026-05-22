@@ -651,8 +651,8 @@ function StaffDashboardContent() {
 
         {/* Career Progression Header */}
         <header className="mb-6 sm:mb-[var(--space-12)] animate-fadeInUp">
-          <div className="bg-[rgb(var(--color-surface))] rounded-xl sm:rounded-2xl p-4 sm:p-[var(--space-8)] shadow-[var(--shadow-lg)]">
-            <div className="mb-4 sm:mb-[var(--space-6)] flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+          <div className="bg-[rgb(var(--color-surface))] rounded-xl sm:rounded-2xl p-4 sm:p-[var(--space-8)] shadow-[var(--shadow-lg)] overflow-visible">
+            <div className="mb-4 sm:mb-[var(--space-6)] flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 overflow-visible">
               <div className="flex-1">
                 <h2 className="font-serif text-2xl sm:text-[length:var(--text-4xl)] font-bold text-[rgb(var(--color-text-primary))]">
                   Career Progression Pathway
