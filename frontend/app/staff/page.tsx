@@ -15,7 +15,7 @@ import { createPortal } from 'react-dom';
 
 // LEVELS will be populated from the API data
 const UX_DESIGNER_LEVELS = [
-  { id: 0, name: 'Pre-Schema', label: '0', description: 'Complete prerequisite requirements with manager approval', color: 'rgb(var(--color-neutral-500))' },
+  { id: 0, name: 'Pre-Schema Designer', label: '0', description: 'Complete prerequisite requirements with manager approval', color: 'rgb(var(--color-neutral-500))' },
   { id: 1, name: 'Designer (I)', label: '1', description: "As an L1 Designer (I), you are a supporting-level player honing your craft and working to understand GovTech's organisational context, design standards, and workflows.", color: 'rgb(var(--color-primary-600))' },
   { id: 2, name: 'Designer (II)', label: '2', description: "As an L2 Designer (II), you are a key contributing member of the design team, applying your skills to create user-centered solutions and working with autonomy.", color: 'rgb(var(--color-primary-600))' },
   { id: 3, name: 'Senior Designer', label: '3', description: "As an L3 Senior Designer, you are an experienced practitioner and emerging leader who elevates standards of design practice and collaboration. You solve problems creatively, going beyond best practices, and significantly influence your team's processes, its output, and its stakeholder relationships.", color: 'rgb(var(--color-primary-600))' },
@@ -26,7 +26,7 @@ const UX_DESIGNER_LEVELS = [
 ];
 
 const PRODUCT_MANAGER_LEVELS = [
-  { id: 0, name: 'Pre-Schema', label: '0', description: 'Complete prerequisite requirements with manager approval', color: 'rgb(var(--color-neutral-500))' },
+  { id: 0, name: 'Pre-Schema Product Manager', label: '0', description: 'Complete prerequisite requirements with manager approval', color: 'rgb(var(--color-neutral-500))' },
   { id: 1, name: 'Product Manager (I)', label: '1', description: "As an L1 Product Manager (I), you are an entry-level position designed for individuals new (0-2 years of experience) to product management.", color: 'rgb(var(--color-primary-600))' },
   { id: 2, name: 'Product Manager (II)', label: '2', description: "As an L2 Product Manager (II), you are responsible for owning a product or feature area and driving its success from conception to launch.", color: 'rgb(var(--color-primary-600))' },
   { id: 3, name: 'Senior Product Manager', label: '3', description: "As an L3 Senior Product Manager, you are expected to lead more complex products or initiatives, demonstrating a high degree of ownership and strategic thinking.", color: 'rgb(var(--color-primary-600))' },
@@ -37,7 +37,7 @@ const PRODUCT_MANAGER_LEVELS = [
 ];
 
 const PRODUCT_OPS_LEVELS = [
-  { id: 0, name: 'Pre-Schema', label: '0', description: 'Complete prerequisite requirements with manager approval', color: 'rgb(var(--color-neutral-500))' },
+  { id: 0, name: 'Pre-Schema Product Ops Specialist', label: '0', description: 'Complete prerequisite requirements with manager approval', color: 'rgb(var(--color-neutral-500))' },
   { id: 1, name: 'Product Ops Specialist (I)', label: '1', description: "As an L1 Product Ops Specialist (I), you are an entry-level position designed for individuals new to product operations.", color: 'rgb(var(--color-primary-600))' },
   { id: 2, name: 'Product Ops Specialist (II)', label: '2', description: "As an L2 Product Ops Specialist (II), you are responsible for managing operational aspects of products or feature areas and driving their success from implementation to ongoing support.", color: 'rgb(var(--color-primary-600))' },
   { id: 3, name: 'Senior Product Ops Specialist', label: '3', description: "As an L3 Senior Product Ops Specialist, you are an expert operator able to achieve success in complex and ambiguous spaces.", color: 'rgb(var(--color-primary-600))' },
@@ -48,7 +48,7 @@ const PRODUCT_OPS_LEVELS = [
 ];
 
 const SOFTWARE_ENGINEER_LEVELS = [
-  { id: 0, name: 'Pre-Schema', label: '0', description: 'Complete prerequisite requirements with manager approval', color: 'rgb(var(--color-neutral-500))' },
+  { id: 0, name: 'Pre-Schema Software Engineer', label: '0', description: 'Complete prerequisite requirements with manager approval', color: 'rgb(var(--color-neutral-500))' },
   { id: 1, name: 'Software Engineer (I)', label: '1', description: "As an L1 Software Engineer (I), your primary focus is on building foundational software development skills.", color: 'rgb(var(--color-primary-600))' },
   { id: 2, name: 'Software Engineer (II)', label: '2', description: "As an L2 Software Engineer (II), your scope includes contributing to multiple components or features within your team, with growing independence in driving development.", color: 'rgb(var(--color-primary-600))' },
   { id: 3, name: 'Senior Software Engineer', label: '3', description: "As an L3 Senior Software Engineer, you are a trusted technical contributor who consistently delivers high-quality, maintainable, and impactful features and components within your team.", color: 'rgb(var(--color-primary-600))' },
@@ -280,7 +280,7 @@ function StaffDashboardContent() {
   };
 
   const pathwayOptions = [
-    { value: 'UX Designer', label: 'UX Designer Pathway' },
+    { value: 'UX Designer', label: 'Designer Pathway' },
     { value: 'Product Manager', label: 'Product Manager Pathway' },
     { value: 'Product Ops', label: 'Product Ops Pathway' },
     { value: 'Software Engineer', label: 'Software Engineer Pathway' },
