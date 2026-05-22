@@ -363,13 +363,12 @@ export default function ManagerDashboard() {
                       <div
                         className={`w-full rounded-t-lg transition-all ${
                           isActive
-                            ? 'ring-4 ring-[rgb(var(--color-primary-500))]'
-                            : 'group-hover:ring-2 group-hover:ring-[rgb(var(--color-primary-400))] group-hover:ring-opacity-50'
+                            ? 'ring-4 ring-[rgb(5,150,105)]'
+                            : 'group-hover:ring-2 group-hover:ring-[rgb(5,150,105)] group-hover:ring-opacity-50'
                         }`}
                         style={{
                           height: count > 0 ? `${Math.max(height, 12.5)}%` : '0%',
                           backgroundColor: color,
-                          boxShadow: isActive ? '0 0 20px rgba(99, 102, 241, 0.5)' : undefined,
                         }}
                       ></div>
                     </div>
