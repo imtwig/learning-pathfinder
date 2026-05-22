@@ -204,12 +204,41 @@ const FAKE_STAFF_LIST = [
 
 export default function ManagerDashboard() {
   const [searchQuery, setSearchQuery] = useState('');
+  const [activeFilter, setActiveFilter] = useState<{ type: 'level' | 'step' | 'pathway' | null, value: any }>({ type: null, value: null });
 
-  const filteredStaff = FAKE_STAFF_LIST.filter(
+  const handleFilterClick = (type: 'level' | 'step' | 'pathway', value: any) => {
+    if (activeFilter.type === type && activeFilter.value === value) {
+      // Unclick - clear filter
+      setActiveFilter({ type: null, value: null });
+    } else {
+      // Set new filter
+      setActiveFilter({ type, value });
+    }
+  };
+
+  let filteredStaff = FAKE_STAFF_LIST.filter(
     (staff) =>
       staff.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
       staff.email.toLowerCase().includes(searchQuery.toLowerCase())
   );
+
+  // Apply active filter
+  if (activeFilter.type === 'level') {
+    filteredStaff = filteredStaff.filter(s => s.currentLevel === activeFilter.value);
+  } else if (activeFilter.type === 'step') {
+    // Filter to pre-schema (level 0) and specific step
+    const stepPercentages: { [key: string]: number } = {
+      'step1': 0,
+      'step2': 25,
+      'step3': 50,
+      'step4': 75,
+    };
+    filteredStaff = filteredStaff.filter(s =>
+      s.currentLevel === 0 && (s.preSchemaCompletion || 0) === stepPercentages[activeFilter.value]
+    );
+  } else if (activeFilter.type === 'pathway') {
+    filteredStaff = filteredStaff.filter(s => s.pathway === activeFilter.value);
+  }
 
   // Calculate statistics
   const levelCounts = {
@@ -310,26 +339,32 @@ export default function ManagerDashboard() {
             <h3 className="font-serif text-xl font-bold text-[rgb(var(--color-text-primary))] mb-6">Team Level Distribution</h3>
             <div className="flex items-end justify-between gap-2 h-48">
               {[
-                { label: 'Pre', count: levelCounts.preSchema, color: 'rgb(156, 163, 175)' },
-                { label: 'L1', count: levelCounts.level1, color: 'rgb(99, 102, 241)' },
-                { label: 'L2', count: levelCounts.level2, color: 'rgb(139, 92, 246)' },
-                { label: 'L3', count: levelCounts.level3, color: 'rgb(236, 72, 153)' },
-                { label: 'L4', count: levelCounts.level4, color: 'rgb(245, 158, 11)' },
-                { label: 'L5', count: levelCounts.level5, color: 'rgb(99, 102, 241)' },
-                { label: 'L6', count: levelCounts.level6, color: 'rgb(139, 92, 246)' },
-                { label: 'L7', count: levelCounts.level7, color: 'rgb(236, 72, 153)' },
-              ].map(({ label, count, color }) => {
-                const maxCount = Math.max(...Object.values(levelCounts), 1); // Ensure at least 1 to avoid division by zero
+                { label: 'Pre', level: 0, count: levelCounts.preSchema, color: 'rgb(156, 163, 175)' },
+                { label: 'L1', level: 1, count: levelCounts.level1, color: 'rgb(99, 102, 241)' },
+                { label: 'L2', level: 2, count: levelCounts.level2, color: 'rgb(139, 92, 246)' },
+                { label: 'L3', level: 3, count: levelCounts.level3, color: 'rgb(236, 72, 153)' },
+                { label: 'L4', level: 4, count: levelCounts.level4, color: 'rgb(245, 158, 11)' },
+                { label: 'L5', level: 5, count: levelCounts.level5, color: 'rgb(99, 102, 241)' },
+                { label: 'L6', level: 6, count: levelCounts.level6, color: 'rgb(139, 92, 246)' },
+                { label: 'L7', level: 7, count: levelCounts.level7, color: 'rgb(236, 72, 153)' },
+              ].map(({ label, level, count, color }) => {
+                const maxCount = Math.max(...Object.values(levelCounts), 1);
                 const height = (count / maxCount) * 100;
+                const isActive = activeFilter.type === 'level' && activeFilter.value === level;
                 return (
-                  <div key={label} className="flex-1 flex flex-col items-center gap-2">
+                  <div
+                    key={label}
+                    className="flex-1 flex flex-col items-center gap-2 cursor-pointer group"
+                    onClick={() => handleFilterClick('level', level)}
+                  >
                     <div className="w-full flex flex-col items-center justify-end" style={{ height: '160px' }}>
                       <span className="text-sm font-bold text-[rgb(var(--color-text-primary))] mb-1">{count}</span>
                       <div
-                        className="w-full rounded-t-lg"
+                        className={`w-full rounded-t-lg ${isActive ? 'ring-4 ring-[rgb(var(--color-primary-500))] ring-opacity-50' : 'group-hover:ring-2 group-hover:ring-[rgb(var(--color-primary-400))] group-hover:ring-opacity-30'}`}
                         style={{
                           height: count > 0 ? `${Math.max(height, 12.5)}%` : '0%',
                           backgroundColor: color,
+                          boxShadow: isActive ? '0 0 20px rgba(var(--color-primary-500), 0.4)' : undefined,
                         }}
                       ></div>
                     </div>
@@ -351,34 +386,46 @@ export default function ManagerDashboard() {
                   { step: 'Step 2', stepKey: 'step2', count: preSchemaSteps.step2, staffList: staffAtStep.step2 },
                   { step: 'Step 3', stepKey: 'step3', count: preSchemaSteps.step3, staffList: staffAtStep.step3 },
                   { step: 'Step 4', stepKey: 'step4', count: preSchemaSteps.step4, staffList: staffAtStep.step4 },
-                ].map(({ step, stepKey, count, staffList }) => (
-                  <div key={step}>
-                    <div className="flex items-center justify-between mb-2">
-                      <span className="text-sm font-medium text-[rgb(var(--color-text-primary))]">Currently at {step}</span>
-                      <span className="text-base font-bold text-[rgb(var(--color-text-primary))]">{count}</span>
+                ].map(({ step, stepKey, count, staffList }) => {
+                  const isActive = activeFilter.type === 'step' && activeFilter.value === stepKey;
+                  return (
+                    <div
+                      key={step}
+                      className={`p-4 rounded-lg cursor-pointer transition-all ${
+                        isActive
+                          ? 'bg-[rgb(var(--color-primary-50))] ring-2 ring-[rgb(var(--color-primary-400))] shadow-lg'
+                          : 'bg-[rgb(var(--color-neutral-50))] hover:bg-[rgb(var(--color-neutral-100))] hover:ring-2 hover:ring-[rgb(var(--color-primary-200))]'
+                      }`}
+                      onClick={() => handleFilterClick('step', stepKey)}
+                    >
+                      <div className="flex items-center justify-between mb-2">
+                        <span className="text-sm font-medium text-[rgb(var(--color-text-primary))]">Currently at {step}</span>
+                        <span className="text-base font-bold text-[rgb(var(--color-text-primary))]">{count}</span>
+                      </div>
+                      <div className="flex items-center gap-1 flex-wrap">
+                        {staffList.map((staff) => (
+                          <Link
+                            key={staff.id}
+                            href={`/staff?userId=${staff.id}&managerId=manager-1&managerName=Sarah Manager&pathway=${encodeURIComponent(staff.pathway)}&level=${staff.currentLevel}&staffName=${encodeURIComponent(staff.name)}`}
+                            className="group relative"
+                            onClick={(e) => e.stopPropagation()}
+                          >
+                            <div
+                              className="w-3 h-3 rounded-full bg-[rgb(34,197,94)] hover:bg-[rgb(22,163,74)] cursor-pointer transition-colors"
+                              title={staff.name}
+                            ></div>
+                            <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 bg-[rgb(var(--color-text-primary))] text-white text-xs rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-10">
+                              {staff.name}
+                            </div>
+                          </Link>
+                        ))}
+                        {count === 0 && (
+                          <span className="text-xs text-[rgb(var(--color-text-muted))]">No one at this step</span>
+                        )}
+                      </div>
                     </div>
-                    <div className="flex items-center gap-1 flex-wrap">
-                      {staffList.map((staff) => (
-                        <Link
-                          key={staff.id}
-                          href={`/staff?userId=${staff.id}&managerId=manager-1&managerName=Sarah Manager&pathway=${encodeURIComponent(staff.pathway)}&level=${staff.currentLevel}&staffName=${encodeURIComponent(staff.name)}`}
-                          className="group relative"
-                        >
-                          <div
-                            className="w-3 h-3 rounded-full bg-[rgb(34,197,94)] hover:bg-[rgb(22,163,74)] cursor-pointer transition-colors"
-                            title={staff.name}
-                          ></div>
-                          <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 bg-[rgb(var(--color-text-primary))] text-white text-xs rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-10">
-                            {staff.name}
-                          </div>
-                        </Link>
-                      ))}
-                      {count === 0 && (
-                        <span className="text-xs text-[rgb(var(--color-text-muted))]">No one at this step</span>
-                      )}
-                    </div>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
             </div>
 
@@ -426,14 +473,24 @@ export default function ManagerDashboard() {
                         .replace('Product Manager', 'Product Mgr')
                         .replace('Software Engineer', 'Software Eng.');
 
+                      const isActive = activeFilter.type === 'pathway' && activeFilter.value === pathway;
+
                       return (
-                        <g key={pathway}>
+                        <g
+                          key={pathway}
+                          className="cursor-pointer"
+                          onClick={() => handleFilterClick('pathway', pathway)}
+                        >
                           {/* Pie slice */}
                           <path
                             d={`M ${centerX} ${centerY} L ${startX} ${startY} A ${radius} ${radius} 0 ${largeArc} 1 ${endX} ${endY} Z`}
                             fill={colors[index]}
-                            stroke="white"
-                            strokeWidth="2"
+                            stroke={isActive ? 'rgb(var(--color-primary-500))' : 'white'}
+                            strokeWidth={isActive ? '4' : '2'}
+                            className="hover:opacity-80 transition-opacity"
+                            style={{
+                              filter: isActive ? 'drop-shadow(0 0 8px rgba(var(--color-primary-500), 0.5))' : undefined
+                            }}
                           />
                           {/* Label line */}
                           <polyline
@@ -448,7 +505,7 @@ export default function ManagerDashboard() {
                             y={outerY - 6}
                             textAnchor={textAnchor}
                             dominantBaseline="middle"
-                            className="text-xs font-semibold"
+                            className="text-xs font-semibold pointer-events-none"
                             fill="rgb(var(--color-text-primary))"
                           >
                             {displayName}
@@ -458,7 +515,7 @@ export default function ManagerDashboard() {
                             y={outerY + 8}
                             textAnchor={textAnchor}
                             dominantBaseline="middle"
-                            className="text-xs font-bold"
+                            className="text-xs font-bold pointer-events-none"
                             fill="rgb(var(--color-text-primary))"
                           >
                             ({count})
