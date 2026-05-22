@@ -161,6 +161,29 @@ export default function ManagerDashboard() {
       staff.email.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
+  // Calculate statistics
+  const levelCounts = {
+    preSchema: FAKE_STAFF_LIST.filter(s => s.currentLevel === 0).length,
+    level1: FAKE_STAFF_LIST.filter(s => s.currentLevel === 1).length,
+    level2: FAKE_STAFF_LIST.filter(s => s.currentLevel === 2).length,
+  };
+
+  const pathwayCounts = {
+    'UX Designer': FAKE_STAFF_LIST.filter(s => s.pathway === 'UX Designer').length,
+    'Product Manager': FAKE_STAFF_LIST.filter(s => s.pathway === 'Product Manager').length,
+    'Product Ops': FAKE_STAFF_LIST.filter(s => s.pathway === 'Product Ops').length,
+    'Software Engineer': FAKE_STAFF_LIST.filter(s => s.pathway === 'Software Engineer').length,
+  };
+
+  // For demo purposes - simulate pre-schema step completion data
+  // In real app, this would come from API
+  const preSchemaSteps = {
+    step1: 3, // 3 people completed step 1
+    step2: 2, // 2 people completed step 2
+    step3: 1, // 1 person completed step 3
+    step4: 1, // 1 person completed step 4
+  };
+
   return (
     <div className="min-h-screen bg-[rgb(var(--color-background))]">
       {/* Navigation Bar */}
@@ -210,6 +233,131 @@ export default function ManagerDashboard() {
             View and manage your team's learning pathways
           </p>
         </header>
+
+        {/* Dashboard Stats */}
+        <div className="mb-8 space-y-6">
+          {/* Level Distribution */}
+          <div className="bg-[rgb(var(--color-surface))] rounded-xl p-6 shadow-[var(--shadow-sm)]">
+            <h3 className="font-serif text-xl font-bold text-[rgb(var(--color-text-primary))] mb-4">Team Level Distribution</h3>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div className="bg-[rgb(var(--color-neutral-50))] rounded-lg p-4 border-2 border-[rgb(var(--color-border))]">
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-sm font-medium text-[rgb(var(--color-text-secondary))]">Pre-Schema</span>
+                  <span className="text-2xl font-bold text-[rgb(var(--color-text-primary))]">{levelCounts.preSchema}</span>
+                </div>
+                <div className="w-full h-2 bg-[rgb(var(--color-neutral-200))] rounded-full overflow-hidden">
+                  <div
+                    className="h-full bg-[rgb(var(--color-neutral-500))] rounded-full"
+                    style={{ width: `${(levelCounts.preSchema / FAKE_STAFF_LIST.length) * 100}%` }}
+                  ></div>
+                </div>
+              </div>
+              <div className="bg-[rgb(var(--color-primary-50))] rounded-lg p-4 border-2 border-[rgb(var(--color-primary-200))]">
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-sm font-medium text-[rgb(var(--color-text-secondary))]">Level 1</span>
+                  <span className="text-2xl font-bold text-[rgb(var(--color-primary-700))]">{levelCounts.level1}</span>
+                </div>
+                <div className="w-full h-2 bg-[rgb(var(--color-primary-100))] rounded-full overflow-hidden">
+                  <div
+                    className="h-full bg-[rgb(var(--color-primary-600))] rounded-full"
+                    style={{ width: `${(levelCounts.level1 / FAKE_STAFF_LIST.length) * 100}%` }}
+                  ></div>
+                </div>
+              </div>
+              <div className="bg-[rgb(var(--color-accent-50))] rounded-lg p-4 border-2 border-[rgb(var(--color-accent-200))]">
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-sm font-medium text-[rgb(var(--color-text-secondary))]">Level 2</span>
+                  <span className="text-2xl font-bold text-[rgb(var(--color-accent-700))]">{levelCounts.level2}</span>
+                </div>
+                <div className="w-full h-2 bg-[rgb(var(--color-accent-100))] rounded-full overflow-hidden">
+                  <div
+                    className="h-full bg-[rgb(var(--color-accent-600))] rounded-full"
+                    style={{ width: `${(levelCounts.level2 / FAKE_STAFF_LIST.length) * 100}%` }}
+                  ></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            {/* Pathway Distribution */}
+            <div className="bg-[rgb(var(--color-surface))] rounded-xl p-6 shadow-[var(--shadow-sm)]">
+              <h3 className="font-serif text-xl font-bold text-[rgb(var(--color-text-primary))] mb-4">Team by Pathway</h3>
+              <div className="space-y-3">
+                {Object.entries(pathwayCounts).map(([pathway, count]) => (
+                  <div key={pathway}>
+                    <div className="flex items-center justify-between mb-1">
+                      <span className="text-sm font-medium text-[rgb(var(--color-text-primary))]">{pathway}</span>
+                      <span className="text-sm font-semibold text-[rgb(var(--color-text-primary))]">{count}</span>
+                    </div>
+                    <div className="w-full h-2 bg-[rgb(var(--color-neutral-200))] rounded-full overflow-hidden">
+                      <div
+                        className="h-full bg-[rgb(var(--color-primary-600))] rounded-full"
+                        style={{ width: `${(count / FAKE_STAFF_LIST.length) * 100}%` }}
+                      ></div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Pre-Schema Step Progress */}
+            <div className="bg-[rgb(var(--color-surface))] rounded-xl p-6 shadow-[var(--shadow-sm)]">
+              <h3 className="font-serif text-xl font-bold text-[rgb(var(--color-text-primary))] mb-4">Pre-Schema Progress</h3>
+              <p className="text-sm text-[rgb(var(--color-text-secondary))] mb-4">{levelCounts.preSchema} staff members in Pre-Schema</p>
+              <div className="space-y-3">
+                <div>
+                  <div className="flex items-center justify-between mb-1">
+                    <span className="text-sm font-medium text-[rgb(var(--color-text-primary))]">Completed Step 1</span>
+                    <span className="text-sm font-semibold text-[rgb(var(--color-text-primary))]">{preSchemaSteps.step1} / {levelCounts.preSchema}</span>
+                  </div>
+                  <div className="w-full h-2 bg-[rgb(var(--color-neutral-200))] rounded-full overflow-hidden">
+                    <div
+                      className="h-full bg-[rgb(34,197,94)] rounded-full"
+                      style={{ width: `${(preSchemaSteps.step1 / levelCounts.preSchema) * 100}%` }}
+                    ></div>
+                  </div>
+                </div>
+                <div>
+                  <div className="flex items-center justify-between mb-1">
+                    <span className="text-sm font-medium text-[rgb(var(--color-text-primary))]">Completed Step 2</span>
+                    <span className="text-sm font-semibold text-[rgb(var(--color-text-primary))]">{preSchemaSteps.step2} / {levelCounts.preSchema}</span>
+                  </div>
+                  <div className="w-full h-2 bg-[rgb(var(--color-neutral-200))] rounded-full overflow-hidden">
+                    <div
+                      className="h-full bg-[rgb(34,197,94)] rounded-full"
+                      style={{ width: `${(preSchemaSteps.step2 / levelCounts.preSchema) * 100}%` }}
+                    ></div>
+                  </div>
+                </div>
+                <div>
+                  <div className="flex items-center justify-between mb-1">
+                    <span className="text-sm font-medium text-[rgb(var(--color-text-primary))]">Completed Step 3</span>
+                    <span className="text-sm font-semibold text-[rgb(var(--color-text-primary))]">{preSchemaSteps.step3} / {levelCounts.preSchema}</span>
+                  </div>
+                  <div className="w-full h-2 bg-[rgb(var(--color-neutral-200))] rounded-full overflow-hidden">
+                    <div
+                      className="h-full bg-[rgb(34,197,94)] rounded-full"
+                      style={{ width: `${(preSchemaSteps.step3 / levelCounts.preSchema) * 100}%` }}
+                    ></div>
+                  </div>
+                </div>
+                <div>
+                  <div className="flex items-center justify-between mb-1">
+                    <span className="text-sm font-medium text-[rgb(var(--color-text-primary))]">Completed Step 4</span>
+                    <span className="text-sm font-semibold text-[rgb(var(--color-text-primary))]">{preSchemaSteps.step4} / {levelCounts.preSchema}</span>
+                  </div>
+                  <div className="w-full h-2 bg-[rgb(var(--color-neutral-200))] rounded-full overflow-hidden">
+                    <div
+                      className="h-full bg-[rgb(34,197,94)] rounded-full"
+                      style={{ width: `${(preSchemaSteps.step4 / levelCounts.preSchema) * 100}%` }}
+                    ></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
 
         {/* Search Bar */}
         <div className="mb-[var(--space-6)]">
