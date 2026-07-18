@@ -1581,12 +1581,12 @@ function StaffDashboardContent() {
                         </Card>
                       )))}
                     </div>
-                                                                        ) : expandedLevel === 1 ? (
-                    {renderCourses(1)}
-                                    ) : expandedLevel === 2 ? (
-                    {renderCourses(2)}
-                                    ) : expandedLevel === 3 ? (
-                    {renderCourses(3)}
+                  ) : expandedLevel === 1 ? (
+                    renderCourses(1)
+                  ) : expandedLevel === 2 ? (
+                    renderCourses(2)
+                  ) : expandedLevel === 3 ? (
+                    renderCourses(3)
                   ) : expandedLevel === 4 ? (
                     // Level 4 Lead Designer
                     <div className="space-y-[var(--space-6)]">
