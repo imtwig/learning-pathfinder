@@ -305,105 +305,6 @@ const SOFTWARE_ENGINEER_LEVELS = [
     },
   };
 
-  // Helper function to render courses based on selected pathway
-  const renderCourses = (levelNum: number) => {
-    const pathwayCourses = PATHWAY_COURSES[selectedPathway as keyof typeof PATHWAY_COURSES];
-    if (!pathwayCourses) return null;
-    const levelCourses = (pathwayCourses as any)[levelNum];
-    if (!levelCourses) return null;
-
-    const hasCourses = levelCourses.Core.length > 0 || levelCourses.Elective.length > 0;
-    if (!hasCourses) {
-      return (
-        <div className="space-y-[var(--space-6)]">
-          <p className="text-[rgb(var(--color-text-secondary))] text-center py-8">
-            Course information coming soon
-          </p>
-        </div>
-      );
-    }
-
-    return (
-      <div className="space-y-[var(--space-6)]">
-        {/* Core Courses */}
-        {levelCourses.Core.length > 0 && (
-          <div className="mb-[var(--space-6)]">
-            <h4 className="font-serif text-[length:var(--text-xl)] font-bold text-[rgb(var(--color-text-primary))] mb-[var(--space-4)]">
-              Core
-            </h4>
-            <div className="space-y-[var(--space-3)]">
-              {levelCourses.Core.map((course: any, index: number) => (
-                course.url ? (
-                  <a
-                    key={index}
-                    href={course.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-[var(--space-3)] px-[var(--space-4)] py-[var(--space-3)] bg-[rgb(var(--color-surface))] border border-[rgb(var(--color-border))] rounded-lg hover:border-[rgb(var(--color-primary-300))] hover:bg-[rgb(var(--color-primary-50))] transition-all group"
-                  >
-                    <svg className="w-5 h-5 text-[rgb(var(--color-text-muted))] group-hover:text-[rgb(var(--color-primary-600))] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
-                    </svg>
-                    <span className="text-[rgb(var(--color-text-primary))] font-medium group-hover:text-[rgb(var(--color-primary-700))] transition-colors">
-                      {course.title}
-                    </span>
-                  </a>
-                ) : (
-                  <div key={index} className="flex items-center gap-[var(--space-3)] px-[var(--space-4)] py-[var(--space-3)] bg-[rgb(var(--color-neutral-50))] border border-[rgb(var(--color-border))] rounded-lg opacity-75">
-                    <svg className="w-5 h-5 text-[rgb(var(--color-text-muted))]" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                    <span className="text-[rgb(var(--color-text-secondary))] font-medium">
-                      {course.title}
-                    </span>
-                  </div>
-                )
-              ))}
-            </div>
-          </div>
-        )}
-
-        {/* Elective Courses */}
-        {levelCourses.Elective.length > 0 && (
-          <div>
-            <h4 className="font-serif text-[length:var(--text-xl)] font-bold text-[rgb(var(--color-text-primary))] mb-[var(--space-4)]">
-              Electives
-            </h4>
-            <div className="space-y-[var(--space-3)]">
-              {levelCourses.Elective.map((course: any, index: number) => (
-                course.url ? (
-                  <a
-                    key={index}
-                    href={course.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-[var(--space-3)] px-[var(--space-4)] py-[var(--space-3)] bg-[rgb(var(--color-surface))] border border-[rgb(var(--color-border))] rounded-lg hover:border-[rgb(var(--color-primary-300))] hover:bg-[rgb(var(--color-primary-50))] transition-all group"
-                  >
-                    <svg className="w-5 h-5 text-[rgb(var(--color-text-muted))] group-hover:text-[rgb(var(--color-primary-600))] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
-                    </svg>
-                    <span className="text-[rgb(var(--color-text-primary))] font-medium group-hover:text-[rgb(var(--color-primary-700))] transition-colors">
-                      {course.title}
-                    </span>
-                  </a>
-                ) : (
-                  <div key={index} className="flex items-center gap-[var(--space-3)] px-[var(--space-4)] py-[var(--space-3)] bg-[rgb(var(--color-neutral-50))] border border-[rgb(var(--color-border))] rounded-lg opacity-75">
-                    <svg className="w-5 h-5 text-[rgb(var(--color-text-muted))]" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                    <span className="text-[rgb(var(--color-text-secondary))] font-medium">
-                      {course.title}
-                    </span>
-                  </div>
-                )
-              ))}
-            </div>
-          </div>
-        )}
-      </div>
-    );
-  };
-
 
 
 
@@ -815,6 +716,105 @@ function StaffDashboardContent() {
   // Helper function to get courses for a specific level
   const getCoursesForLevel = (levelId: string) => {
     return levelCourses[levelId] || [];
+  };
+
+  // Helper function to render courses based on selected pathway
+  const renderCourses = (levelNum: number) => {
+    const pathwayCourses = PATHWAY_COURSES[selectedPathway as keyof typeof PATHWAY_COURSES];
+    if (!pathwayCourses) return null;
+    const levelCoursesData = (pathwayCourses as any)[levelNum];
+    if (!levelCoursesData) return null;
+
+    const hasCourses = levelCoursesData.Core.length > 0 || levelCoursesData.Elective.length > 0;
+    if (!hasCourses) {
+      return (
+        <div className="space-y-[var(--space-6)]">
+          <p className="text-[rgb(var(--color-text-secondary))] text-center py-8">
+            Course information coming soon
+          </p>
+        </div>
+      );
+    }
+
+    return (
+      <div className="space-y-[var(--space-6)]">
+        {/* Core Courses */}
+        {levelCoursesData.Core.length > 0 && (
+          <div className="mb-[var(--space-6)]">
+            <h4 className="font-serif text-[length:var(--text-xl)] font-bold text-[rgb(var(--color-text-primary))] mb-[var(--space-4)]">
+              Core
+            </h4>
+            <div className="space-y-[var(--space-3)]">
+              {levelCoursesData.Core.map((course: any, index: number) => (
+                course.url ? (
+                  <a
+                    key={index}
+                    href={course.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-[var(--space-3)] px-[var(--space-4)] py-[var(--space-3)] bg-[rgb(var(--color-surface))] border border-[rgb(var(--color-border))] rounded-lg hover:border-[rgb(var(--color-primary-300))] hover:bg-[rgb(var(--color-primary-50))] transition-all group"
+                  >
+                    <svg className="w-5 h-5 text-[rgb(var(--color-text-muted))] group-hover:text-[rgb(var(--color-primary-600))] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+                    </svg>
+                    <span className="text-[rgb(var(--color-text-primary))] font-medium group-hover:text-[rgb(var(--color-primary-700))] transition-colors">
+                      {course.title}
+                    </span>
+                  </a>
+                ) : (
+                  <div key={index} className="flex items-center gap-[var(--space-3)] px-[var(--space-4)] py-[var(--space-3)] bg-[rgb(var(--color-neutral-50))] border border-[rgb(var(--color-border))] rounded-lg opacity-75">
+                    <svg className="w-5 h-5 text-[rgb(var(--color-text-muted))]" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <span className="text-[rgb(var(--color-text-secondary))] font-medium">
+                      {course.title}
+                    </span>
+                  </div>
+                )
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Elective Courses */}
+        {levelCoursesData.Elective.length > 0 && (
+          <div>
+            <h4 className="font-serif text-[length:var(--text-xl)] font-bold text-[rgb(var(--color-text-primary))] mb-[var(--space-4)]">
+              Electives
+            </h4>
+            <div className="space-y-[var(--space-3)]">
+              {levelCoursesData.Elective.map((course: any, index: number) => (
+                course.url ? (
+                  <a
+                    key={index}
+                    href={course.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-[var(--space-3)] px-[var(--space-4)] py-[var(--space-3)] bg-[rgb(var(--color-surface))] border border-[rgb(var(--color-border))] rounded-lg hover:border-[rgb(var(--color-primary-300))] hover:bg-[rgb(var(--color-primary-50))] transition-all group"
+                  >
+                    <svg className="w-5 h-5 text-[rgb(var(--color-text-muted))] group-hover:text-[rgb(var(--color-primary-600))] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+                    </svg>
+                    <span className="text-[rgb(var(--color-text-primary))] font-medium group-hover:text-[rgb(var(--color-primary-700))] transition-colors">
+                      {course.title}
+                    </span>
+                  </a>
+                ) : (
+                  <div key={index} className="flex items-center gap-[var(--space-3)] px-[var(--space-4)] py-[var(--space-3)] bg-[rgb(var(--color-neutral-50))] border border-[rgb(var(--color-border))] rounded-lg opacity-75">
+                    <svg className="w-5 h-5 text-[rgb(var(--color-text-muted))]" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <span className="text-[rgb(var(--color-text-secondary))] font-medium">
+                      {course.title}
+                    </span>
+                  </div>
+                )
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
+    );
   };
 
   const getStatusVariant = (status: string) => {
