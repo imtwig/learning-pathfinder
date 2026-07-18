@@ -52,7 +52,7 @@ export default function HomePage() {
 
             <div className="grid md:grid-cols-3 gap-[var(--space-8)] max-w-6xl mx-auto">
               {/* Informational Card */}
-              <Link href="/informational?userId=staff-0" className="group block">
+              <Link href="/informational/ux-designer" className="group block">
                 <Card className="h-full hover:shadow-[var(--shadow-lg)] transition-all duration-300 bg-[rgb(var(--color-surface))] overflow-hidden relative cursor-pointer min-h-[280px] flex items-center justify-center">
                   <CardHeader className="text-center relative px-6">
                     <div className="mb-[var(--space-4)] flex justify-center">
