@@ -16,7 +16,7 @@ import { X } from 'lucide-react';
 
 // LEVELS will be populated from the API data
 const UX_DESIGNER_LEVELS = [
-  { id: 0, name: 'Pre-Schema Designer', label: '0', description: 'Complete prerequisite requirements with manager approval', color: 'rgb(var(--color-neutral-500))' },
+  { id: 0, name: 'Pre-Schema Designer', label: '0', description: 'Complete prerequisite requirements with manager approval', color: 'rgb(var(--color-primary-600))' },
   { id: 1, name: 'Designer (I)', label: '1', description: "As an L1 Designer (I), you are a supporting-level player honing your craft and working to understand GovTech's organisational context, design standards, and workflows.", color: 'rgb(var(--color-primary-600))' },
   { id: 2, name: 'Designer (II)', label: '2', description: "As an L2 Designer (II), you are a key contributing member of the design team, applying your skills to create user-centered solutions and working with autonomy.", color: 'rgb(var(--color-primary-600))' },
   { id: 3, name: 'Senior Designer', label: '3', description: "As an L3 Senior Designer, you are an experienced practitioner and emerging leader who elevates standards of design practice and collaboration. You solve problems creatively, going beyond best practices, and significantly influence your team's processes, its output, and its stakeholder relationships.", color: 'rgb(var(--color-primary-600))' },
@@ -27,7 +27,7 @@ const UX_DESIGNER_LEVELS = [
 ];
 
 const PRODUCT_MANAGER_LEVELS = [
-  { id: 0, name: 'Pre-Schema Product Manager', label: '0', description: 'Complete prerequisite requirements with manager approval', color: 'rgb(var(--color-neutral-500))' },
+  { id: 0, name: 'Pre-Schema Product Manager', label: '0', description: 'Complete prerequisite requirements with manager approval', color: 'rgb(var(--color-primary-600))' },
   { id: 1, name: 'Product Manager (I)', label: '1', description: "As an L1 Product Manager (I), you are an entry-level position designed for individuals new (0-2 years of experience) to product management.", color: 'rgb(var(--color-primary-600))' },
   { id: 2, name: 'Product Manager (II)', label: '2', description: "As an L2 Product Manager (II), you are responsible for owning a product or feature area and driving its success from conception to launch.", color: 'rgb(var(--color-primary-600))' },
   { id: 3, name: 'Senior Product Manager', label: '3', description: "As an L3 Senior Product Manager, you are expected to lead more complex products or initiatives, demonstrating a high degree of ownership and strategic thinking.", color: 'rgb(var(--color-primary-600))' },
@@ -38,7 +38,7 @@ const PRODUCT_MANAGER_LEVELS = [
 ];
 
 const PRODUCT_OPS_LEVELS = [
-  { id: 0, name: 'Pre-Schema Product Ops Specialist', label: '0', description: 'Complete prerequisite requirements with manager approval', color: 'rgb(var(--color-neutral-500))' },
+  { id: 0, name: 'Pre-Schema Product Ops Specialist', label: '0', description: 'Complete prerequisite requirements with manager approval', color: 'rgb(var(--color-primary-600))' },
   { id: 1, name: 'Product Ops Specialist (I)', label: '1', description: "As an L1 Product Ops Specialist (I), you are an entry-level position designed for individuals new to product operations.", color: 'rgb(var(--color-primary-600))' },
   { id: 2, name: 'Product Ops Specialist (II)', label: '2', description: "As an L2 Product Ops Specialist (II), you are responsible for managing operational aspects of products or feature areas and driving their success from implementation to ongoing support.", color: 'rgb(var(--color-primary-600))' },
   { id: 3, name: 'Senior Product Ops Specialist', label: '3', description: "As an L3 Senior Product Ops Specialist, you are an expert operator able to achieve success in complex and ambiguous spaces.", color: 'rgb(var(--color-primary-600))' },
@@ -49,7 +49,7 @@ const PRODUCT_OPS_LEVELS = [
 ];
 
 const SOFTWARE_ENGINEER_LEVELS = [
-  { id: 0, name: 'Pre-Schema Software Engineer', label: '0', description: 'Complete prerequisite requirements with manager approval', color: 'rgb(var(--color-neutral-500))' },
+  { id: 0, name: 'Pre-Schema Software Engineer', label: '0', description: 'Complete prerequisite requirements with manager approval', color: 'rgb(var(--color-primary-600))' },
   { id: 1, name: 'Software Engineer (I)', label: '1', description: "As an L1 Software Engineer (I), your primary focus is on building foundational software development skills.", color: 'rgb(var(--color-primary-600))' },
   { id: 2, name: 'Software Engineer (II)', label: '2', description: "As an L2 Software Engineer (II), your scope includes contributing to multiple components or features within your team, with growing independence in driving development.", color: 'rgb(var(--color-primary-600))' },
   { id: 3, name: 'Senior Software Engineer', label: '3', description: "As an L3 Senior Software Engineer, you are a trusted technical contributor who consistently delivers high-quality, maintainable, and impactful features and components within your team.", color: 'rgb(var(--color-primary-600))' },
@@ -1121,12 +1121,15 @@ function StaffDashboardContent() {
                         className="group"
                       >
                         <div
-                          className="
+                          className={`
                             w-12 h-12 sm:w-14 sm:h-14 rounded-full inline-flex items-center justify-center font-serif font-bold text-base sm:text-lg
                             transition-all duration-300
-                            bg-[rgb(var(--color-neutral-200))] text-[rgb(var(--color-text-muted))] shadow-sm
+                            ${level.id === expandedLevel
+                              ? 'bg-[rgb(34,197,94)] text-white shadow-lg ring-4 ring-[rgb(34,197,94)]/20'
+                              : 'bg-[rgb(var(--color-neutral-200))] text-[rgb(var(--color-text-muted))] shadow-sm'
+                            }
                             group-hover:scale-105 cursor-pointer
-                          "
+                          `}
                           style={{ lineHeight: '1' }}
                         >
                           <span>
@@ -1136,12 +1139,22 @@ function StaffDashboardContent() {
                       </button>
                       <button
                         onClick={() => setExpandedLevel(level.id)}
-                        className="text-[10px] sm:text-xs font-medium text-center whitespace-nowrap cursor-pointer text-[rgb(var(--color-text-muted))]"
+                        className="text-[10px] sm:text-xs font-medium text-center whitespace-nowrap cursor-pointer"
                       >
-                        <p>
+                        <p className={`
+                          ${level.id === expandedLevel ? 'text-[rgb(34,197,94)] font-semibold' : 'text-[rgb(var(--color-text-muted))]'}
+                        `}>
                           {level.id === 0 ? 'Pre-Schema' : `Lvl ${level.label}`}
                         </p>
                       </button>
+                      {/* Active Level Indicator Triangle */}
+                      {expandedLevel === level.id && (
+                        <div className="absolute -bottom-3">
+                          <svg width="8" height="6" viewBox="0 0 8 6" fill="none">
+                            <path d="M4 0L8 6H0L4 0Z" fill="rgb(34, 197, 94)" />
+                          </svg>
+                        </div>
+                      )}
                     </div>
 
                     {/* Connecting Line */}
