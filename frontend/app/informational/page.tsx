@@ -1244,18 +1244,8 @@ function StaffDashboardContent() {
                         // Product Manager Pre-Schema - Show Courses
                         renderCourses(0)
                       ) : selectedPathway === 'Product Ops' || selectedPathway === 'Software Engineer' ? (
-                        // Product Ops / Software Engineer Pre-Schema - Coming Soon
-                        <div className="text-center py-[var(--space-16)]">
-                          <div className="w-20 h-20 rounded-2xl bg-[rgb(var(--color-neutral-100))] flex items-center justify-center mx-auto mb-[var(--space-4)]">
-                            <svg className="w-10 h-10 text-[rgb(var(--color-text-muted))]" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.5}>
-                              <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-                            </svg>
-                          </div>
-                          <h3 className="font-serif text-2xl font-bold text-[rgb(var(--color-text-primary))] mb-2">Coming Soon</h3>
-                          <p className="text-[rgb(var(--color-text-secondary))] max-w-md mx-auto">
-                            Pre-Schema requirements for {selectedPathway} pathway are currently being developed.
-                          </p>
-                        </div>
+                        // Product Ops / Software Engineer Pre-Schema - Show Courses
+                        renderCourses(0)
                       ) : selectedPathway === 'UX Designer' ? (
                         // UX Designer Pre-Schema Steps
                         <>
