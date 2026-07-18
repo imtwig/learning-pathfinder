@@ -1275,9 +1275,11 @@ function StaffDashboardContent() {
                                   </div>
 
                                   {/* Action Buttons - Top Right on desktop, below description on mobile */}
-                                  {!isManagerView && step.id === '1' && preSchemaStatuses['1'] === 'Not Yet' && (
-                                    <Button
-                                      onClick={handleRegisterClick}
+                                  {!isManagerView && step.id === '1' && (
+                                    <a
+                                      href="https://www.thedigitalacademy.tech.gov.sg/course/detail/google-ux-design-professional-certificate-course-1-4"
+                                      target="_blank"
+                                      rel="noopener noreferrer"
                                       className="
                                         bg-[rgb(var(--color-primary-600))]
                                         hover:bg-[rgb(var(--color-primary-700))]
@@ -1285,29 +1287,36 @@ function StaffDashboardContent() {
                                         shadow-sm
                                         sm:shrink-0
                                         w-full sm:w-auto
+                                        inline-flex items-center justify-center
+                                        px-4 py-2 rounded-md
+                                        font-medium text-sm
+                                        transition-all
                                       "
                                     >
-                                      Register for Course
-                                    </Button>
+                                      View Course
+                                    </a>
                                   )}
 
-                                  {!isManagerView && step.id === '2' && preSchemaStatuses['2'] === 'Not Yet' && (
-                                    <Button
-                                      onClick={handleTakeAssessmentClick}
-                                      disabled={preSchemaStatuses['1'] !== 'Completed'}
+                                  {!isManagerView && step.id === '3' && (
+                                    <a
+                                      href="https://www.thedigitalacademy.tech.gov.sg/course/detail/google-ux-design-professional-certificate-course-5-8"
+                                      target="_blank"
+                                      rel="noopener noreferrer"
                                       className="
                                         bg-[rgb(var(--color-primary-600))]
                                         hover:bg-[rgb(var(--color-primary-700))]
                                         text-white
                                         shadow-sm
-                                        disabled:opacity-50
-                                        disabled:cursor-not-allowed
                                         sm:shrink-0
                                         w-full sm:w-auto
+                                        inline-flex items-center justify-center
+                                        px-4 py-2 rounded-md
+                                        font-medium text-sm
+                                        transition-all
                                       "
                                     >
-                                      Take assessment
-                                    </Button>
+                                      View Course
+                                    </a>
                                   )}
 
                                   {step.id === '4' && (
@@ -1341,17 +1350,6 @@ function StaffDashboardContent() {
                                   </div>
                                 )}
 
-                                <div className="flex items-center gap-3 flex-wrap">
-
-                                  {/* Status Display */}
-                                  <div className="flex items-center gap-2 px-4 py-2 bg-white border-2 border-[rgb(var(--color-border))] rounded-lg text-sm font-medium">
-                                    <div
-                                      className="w-2.5 h-2.5 rounded-full shrink-0"
-                                      style={{ backgroundColor: getStatusColor(preSchemaStatuses[step.id], step.id) }}
-                                    ></div>
-                                    <span className="text-[rgb(var(--color-text-primary))]">{preSchemaStatuses[step.id]}</span>
-                                  </div>
-                                </div>
                               </CardContent>
                             </Card>
                           ))}
