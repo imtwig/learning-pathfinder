@@ -1059,7 +1059,11 @@ function StaffDashboardContent() {
                         className="group"
                       >
                         <div
-                          className="w-12 h-12 sm:w-14 sm:h-14 rounded-full inline-flex items-center justify-center font-serif font-bold text-base sm:text-lg transition-all duration-300 bg-[rgb(var(--color-neutral-200))] text-[rgb(var(--color-text-muted))] shadow-sm group-hover:scale-105 cursor-pointer"
+                          className={`w-12 h-12 sm:w-14 sm:h-14 rounded-full inline-flex items-center justify-center font-serif font-bold text-base sm:text-lg transition-all duration-300 shadow-sm group-hover:scale-105 cursor-pointer ${
+                            expandedLevel === level.id
+                              ? 'bg-[rgb(var(--color-primary-600))] text-white'
+                              : 'bg-[rgb(var(--color-neutral-200))] text-[rgb(var(--color-text-muted))]'
+                          }`}
                           style={{ lineHeight: '1' }}
                         >
                           <span>
