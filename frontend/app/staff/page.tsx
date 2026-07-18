@@ -459,9 +459,9 @@ function StaffDashboardContent() {
           const defaultLevel = levelsArray.find(dl => dl.id === level.levelOrder);
           return {
             id: level.levelOrder,
-            name: defaultLevel?.name || level.name,
+            name: level.name || defaultLevel?.name,
             label: level.levelOrder.toString(),
-            description: defaultLevel?.description || level.description,
+            description: level.description || defaultLevel?.description,
             color: level.levelOrder === 0 ? 'rgb(var(--color-neutral-500))' : 'rgb(var(--color-primary-600))',
             fullData: level, // Store the full level data for additional info
           };
