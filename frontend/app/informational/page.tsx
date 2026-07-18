@@ -1224,25 +1224,27 @@ function StaffDashboardContent() {
                   {expandedLevel === 0 ? (
                     // Pre-Schema Steps
                     <div className="space-y-[var(--space-6)] overflow-visible">
-                      <div className="mb-[var(--space-6)]">
-                        <h4 className="font-serif text-[length:var(--text-xl)] font-bold leading-[1.2] sm:leading-[1.22] text-[rgb(var(--color-text-primary))] mb-[var(--space-2)]">
-                          Pre-Schema Requirements
-                        </h4>
-                        <p className="text-sm text-[rgb(var(--color-text-secondary))]">
-                          Complete these {selectedPathway === 'UX Designer' ? '4' : totalSteps} foundational steps with manager approval before progressing to Level 1
-                        </p>
-                        <div className="mt-[var(--space-4)] flex items-center gap-[var(--space-3)]">
-                          <div className="flex-1 h-2 bg-[rgb(var(--color-neutral-200))] rounded-full overflow-hidden">
-                            <div
-                              className="h-full bg-[rgb(34,197,94)] transition-all duration-500 rounded-full"
-                              style={{ width: `${selectedPathway === 'UX Designer' ? uxDesignerProgressPercentage : progressPercentage}%` }}
-                            ></div>
+                      {selectedPathway === 'UX Designer' && (
+                        <div className="mb-[var(--space-6)]">
+                          <h4 className="font-serif text-[length:var(--text-xl)] font-bold leading-[1.2] sm:leading-[1.22] text-[rgb(var(--color-text-primary))] mb-[var(--space-2)]">
+                            Pre-Schema Requirements
+                          </h4>
+                          <p className="text-sm text-[rgb(var(--color-text-secondary))]">
+                            Complete these 4 foundational steps with manager approval before progressing to Level 1
+                          </p>
+                          <div className="mt-[var(--space-4)] flex items-center gap-[var(--space-3)]">
+                            <div className="flex-1 h-2 bg-[rgb(var(--color-neutral-200))] rounded-full overflow-hidden">
+                              <div
+                                className="h-full bg-[rgb(34,197,94)] transition-all duration-500 rounded-full"
+                                style={{ width: `${uxDesignerProgressPercentage}%` }}
+                              ></div>
+                            </div>
+                            <span className="text-sm font-semibold text-[rgb(var(--color-text-primary))] min-w-[60px] text-right">
+                              {uxDesignerApprovedCount} / 4
+                            </span>
                           </div>
-                          <span className="text-sm font-semibold text-[rgb(var(--color-text-primary))] min-w-[60px] text-right">
-                            {selectedPathway === 'UX Designer' ? uxDesignerApprovedCount : approvedCount} / {selectedPathway === 'UX Designer' ? '4' : totalSteps}
-                          </span>
                         </div>
-                      </div>
+                      )}
 
                       {selectedPathway === 'Product Manager' ? (
                         // Product Manager Pre-Schema - Show Courses
