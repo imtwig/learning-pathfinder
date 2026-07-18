@@ -53,7 +53,7 @@ export default function HomePage() {
               </p>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-[var(--space-8)] max-w-4xl mx-auto">
+            <div className="grid md:grid-cols-3 gap-[var(--space-8)] max-w-6xl mx-auto">
               {/* Staff Card */}
               <Link href="/staff?userId=staff-0" className="group block">
                 <Card className="h-full hover:shadow-[var(--shadow-lg)] transition-all duration-300 bg-[rgb(var(--color-surface))] overflow-hidden relative cursor-pointer min-h-[280px] flex items-center justify-center">
@@ -84,6 +84,22 @@ export default function HomePage() {
                     <CardTitle className="font-serif text-2xl text-[rgb(var(--color-text-primary))]">
                       Manager / Practice Leads
                     </CardTitle>
+                  </CardHeader>
+                </Card>
+              </Link>
+
+              {/* Informational Card */}
+              <Link href="/informational?userId=staff-0" className="group block">
+                <Card className="h-full hover:shadow-[var(--shadow-lg)] transition-all duration-300 bg-[rgb(var(--color-surface))] overflow-hidden relative cursor-pointer min-h-[280px] flex items-center justify-center">
+                  <CardHeader className="text-center relative px-6">
+                    <div className="mb-[var(--space-4)] flex justify-center">
+                      <div className="w-20 h-20 rounded-3xl bg-[rgb(var(--color-neutral-100))] flex items-center justify-center text-[rgb(5,150,105)] transform group-hover:scale-110 transition-transform duration-300 shadow-[var(--shadow-base)]">
+                        <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.5}>
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z" />
+                        </svg>
+                      </div>
+                    </div>
+                    <CardTitle className="font-serif text-2xl text-[rgb(var(--color-text-primary))]">Informational</CardTitle>
                   </CardHeader>
                 </Card>
               </Link>
