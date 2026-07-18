@@ -1233,10 +1233,7 @@ function StaffDashboardContent() {
             <Card className="shadow-[var(--shadow-lg)] bg-[rgb(var(--color-surface))] overflow-visible">
               <CardHeader className="border-b border-[rgb(var(--color-border))] py-[var(--space-4)]">
                 <div className="flex items-start gap-[var(--space-3)]">
-                  <div className={`
-                    w-12 h-12 rounded-xl flex items-center justify-center shadow-[var(--shadow-sm)] shrink-0
-                    ${levels[expandedLevel]?.id === currentLevel ? 'bg-[rgb(var(--color-primary-600))] text-white' : 'bg-[rgb(var(--color-neutral-100))] text-[rgb(var(--color-text-primary))]'}
-                  `}>
+                  <div className="w-12 h-12 rounded-xl flex items-center justify-center shadow-[var(--shadow-sm)] shrink-0 bg-[rgb(var(--color-primary-100))] text-[rgb(var(--color-primary-600))]">
                     <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.5}>
                       <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
                     </svg>
