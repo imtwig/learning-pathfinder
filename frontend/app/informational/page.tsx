@@ -106,6 +106,20 @@ const SOFTWARE_ENGINEER_LEVELS = [
       },
     },
     'Product Manager': {
+      0: {
+        Core: [
+          { title: 'Introduction to Product Management', url: 'https://www.thedigitalacademy.tech.gov.sg/course/detail/introduction-to-product-management' },
+          { title: 'Agile Fundamentals', url: 'https://www.thedigitalacademy.tech.gov.sg/course/detail/agile-fundamentals' },
+          { title: 'User Research Basics', url: 'https://www.thedigitalacademy.tech.gov.sg/course/detail/user-research-basics' },
+          { title: 'Product Analytics Fundamentals', url: null },
+          { title: 'Technical Literacy for Product Managers', url: null },
+        ],
+        Elective: [
+          { title: 'Design Thinking Essentials', url: 'https://www.thedigitalacademy.tech.gov.sg/course/detail/design-thinking-essentials' },
+          { title: 'Introduction to SQL for Product Managers', url: null },
+          { title: 'Communication Skills for PMs', url: null },
+        ],
+      },
       1: {
         Core: [
           { title: 'Product Management Basics Certification', url: 'https://www.thedigitalacademy.tech.gov.sg/course/detail/product-management-basics-certification' },
@@ -175,8 +189,40 @@ const SOFTWARE_ENGINEER_LEVELS = [
           { title: 'Digital Product Strategy (DPS)', url: 'https://www.thedigitalacademy.tech.gov.sg/course/detail/digital-product--strategy' },
         ],
       },
+      4: {
+        Core: [
+          { title: 'Product Leadership Essentials', url: null },
+          { title: 'Building High-Performing Product Teams', url: null },
+          { title: 'Portfolio Management and Prioritization', url: null },
+          { title: 'Advanced Product Metrics and KPIs', url: null },
+          { title: 'Strategic Roadmapping at Scale', url: null },
+          { title: 'Executive Communication for Product Leaders', url: null },
+        ],
+        Elective: [
+          { title: 'Product Operations at Scale', url: null },
+          { title: 'Change Management for Product Leaders', url: null },
+          { title: 'Coaching and Mentoring Product Managers', url: null },
+          { title: 'Platform Product Management', url: 'https://www.thedigitalacademy.tech.gov.sg/course/detail/tda-architecting-platforms-as-a-business' },
+          { title: 'Business Model Innovation', url: null },
+          { title: 'Cross-Functional Leadership', url: null },
+        ],
+      },
     },
     'Product Ops': {
+      0: {
+        Core: [
+          { title: 'IT Fundamentals for Product Operations', url: null },
+          { title: 'Introduction to Cloud Computing', url: null },
+          { title: 'Basic Linux Command Line', url: null },
+          { title: 'Version Control with Git', url: null },
+          { title: 'Introduction to Agile and DevOps', url: null },
+        ],
+        Elective: [
+          { title: 'Networking Basics', url: null },
+          { title: 'Introduction to Databases', url: null },
+          { title: 'ITIL Foundation', url: null },
+        ],
+      },
       1: {
         Core: [
           { title: 'AWS Cloud Practitioner', url: null },
@@ -232,6 +278,23 @@ const SOFTWARE_ENGINEER_LEVELS = [
           { title: 'ITIL Intermediate/Professional', url: null },
         ],
         Elective: [
+        ],
+      },
+      4: {
+        Core: [
+          { title: 'Leadership and People Management for Technical Leaders', url: null },
+          { title: 'Strategic Planning and Budgeting', url: null },
+          { title: 'Enterprise Architecture Fundamentals', url: null },
+          { title: 'Service Management and ITSM Leadership', url: null },
+          { title: 'Risk Management and Compliance', url: null },
+          { title: 'Vendor and Contract Management', url: null },
+        ],
+        Elective: [
+          { title: 'Change Leadership in Technology', url: null },
+          { title: 'Business Continuity and Disaster Recovery Planning', url: null },
+          { title: 'Advanced Cloud Strategy and Governance', url: null },
+          { title: 'DevOps Transformation Leadership', url: null },
+          { title: 'Technology Innovation and Emerging Trends', url: null },
         ],
       },
     },
@@ -429,8 +492,6 @@ function StaffDashboardContent() {
   const [endorsements, setEndorsements] = useState<{[key: string]: string}>({});
   const [showToast, setShowToast] = useState(false);
   const [toastMessage, setToastMessage] = useState('');
-  const [demoDrawerOpen, setDemoDrawerOpen] = useState(false);
-  const [demoState, setDemoState] = useState<string>('none');
   const [pathwaySearchOpen, setPathwaySearchOpen] = useState(false);
   const [pathwaySearchQuery, setPathwaySearchQuery] = useState('');
   const [pathwayPickerMobile, setPathwayPickerMobile] = useState(false);
@@ -520,101 +581,6 @@ function StaffDashboardContent() {
     setTimeout(() => setShowToast(false), 5000);
   };
 
-  const handleDemoStateChange = (state: string) => {
-    setDemoState(state);
-
-    switch(state) {
-      case 'none':
-        setPreSchemaStatuses({
-          '1': 'Not Yet',
-          '2': 'Not Yet',
-          '3': 'Not Yet',
-          '4': 'Not Yet',
-        });
-        setStep3SampleCertificate(false);
-        setCurrentLevel(0);
-        setExpandedLevel(0);
-        break;
-      case 'registered':
-        setPreSchemaStatuses(prev => ({
-          ...prev,
-          '1': 'Registered',
-        }));
-        setStep3SampleCertificate(false);
-        setCurrentLevel(0);
-        setExpandedLevel(0);
-        break;
-      case 'ongoing':
-        setPreSchemaStatuses(prev => ({
-          ...prev,
-          '1': 'Ongoing',
-        }));
-        setStep3SampleCertificate(false);
-        setCurrentLevel(0);
-        setExpandedLevel(0);
-        break;
-      case 'completed4':
-        setPreSchemaStatuses(prev => ({
-          ...prev,
-          '1': 'Completed',
-          '2': 'Not Yet',
-          '3': 'Not Yet',
-          '4': 'Not Yet',
-        }));
-        setStep3SampleCertificate(false);
-        setCurrentLevel(0);
-        setExpandedLevel(0);
-        break;
-      case 'passed':
-        setPreSchemaStatuses(prev => ({
-          ...prev,
-          '1': 'Completed',
-          '2': 'Passed',
-          '3': 'Ongoing',
-          '4': 'Not Yet',
-        }));
-        setStep3SampleCertificate(false);
-        setCurrentLevel(0);
-        setExpandedLevel(0);
-        break;
-      case 'certCompleted':
-        setPreSchemaStatuses(prev => ({
-          ...prev,
-          '1': 'Completed',
-          '2': 'Passed',
-          '3': 'Completed',
-          '4': 'Pending Emplacement for Apprenticeship',
-        }));
-        setStep3SampleCertificate(true);
-        setCurrentLevel(0);
-        setExpandedLevel(0);
-        break;
-      case 'emplaced':
-        setPreSchemaStatuses(prev => ({
-          ...prev,
-          '1': 'Completed',
-          '2': 'Passed',
-          '3': 'Completed',
-          '4': 'Placed on Apprenticeship',
-        }));
-        setStep3SampleCertificate(true);
-        setCurrentLevel(0);
-        setExpandedLevel(0);
-        break;
-      case 'apprenticeshipCompleted':
-        setPreSchemaStatuses(prev => ({
-          ...prev,
-          '1': 'Completed',
-          '2': 'Passed',
-          '3': 'Completed',
-          '4': 'Completed',
-        }));
-        setStep3SampleCertificate(true);
-        setCurrentLevel(1);
-        setExpandedLevel(0);
-        break;
-    }
-  };
 
   const pathwayOptions = [
     { value: 'UX Designer', label: 'Designer Pathway' },
@@ -991,7 +957,7 @@ function StaffDashboardContent() {
             <div className="mb-4 sm:mb-[var(--space-6)] flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 overflow-visible">
               <div className="flex-1">
                 <h2 className="font-serif text-2xl sm:text-[length:var(--text-4xl)] font-bold leading-[1.2] sm:leading-[1.22] text-[rgb(var(--color-text-primary))]">
-                  {staffName ? `${staffName.split(' ')[0]}'s Progress` : user?.firstName ? `${user.firstName}'s Progress` : 'Career Progression Pathway'}
+                  Pathways
                 </h2>
               </div>
 
@@ -1154,15 +1120,12 @@ function StaffDashboardContent() {
                         className="group"
                       >
                         <div
-                          className={`
+                          className="
                             w-12 h-12 sm:w-14 sm:h-14 rounded-full inline-flex items-center justify-center font-serif font-bold text-base sm:text-lg
                             transition-all duration-300
-                            ${level.id === expandedLevel
-                              ? 'bg-[rgb(34,197,94)] text-white shadow-lg ring-4 ring-[rgb(34,197,94)]/20'
-                              : 'bg-[rgb(var(--color-neutral-200))] text-[rgb(var(--color-text-muted))] shadow-sm'
-                            }
+                            bg-[rgb(var(--color-neutral-200))] text-[rgb(var(--color-text-muted))] shadow-sm
                             group-hover:scale-105 cursor-pointer
-                          `}
+                          "
                           style={{ lineHeight: '1' }}
                         >
                           <span>
@@ -1172,22 +1135,12 @@ function StaffDashboardContent() {
                       </button>
                       <button
                         onClick={() => setExpandedLevel(level.id)}
-                        className="text-[10px] sm:text-xs font-medium text-center whitespace-nowrap cursor-pointer"
+                        className="text-[10px] sm:text-xs font-medium text-center whitespace-nowrap cursor-pointer text-[rgb(var(--color-text-muted))]"
                       >
-                        <p className={`
-                          ${level.id === expandedLevel ? 'text-[rgb(34,197,94)] font-semibold' : 'text-[rgb(var(--color-text-muted))]'}
-                        `}>
+                        <p>
                           {level.id === 0 ? 'Pre-Schema' : `Lvl ${level.label}`}
                         </p>
                       </button>
-                      {/* Active Level Indicator Triangle */}
-                      {expandedLevel === level.id && (
-                        <div className="absolute -bottom-3">
-                          <svg width="8" height="6" viewBox="0 0 8 6" fill="none">
-                            <path d="M4 0L8 6H0L4 0Z" fill="rgb(34, 197, 94)" />
-                          </svg>
-                        </div>
-                      )}
                     </div>
 
                     {/* Connecting Line */}
@@ -1736,176 +1689,6 @@ function StaffDashboardContent() {
         </div>
       )}
 
-      {/* Demo Drawer */}
-      {!isManagerView && (
-        <>
-          {/* Demo Tab */}
-          <button
-            onClick={() => setDemoDrawerOpen(!demoDrawerOpen)}
-            className="fixed right-0 top-1/2 -translate-y-1/2 bg-[rgb(var(--color-accent-600))] text-white px-3 py-6 rounded-l-lg shadow-[var(--shadow-lg)] z-[var(--z-fixed)] font-semibold text-sm hover:bg-[rgb(var(--color-accent-700))] transition-colors"
-            style={{ writingMode: 'vertical-rl' }}
-          >
-            DEMO
-          </button>
-
-          {/* Demo Drawer Panel */}
-          <div
-            className={`fixed right-0 top-0 h-full w-full sm:w-80 bg-white border-l-2 border-[rgb(var(--color-border))] shadow-[var(--shadow-xl)] z-[var(--z-modal)] transition-transform duration-300 flex flex-col ${
-              demoDrawerOpen ? 'translate-x-0' : 'translate-x-full'
-            }`}
-          >
-            <div className="p-6 border-b border-[rgb(var(--color-border))] shrink-0">
-              <div className="flex items-center justify-between">
-                <h3 className="font-serif text-[length:var(--text-2xl)] font-bold text-[rgb(var(--color-text-primary))]">Demo Controls</h3>
-                <button
-                  onClick={() => setDemoDrawerOpen(false)}
-                  className="text-[rgb(var(--color-text-muted))] hover:text-[rgb(var(--color-text-primary))]"
-                >
-                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-                  </svg>
-                </button>
-              </div>
-            </div>
-
-            <div className="flex-1 overflow-y-auto p-6">
-              <div className="space-y-4">
-                <p className="text-sm text-[rgb(var(--color-text-secondary))] mb-4">
-                  Simulate different stages of the pathway progression:
-                </p>
-
-                <label className="flex items-start gap-3 p-3 border-2 border-[rgb(var(--color-border))] rounded-lg hover:border-[rgb(var(--color-primary-300))] cursor-pointer transition-colors">
-                  <input
-                    type="radio"
-                    name="demoState"
-                    value="none"
-                    checked={demoState === 'none'}
-                    onChange={(e) => handleDemoStateChange(e.target.value)}
-                    className="mt-1"
-                  />
-                  <div className="flex-1">
-                    <p className="font-semibold text-[rgb(var(--color-text-primary))] text-sm mb-1">Default State</p>
-                    <p className="text-xs text-[rgb(var(--color-text-secondary))]">All steps at "Not Started"/"Not Yet"</p>
-                  </div>
-                </label>
-
-                <label className="flex items-start gap-3 p-3 border-2 border-[rgb(var(--color-border))] rounded-lg hover:border-[rgb(var(--color-primary-300))] cursor-pointer transition-colors">
-                  <input
-                    type="radio"
-                    name="demoState"
-                    value="registered"
-                    checked={demoState === 'registered'}
-                    onChange={(e) => handleDemoStateChange(e.target.value)}
-                    className="mt-1"
-                  />
-                  <div className="flex-1">
-                    <p className="font-semibold text-[rgb(var(--color-text-primary))] text-sm mb-1">User has registered Google UX Design Certification</p>
-                    <p className="text-xs text-[rgb(var(--color-text-secondary))]">Step 1 status: Registered</p>
-                  </div>
-                </label>
-
-                <label className="flex items-start gap-3 p-3 border-2 border-[rgb(var(--color-border))] rounded-lg hover:border-[rgb(var(--color-primary-300))] cursor-pointer transition-colors">
-                  <input
-                    type="radio"
-                    name="demoState"
-                    value="ongoing"
-                    checked={demoState === 'ongoing'}
-                    onChange={(e) => handleDemoStateChange(e.target.value)}
-                    className="mt-1"
-                  />
-                  <div className="flex-1">
-                    <p className="font-semibold text-[rgb(var(--color-text-primary))] text-sm mb-1">User is undergoing Google UX Design Certification</p>
-                    <p className="text-xs text-[rgb(var(--color-text-secondary))]">Step 1 status: Ongoing</p>
-                  </div>
-                </label>
-
-                <label className="flex items-start gap-3 p-3 border-2 border-[rgb(var(--color-border))] rounded-lg hover:border-[rgb(var(--color-primary-300))] cursor-pointer transition-colors">
-                  <input
-                    type="radio"
-                    name="demoState"
-                    value="completed4"
-                    checked={demoState === 'completed4'}
-                    onChange={(e) => handleDemoStateChange(e.target.value)}
-                    className="mt-1"
-                  />
-                  <div className="flex-1">
-                    <p className="font-semibold text-[rgb(var(--color-text-primary))] text-sm mb-1">User has completed 4 courses in Google UX Design Certification</p>
-                    <p className="text-xs text-[rgb(var(--color-text-secondary))]">Step 1 status: Completed</p>
-                  </div>
-                </label>
-
-                <label className="flex items-start gap-3 p-3 border-2 border-[rgb(var(--color-border))] rounded-lg hover:border-[rgb(var(--color-primary-300))] cursor-pointer transition-colors">
-                  <input
-                    type="radio"
-                    name="demoState"
-                    value="passed"
-                    checked={demoState === 'passed'}
-                    onChange={(e) => handleDemoStateChange(e.target.value)}
-                    className="mt-1"
-                  />
-                  <div className="flex-1">
-                    <p className="font-semibold text-[rgb(var(--color-text-primary))] text-sm mb-1">User has passed the assessment by their practice</p>
-                    <p className="text-xs text-[rgb(var(--color-text-secondary))]">Step 2 status: Passed, Step 3 status: Ongoing</p>
-                  </div>
-                </label>
-
-                <label className="flex items-start gap-3 p-3 border-2 border-[rgb(var(--color-border))] rounded-lg hover:border-[rgb(var(--color-primary-300))] cursor-pointer transition-colors">
-                  <input
-                    type="radio"
-                    name="demoState"
-                    value="certCompleted"
-                    checked={demoState === 'certCompleted'}
-                    onChange={(e) => handleDemoStateChange(e.target.value)}
-                    className="mt-1"
-                  />
-                  <div className="flex-1">
-                    <p className="font-semibold text-[rgb(var(--color-text-primary))] text-sm mb-1">User has completed Google UX Design Certification</p>
-                    <p className="text-xs text-[rgb(var(--color-text-secondary))]">Step 3 status: Completed, Step 4: Pending Emplacement for Apprenticeship</p>
-                  </div>
-                </label>
-
-                <label className="flex items-start gap-3 p-3 border-2 border-[rgb(var(--color-border))] rounded-lg hover:border-[rgb(var(--color-primary-300))] cursor-pointer transition-colors">
-                  <input
-                    type="radio"
-                    name="demoState"
-                    value="emplaced"
-                    checked={demoState === 'emplaced'}
-                    onChange={(e) => handleDemoStateChange(e.target.value)}
-                    className="mt-1"
-                  />
-                  <div className="flex-1">
-                    <p className="font-semibold text-[rgb(var(--color-text-primary))] text-sm mb-1">User has been emplaced</p>
-                    <p className="text-xs text-[rgb(var(--color-text-secondary))]">Step 4 status: Placed on Apprenticeship</p>
-                  </div>
-                </label>
-
-                <label className="flex items-start gap-3 p-3 border-2 border-[rgb(var(--color-border))] rounded-lg hover:border-[rgb(var(--color-primary-300))] cursor-pointer transition-colors">
-                  <input
-                    type="radio"
-                    name="demoState"
-                    value="apprenticeshipCompleted"
-                    checked={demoState === 'apprenticeshipCompleted'}
-                    onChange={(e) => handleDemoStateChange(e.target.value)}
-                    className="mt-1"
-                  />
-                  <div className="flex-1">
-                    <p className="font-semibold text-[rgb(var(--color-text-primary))] text-sm mb-1">User completed apprenticeship</p>
-                    <p className="text-xs text-[rgb(var(--color-text-secondary))]">Moves to Level 1 - Designer (I)</p>
-                  </div>
-                </label>
-              </div>
-            </div>
-          </div>
-
-          {/* Drawer Backdrop */}
-          {demoDrawerOpen && (
-            <div
-              className="fixed inset-0 bg-black/20 z-[var(--z-modal-backdrop)]"
-              onClick={() => setDemoDrawerOpen(false)}
-            ></div>
-          )}
-        </>
-      )}
     </div>
   );
 }
