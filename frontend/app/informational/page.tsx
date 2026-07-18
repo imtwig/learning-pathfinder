@@ -815,17 +815,6 @@ function StaffDashboardContent() {
     return levelCourses[levelId] || [];
   };
 
-  if (loading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-[rgb(var(--color-background))]">
-        <div className="flex flex-col items-center gap-[var(--space-4)]">
-          <div className="animate-spin rounded-full h-16 w-16 border-4 border-[rgb(var(--color-primary-200))] border-t-[rgb(var(--color-primary-600))]"></div>
-          <p className="text-[rgb(var(--color-text-secondary))] text-base font-medium">Loading your pathway...</p>
-        </div>
-      </div>
-    );
-  }
-
   const getStatusVariant = (status: string) => {
     switch (status) {
       case 'NOT_STARTED': return 'outline';
@@ -855,6 +844,17 @@ function StaffDashboardContent() {
 
   const uxDesignerApprovedCount = getUxDesignerProgress();
   const uxDesignerProgressPercentage = (uxDesignerApprovedCount / 4) * 100;
+
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-[rgb(var(--color-background))]">
+        <div className="flex flex-col items-center gap-[var(--space-4)]">
+          <div className="animate-spin rounded-full h-16 w-16 border-4 border-[rgb(var(--color-primary-200))] border-t-[rgb(var(--color-primary-600))]"></div>
+          <p className="text-[rgb(var(--color-text-secondary))] text-base font-medium">Loading your pathway...</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-[rgb(var(--color-background))]">
