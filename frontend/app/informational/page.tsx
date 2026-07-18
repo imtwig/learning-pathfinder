@@ -1257,8 +1257,11 @@ function StaffDashboardContent() {
                         </div>
                       </div>
 
-                      {selectedPathway === 'Product Manager' || selectedPathway === 'Product Ops' || selectedPathway === 'Software Engineer' ? (
-                        // Product Manager / Product Ops / Software Engineer Pre-Schema - Coming Soon
+                      {selectedPathway === 'Product Manager' ? (
+                        // Product Manager Pre-Schema - Show Courses
+                        renderCourses(0)
+                      ) : selectedPathway === 'Product Ops' || selectedPathway === 'Software Engineer' ? (
+                        // Product Ops / Software Engineer Pre-Schema - Coming Soon
                         <div className="text-center py-[var(--space-16)]">
                           <div className="w-20 h-20 rounded-2xl bg-[rgb(var(--color-neutral-100))] flex items-center justify-center mx-auto mb-[var(--space-4)]">
                             <svg className="w-10 h-10 text-[rgb(var(--color-text-muted))]" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.5}>
@@ -1540,13 +1543,8 @@ function StaffDashboardContent() {
                   ) : expandedLevel === 3 ? (
                     renderCourses(3)
                   ) : expandedLevel === 4 ? (
-                    // Level 4 Lead Designer
-                    <div className="space-y-[var(--space-6)]">
-                      <p className="text-[rgb(var(--color-text-secondary))] text-center py-8">
-                        Course information coming soon
-                      </p>
-                    </div>
-                                    ) : expandedLevel === 5 ? (
+                    renderCourses(4)
+                  ) : expandedLevel === 5 ? (
                     // Level 5 Principal Designer
                     <div className="space-y-[var(--space-6)]">
                       <p className="text-[rgb(var(--color-text-secondary))] text-center py-8">
