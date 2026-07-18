@@ -73,6 +73,7 @@ router.get('/:pathwayId/competencies', mockAuthenticate, async (req: Request, re
 });
 
 // Get courses for a schema level
+// Updated: 2026-07-18 - Ensure proper course filtering
 router.get('/levels/:levelId/courses', mockAuthenticate, async (req: Request, res: Response, next: NextFunction) => {
   try {
     const { levelId } = req.params;
