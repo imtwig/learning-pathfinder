@@ -307,7 +307,9 @@ const SOFTWARE_ENGINEER_LEVELS = [
 
   // Helper function to render courses based on selected pathway
   const renderCourses = (levelNum: number) => {
-    const levelCourses = PATHWAY_COURSES[selectedPathway as keyof typeof PATHWAY_COURSES]?.[levelNum];
+    const pathwayCourses = PATHWAY_COURSES[selectedPathway as keyof typeof PATHWAY_COURSES];
+    if (!pathwayCourses) return null;
+    const levelCourses = (pathwayCourses as any)[levelNum];
     if (!levelCourses) return null;
 
     const hasCourses = levelCourses.Core.length > 0 || levelCourses.Elective.length > 0;
