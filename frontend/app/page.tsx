@@ -48,46 +48,9 @@ export default function HomePage() {
               <h2 className="font-serif text-2xl sm:text-[length:var(--text-3xl)] font-bold text-[rgb(var(--color-text-primary))] mb-3 sm:mb-[var(--space-3)]">
                 Enter the Sanctuary
               </h2>
-              <p className="text-[rgb(var(--color-text-secondary))] text-base sm:text-[length:var(--text-lg)]">
-                Choose your role to access your personalized learning dashboard
-              </p>
             </div>
 
             <div className="grid md:grid-cols-3 gap-[var(--space-8)] max-w-6xl mx-auto">
-              {/* Staff Card */}
-              <Link href="/staff?userId=staff-0" className="group block">
-                <Card className="h-full hover:shadow-[var(--shadow-lg)] transition-all duration-300 bg-[rgb(var(--color-surface))] overflow-hidden relative cursor-pointer min-h-[280px] flex items-center justify-center">
-                  <CardHeader className="text-center relative px-6">
-                    <div className="mb-[var(--space-4)] flex justify-center">
-                      <div className="w-20 h-20 rounded-3xl bg-[rgb(var(--color-neutral-100))] flex items-center justify-center text-[rgb(5,150,105)] transform group-hover:scale-110 transition-transform duration-300 shadow-[var(--shadow-base)]">
-                        <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.5}>
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
-                        </svg>
-                      </div>
-                    </div>
-                    <CardTitle className="font-serif text-2xl text-[rgb(var(--color-text-primary))]">Staff</CardTitle>
-                  </CardHeader>
-                </Card>
-              </Link>
-
-              {/* Manager Card */}
-              <Link href="/manager?userId=manager-1" className="group block">
-                <Card className="h-full hover:shadow-[var(--shadow-lg)] transition-all duration-300 bg-[rgb(var(--color-surface))] overflow-hidden relative cursor-pointer min-h-[280px] flex items-center justify-center">
-                  <CardHeader className="text-center relative px-6">
-                    <div className="mb-[var(--space-4)] flex justify-center">
-                      <div className="w-20 h-20 rounded-3xl bg-[rgb(var(--color-neutral-100))] flex items-center justify-center text-[rgb(5,150,105)] transform group-hover:scale-110 transition-transform duration-300 shadow-[var(--shadow-base)]">
-                        <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.5}>
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M15 9h3.75M15 12h3.75M15 15h3.75M4.5 19.5h15a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25v10.5A2.25 2.25 0 004.5 19.5zm6-10.125a1.875 1.875 0 11-3.75 0 1.875 1.875 0 013.75 0zm1.294 6.336a6.721 6.721 0 01-3.17.789 6.721 6.721 0 01-3.168-.789 3.376 3.376 0 016.338 0z" />
-                        </svg>
-                      </div>
-                    </div>
-                    <CardTitle className="font-serif text-2xl text-[rgb(var(--color-text-primary))]">
-                      Manager / Practice Leads
-                    </CardTitle>
-                  </CardHeader>
-                </Card>
-              </Link>
-
               {/* Informational Card */}
               <Link href="/informational?userId=staff-0" className="group block">
                 <Card className="h-full hover:shadow-[var(--shadow-lg)] transition-all duration-300 bg-[rgb(var(--color-surface))] overflow-hidden relative cursor-pointer min-h-[280px] flex items-center justify-center">
@@ -103,6 +66,40 @@ export default function HomePage() {
                   </CardHeader>
                 </Card>
               </Link>
+
+              {/* Staff Card - Disabled */}
+              <div className="group block opacity-50 cursor-not-allowed">
+                <Card className="h-full bg-[rgb(var(--color-surface))] overflow-hidden relative min-h-[280px] flex items-center justify-center">
+                  <CardHeader className="text-center relative px-6">
+                    <div className="mb-[var(--space-4)] flex justify-center">
+                      <div className="w-20 h-20 rounded-3xl bg-[rgb(var(--color-neutral-100))] flex items-center justify-center text-[rgb(var(--color-neutral-400))]">
+                        <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.5}>
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
+                        </svg>
+                      </div>
+                    </div>
+                    <CardTitle className="font-serif text-2xl text-[rgb(var(--color-text-muted))]">Staff</CardTitle>
+                  </CardHeader>
+                </Card>
+              </div>
+
+              {/* Manager Card - Disabled */}
+              <div className="group block opacity-50 cursor-not-allowed">
+                <Card className="h-full bg-[rgb(var(--color-surface))] overflow-hidden relative min-h-[280px] flex items-center justify-center">
+                  <CardHeader className="text-center relative px-6">
+                    <div className="mb-[var(--space-4)] flex justify-center">
+                      <div className="w-20 h-20 rounded-3xl bg-[rgb(var(--color-neutral-100))] flex items-center justify-center text-[rgb(var(--color-neutral-400))]">
+                        <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.5}>
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M15 9h3.75M15 12h3.75M15 15h3.75M4.5 19.5h15a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25v10.5A2.25 2.25 0 004.5 19.5zm6-10.125a1.875 1.875 0 11-3.75 0 1.875 1.875 0 013.75 0zm1.294 6.336a6.721 6.721 0 01-3.17.789 6.721 6.721 0 01-3.168-.789 3.376 3.376 0 016.338 0z" />
+                        </svg>
+                      </div>
+                    </div>
+                    <CardTitle className="font-serif text-2xl text-[rgb(var(--color-text-muted))]">
+                      Manager / Practice Leads
+                    </CardTitle>
+                  </CardHeader>
+                </Card>
+              </div>
             </div>
           </section>
 
