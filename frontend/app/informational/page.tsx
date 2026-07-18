@@ -1234,11 +1234,6 @@ function StaffDashboardContent() {
                         <CardTitle className="font-serif text-[length:var(--text-2xl)] text-[rgb(var(--color-text-primary))] leading-tight">
                           {levels[expandedLevel]?.id === 0 ? levels[expandedLevel]?.name : `${levels[expandedLevel]?.name}`}
                         </CardTitle>
-                        {levels[expandedLevel]?.id === currentLevel && (
-                          <Badge className="bg-[rgb(var(--color-primary-600))] text-white uppercase tracking-[var(--tracking-wide)] text-xs font-semibold px-2.5 py-1 leading-none w-fit">
-                            Current Level
-                          </Badge>
-                        )}
                       </div>
                       {expandedLevel >= 1 && expandedLevel <= 6 && (
                         <a
