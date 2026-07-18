@@ -59,6 +59,289 @@ const SOFTWARE_ENGINEER_LEVELS = [
   { id: 7, name: 'LEVEL OUT OF RANGE', label: '7', description: 'Your level is so high nobody knows what you are even', color: 'rgb(var(--color-primary-600))' },
 ];
 
+  // Course data by pathway
+  const PATHWAY_COURSES = {
+    'UX Designer': {
+      1: {
+        Core: [
+          { title: 'Google UX Design Professional Certificate (Course 1 – 4)', url: 'https://www.thedigitalacademy.tech.gov.sg/course/detail/google-ux-design-professional-certificate-course-1-4' },
+          { title: 'Google UX Design Professional Certificate (Course 5 – 8)', url: 'https://www.thedigitalacademy.tech.gov.sg/course/detail/google-ux-design-professional-certificate-course-5-8' },
+          { title: 'Lean UX and Agile', url: 'https://www.thedigitalacademy.tech.gov.sg/course/detail/lean-ux-and-agile' },
+          { title: 'Running Effective Design Critiques', url: 'https://www.thedigitalacademy.tech.gov.sg/course/detail/running-effective-design-critiques' },
+          { title: 'UI/UX Wireframing and Prototyping with Figma', url: 'https://www.thedigitalacademy.tech.gov.sg/course/detail/uiux-design-with-gen-ai-wireframing-prototyping' },
+          { title: 'UI/UX Design with Gen AI: Wireframing & Prototyping', url: 'https://www.thedigitalacademy.tech.gov.sg/course/detail/uiux-wireframing-and-prototyping-with-figma' },
+        ],
+        Elective: [
+          { title: 'Human-Computer Interaction', url: 'https://www.thedigitalacademy.tech.gov.sg/course/detail/design-rules-principles-and-practices-for-great-ui-design' },
+          { title: 'Interaction Intelligence: Advanced Prototyping with Figma', url: 'https://www.thedigitalacademy.tech.gov.sg/course/detail/human-computer-interaction' },
+          { title: 'Writing is Designing: UX Content & Interface Strategy', url: 'https://www.thedigitalacademy.tech.gov.sg/course/detail/interaction-intelligence-advanced-prototyping-with-figma' },
+          { title: 'Design Rules: Principles and practices for Great UI Design', url: 'https://www.thedigitalacademy.tech.gov.sg/course/detail/writing-is-designing-ux-content-interface-strategy' },
+          { title: 'How to Design for Accessibility', url: 'https://www.thedigitalacademy.tech.gov.sg/course/detail/how-to-design-for-accessibility' },
+        ],
+      },
+      2: {
+        Core: [
+          { title: 'Advanced Design Thinking Certificate', url: 'https://www.thedigitalacademy.tech.gov.sg/course/detail/advanced-design-thinking-certificate' },
+          { title: 'User Research - Methods and Best Practice', url: 'https://www.thedigitalacademy.tech.gov.sg/course/detail/ai-essentials-for-user-experience-designers' },
+          { title: 'Product Design', url: 'https://www.thedigitalacademy.tech.gov.sg/course/detail/communication-with-stakeholders' },
+          { title: 'Service Design', url: 'https://www.thedigitalacademy.tech.gov.sg/course/detail/product-design' },
+          { title: 'AI Essentials for User Experience Designers', url: 'https://www.thedigitalacademy.tech.gov.sg/course/detail/user-research-step-by-step-ux-research-methods' },
+          { title: 'Communication with Stakeholders', url: 'https://www.thedigitalacademy.tech.gov.sg/course/detail/service---design' },
+        ],
+        Elective: [
+        ],
+      },
+      3: {
+        Core: [
+          { title: 'Facilitating UX Workshops', url: null },
+          { title: 'Human-Centered Systems Thinking', url: 'https://www.thedigitalacademy.tech.gov.sg/course/detail/human-centered-systems-thinking' },
+          { title: 'Design Ops: Scaling UX Design', url: null },
+          { title: 'Problem Framing  - Solving Problems with Creative and Critical Thinking', url: null },
+          { title: 'Design Strategy: Become a Senior UX Design Strategist', url: null },
+          { title: 'Leadership: Practical Leadership Skills', url: 'https://www.thedigitalacademy.tech.gov.sg/course/detail/leadership-practical-leadership-skills' },
+          { title: 'Navigate Conflict and Deliver Feedback', url: 'https://www.thedigitalacademy.tech.gov.sg/course/detail/navigate-conflict-and-deliver-feedback' },
+        ],
+        Elective: [
+        ],
+      },
+    },
+    'Product Manager': {
+      1: {
+        Core: [
+          { title: 'Product Management Basics Certification', url: 'https://www.thedigitalacademy.tech.gov.sg/course/detail/product-management-basics-certification' },
+          { title: 'Reforge: Product Foundations', url: 'https://www.thedigitalacademy.tech.gov.sg/course/detail/product-foundations' },
+          { title: 'AI for Product Management Course', url: 'https://www.thedigitalacademy.tech.gov.sg/course/detail/ai-for-product-management-course' },
+          { title: 'IBM Product Manager Professional Certificate', url: 'https://www.thedigitalacademy.tech.gov.sg/course/detail/ibm-product-manager-professional-certificate' },
+          { title: 'Mastering Product Operations', url: 'https://www.thedigitalacademy.tech.gov.sg/course/detail/mastering-product-operations' },
+          { title: 'Prod Ops: 101 — Getting Started with Product Operations', url: null },
+          { title: 'Prod Ops: 101 — Craft Module', url: null },
+        ],
+        Elective: [
+          { title: 'Managing Digital Products', url: 'https://www.thedigitalacademy.tech.gov.sg/course/detail/managing-digital---products' },
+          { title: 'Digital Product Management Bootcamp', url: 'https://www.thedigitalacademy.tech.gov.sg/course/detail/tda-digital-product-management-bootcamp' },
+          { title: 'Product Management Mastery: From Idea to Execution (2026)', url: null },
+          { title: 'Become a Product Manager: Learn the Skills & Get the Job', url: null },
+          { title: 'Product Management Programme (with AI)', url: null },
+          { title: 'Digital Transformation (Product Operations module)', url: 'https://www.thedigitalacademy.tech.gov.sg/course/detail/digital-transformation-product-operations' },
+          { title: 'Data-Driven Product Management', url: null },
+          { title: 'Improve Processes and Deliver Operational Excellence (Learning Path)', url: 'https://www.thedigitalacademy.tech.gov.sg/course/detail/improve-processes-and-deliver-operational-excellence' },
+          { title: 'Introduction to KPIs: Measuring Success in Business', url: null },
+          { title: 'Managing Digital Products (MDP)', url: 'https://www.thedigitalacademy.tech.gov.sg/course/detail/managing-digital---products' },
+        ],
+      },
+      2: {
+        Core: [
+          { title: 'Reforge: Mastering Product Management', url: 'https://www.thedigitalacademy.tech.gov.sg/course/detail/mastering-product-management' },
+          { title: 'AI Strategy', url: 'https://www.thedigitalacademy.tech.gov.sg/course/detail/ai-strategy' },
+          { title: 'Mastering Product Operations', url: 'https://www.thedigitalacademy.tech.gov.sg/course/detail/mastering-product-operations' },
+          { title: 'Product Operations Certified: Core', url: null },
+          { title: 'Product Management Programme (with AI)', url: null },
+        ],
+        Elective: [
+          { title: 'Digital Product Strategy (DPS)', url: 'https://www.thedigitalacademy.tech.gov.sg/course/detail/digital-product--strategy' },
+          { title: 'Reforge: Mastering Experimentation', url: null },
+          { title: 'Reforge: Mastering Product Analytics', url: null },
+          { title: 'NTU PACE: SCTP Advanced Professional Certificate in Product Management for AI & Digital Finance', url: null },
+          { title: 'SMU Product Management Programme (AI-Integrated)', url: null },
+          { title: 'Advanced Certificate in Product Management Essentials', url: null },
+          { title: 'Digital Transformation (Product Operations module)', url: 'https://www.thedigitalacademy.tech.gov.sg/course/detail/digital-transformation-product-operations' },
+          { title: 'Digital Products Delivery (DPD)', url: 'https://www.thedigitalacademy.tech.gov.sg/course/detail/digital-products-delivery' },
+          { title: 'Agile Digital Product Management: Strategy to Launch', url: null },
+          { title: 'Data-Driven Product Management', url: null },
+          { title: 'Improve Processes and Deliver Operational Excellence (Learning Path)', url: 'https://www.thedigitalacademy.tech.gov.sg/course/detail/improve-processes-and-deliver-operational-excellence' },
+          { title: 'Introduction to KPIs: Measuring Success in Business', url: null },
+        ],
+      },
+      3: {
+        Core: [
+          { title: 'Reforge: Product Strategy', url: 'https://www.thedigitalacademy.tech.gov.sg/course/detail/product-strategy' },
+          { title: 'AI Product Strategy Course', url: null },
+          { title: 'Mastering Product Operations', url: 'https://www.thedigitalacademy.tech.gov.sg/course/detail/mastering-product-operations' },
+          { title: 'Product Operations Certified: Masters', url: null },
+          { title: 'Professional Certificate in Digital Product Management', url: null },
+          { title: 'Product Operations Certified: Core', url: null },
+        ],
+        Elective: [
+          { title: 'Reforge: Mastering Product Analytics', url: null },
+          { title: 'Reforge: Mastering Experimentation', url: null },
+          { title: 'Architecting Platforms as a Business', url: 'https://www.thedigitalacademy.tech.gov.sg/course/detail/tda-architecting-platforms-as-a-business' },
+          { title: 'Product Operations and Infrastructure', url: null },
+          { title: 'Product Operating Model and Business Transformation', url: null },
+          { title: 'Product Management Programme (with AI)', url: null },
+          { title: 'Digital Products Delivery (DPD)', url: 'https://www.thedigitalacademy.tech.gov.sg/course/detail/digital-products-delivery' },
+          { title: 'Agile Digital Product Management: Strategy to Launch', url: null },
+          { title: 'Data-Driven Product Management', url: null },
+          { title: 'Facilitating and Leading Cross-Functional Collaboration', url: null },
+          { title: 'Digital Product Strategy (DPS)', url: 'https://www.thedigitalacademy.tech.gov.sg/course/detail/digital-product--strategy' },
+        ],
+      },
+    },
+    'Product Ops': {
+      1: {
+        Core: [
+          { title: 'AWS Cloud Practitioner', url: null },
+          { title: 'Azure Fundamentals (AZ-900)', url: null },
+          { title: 'Git & GitLab Fundamentals', url: null },
+          { title: 'Ansible Fundamentals', url: null },
+          { title: 'Terraform Basics', url: null },
+          { title: 'VS Code Remote Development (SSH, Containers) — Microsoft Docs', url: null },
+          { title: 'Claude for Developers — Anthropic Documentation', url: null },
+          { title: 'Observability Fundamentals (Cloud Native / Elastic / Dynatrace)', url: null },
+          { title: 'Azure Fundamentals (MS-900)', url: null },
+          { title: 'Microsoft MD-102 (Endpoint Admin)', url: null },
+          { title: 'PowerShell Scripting for SysAdmins', url: null },
+          { title: 'AI Pair Programming: Writing Infrastructure Code with Claude — O\'Reilly', url: null },
+          { title: 'Observability Fundamentals (Cloud Native / Elastic / Dynatrace)', url: null },
+          { title: 'DevOps & SRE Foundation (DevOps Institute)', url: null },
+          { title: 'Incident Management at GovTech -- GovTech Digital Academy', url: null },
+        ],
+        Elective: [
+        ],
+      },
+      2: {
+        Core: [
+          { title: 'AWS Solutions Architect Associate', url: null },
+          { title: 'Azure Administrator Associate (AZ-104)', url: null },
+          { title: 'HashiCorp Certified: Terraform Associate', url: null },
+          { title: 'VS Code for DevOps Engineers — Pluralsight / O\'Reilly Learning', url: null },
+          { title: 'Terraform Authoring with Claude — Anthropic Cookbook', url: null },
+          { title: 'Using Claude to Review & Improve Infrastructure Code — O\'Reilly Learning', url: null },
+          { title: 'AI-Assisted Coding with GitHub Copilot / Claude — O\'Reilly Learning', url: null },
+          { title: 'GitLab Certified CI/CD Associate', url: null },
+          { title: 'SRE Practitioner (hands-on)', url: null },
+          { title: 'Microsoft 365 Certified: Security Admin Associate', url: null },
+          { title: 'CrowdStrike Certified Falcon Administrator / FALCON 200', url: null },
+          { title: 'Intune Training', url: null },
+          { title: 'SRE Foundation', url: null },
+        ],
+        Elective: [
+        ],
+      },
+      3: {
+        Core: [
+          { title: 'AWS Certified Solutions Architect Professional', url: null },
+          { title: 'Design Azure Infrastructure Solutions (AZ-305)', url: null },
+          { title: 'GitLab CI/CD Expert (GitLab Professional Services)', url: null },
+          { title: 'Terraform Advanced', url: null },
+          { title: 'AWS Security Specialty', url: null },
+          { title: 'DevSecOps Professional (DevOps Institute)', url: null },
+          { title: 'Microsoft 365 Solutions Architect', url: null },
+          { title: 'MS SC-401', url: null },
+          { title: 'Microsoft Graph API Workshop', url: null },
+          { title: 'CISM (InfoSec Manager)', url: null },
+          { title: 'ITIL Intermediate/Professional', url: null },
+        ],
+        Elective: [
+        ],
+      },
+    },
+    'Software Engineer': {
+      1: { Core: [], Elective: [] },
+      2: { Core: [], Elective: [] },
+      3: { Core: [], Elective: [] },
+    },
+  };
+
+  // Helper function to render courses based on selected pathway
+  const renderCourses = (levelNum: number) => {
+    const levelCourses = PATHWAY_COURSES[selectedPathway]?.[levelNum];
+    if (!levelCourses) return null;
+
+    const hasCourses = levelCourses.Core.length > 0 || levelCourses.Elective.length > 0;
+    if (!hasCourses) {
+      return (
+        <div className="space-y-[var(--space-6)]">
+          <p className="text-[rgb(var(--color-text-secondary))] text-center py-8">
+            Course information coming soon
+          </p>
+        </div>
+      );
+    }
+
+    return (
+      <div className="space-y-[var(--space-6)]">
+        {/* Core Courses */}
+        {levelCourses.Core.length > 0 && (
+          <div className="mb-[var(--space-6)]">
+            <h4 className="font-serif text-[length:var(--text-xl)] font-bold text-[rgb(var(--color-text-primary))] mb-[var(--space-4)]">
+              Core
+            </h4>
+            <div className="space-y-[var(--space-3)]">
+              {levelCourses.Core.map((course: any, index: number) => (
+                course.url ? (
+                  <a
+                    key={index}
+                    href={course.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-[var(--space-3)] px-[var(--space-4)] py-[var(--space-3)] bg-[rgb(var(--color-surface))] border border-[rgb(var(--color-border))] rounded-lg hover:border-[rgb(var(--color-primary-300))] hover:bg-[rgb(var(--color-primary-50))] transition-all group"
+                  >
+                    <svg className="w-5 h-5 text-[rgb(var(--color-text-muted))] group-hover:text-[rgb(var(--color-primary-600))] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+                    </svg>
+                    <span className="text-[rgb(var(--color-text-primary))] font-medium group-hover:text-[rgb(var(--color-primary-700))] transition-colors">
+                      {course.title}
+                    </span>
+                  </a>
+                ) : (
+                  <div key={index} className="flex items-center gap-[var(--space-3)] px-[var(--space-4)] py-[var(--space-3)] bg-[rgb(var(--color-neutral-50))] border border-[rgb(var(--color-border))] rounded-lg opacity-75">
+                    <svg className="w-5 h-5 text-[rgb(var(--color-text-muted))]" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <span className="text-[rgb(var(--color-text-secondary))] font-medium">
+                      {course.title}
+                    </span>
+                  </div>
+                )
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Elective Courses */}
+        {levelCourses.Elective.length > 0 && (
+          <div>
+            <h4 className="font-serif text-[length:var(--text-xl)] font-bold text-[rgb(var(--color-text-primary))] mb-[var(--space-4)]">
+              Electives
+            </h4>
+            <div className="space-y-[var(--space-3)]">
+              {levelCourses.Elective.map((course: any, index: number) => (
+                course.url ? (
+                  <a
+                    key={index}
+                    href={course.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-[var(--space-3)] px-[var(--space-4)] py-[var(--space-3)] bg-[rgb(var(--color-surface))] border border-[rgb(var(--color-border))] rounded-lg hover:border-[rgb(var(--color-primary-300))] hover:bg-[rgb(var(--color-primary-50))] transition-all group"
+                  >
+                    <svg className="w-5 h-5 text-[rgb(var(--color-text-muted))] group-hover:text-[rgb(var(--color-primary-600))] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+                    </svg>
+                    <span className="text-[rgb(var(--color-text-primary))] font-medium group-hover:text-[rgb(var(--color-primary-700))] transition-colors">
+                      {course.title}
+                    </span>
+                  </a>
+                ) : (
+                  <div key={index} className="flex items-center gap-[var(--space-3)] px-[var(--space-4)] py-[var(--space-3)] bg-[rgb(var(--color-neutral-50))] border border-[rgb(var(--color-border))] rounded-lg opacity-75">
+                    <svg className="w-5 h-5 text-[rgb(var(--color-text-muted))]" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <span className="text-[rgb(var(--color-text-secondary))] font-medium">
+                      {course.title}
+                    </span>
+                  </div>
+                )
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
+    );
+  };
+
+
+
+
 function StaffDashboardContent() {
   const searchParams = useSearchParams();
   const userId = searchParams.get('userId') || '';
@@ -1346,367 +1629,12 @@ function StaffDashboardContent() {
                         </Card>
                       )))}
                     </div>
-                                                      ) : expandedLevel === 1 ? (
-                    // Level 1 Designer (I)
-                    <div className="space-y-[var(--space-6)]">
-                      {/* Core */}
-                      <div className="mb-[var(--space-6)]">
-                          <h4 className="font-serif text-[length:var(--text-xl)] font-bold text-[rgb(var(--color-text-primary))] mb-[var(--space-4)]">
-                            Core
-                          </h4>
-                          <div className="space-y-[var(--space-3)]">
-                            <a
-                              href="https://www.thedigitalacademy.tech.gov.sg/course/detail/google-ux-design-professional-certificate-course-1-4"
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="flex items-center gap-[var(--space-3)] px-[var(--space-4)] py-[var(--space-3)] bg-[rgb(var(--color-surface))] border border-[rgb(var(--color-border))] rounded-lg hover:border-[rgb(var(--color-primary-300))] hover:bg-[rgb(var(--color-primary-50))] transition-all group"
-                            >
-                              <svg className="w-5 h-5 text-[rgb(var(--color-text-muted))] group-hover:text-[rgb(var(--color-primary-600))] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
-                                <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
-                              </svg>
-                              <span className="text-[rgb(var(--color-text-primary))] font-medium group-hover:text-[rgb(var(--color-primary-700))] transition-colors">
-                                Google UX Design Professional Certificate (Course 1 – 4)
-                              </span>
-                            </a>
-
-                            <a
-                              href="https://www.thedigitalacademy.tech.gov.sg/course/detail/google-ux-design-professional-certificate-course-5-8"
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="flex items-center gap-[var(--space-3)] px-[var(--space-4)] py-[var(--space-3)] bg-[rgb(var(--color-surface))] border border-[rgb(var(--color-border))] rounded-lg hover:border-[rgb(var(--color-primary-300))] hover:bg-[rgb(var(--color-primary-50))] transition-all group"
-                            >
-                              <svg className="w-5 h-5 text-[rgb(var(--color-text-muted))] group-hover:text-[rgb(var(--color-primary-600))] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
-                                <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
-                              </svg>
-                              <span className="text-[rgb(var(--color-text-primary))] font-medium group-hover:text-[rgb(var(--color-primary-700))] transition-colors">
-                                Google UX Design Professional Certificate (Course 5 – 8)
-                              </span>
-                            </a>
-
-                            <a
-                              href="https://www.thedigitalacademy.tech.gov.sg/course/detail/lean-ux-and-agile"
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="flex items-center gap-[var(--space-3)] px-[var(--space-4)] py-[var(--space-3)] bg-[rgb(var(--color-surface))] border border-[rgb(var(--color-border))] rounded-lg hover:border-[rgb(var(--color-primary-300))] hover:bg-[rgb(var(--color-primary-50))] transition-all group"
-                            >
-                              <svg className="w-5 h-5 text-[rgb(var(--color-text-muted))] group-hover:text-[rgb(var(--color-primary-600))] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
-                                <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
-                              </svg>
-                              <span className="text-[rgb(var(--color-text-primary))] font-medium group-hover:text-[rgb(var(--color-primary-700))] transition-colors">
-                                Lean UX and Agile
-                              </span>
-                            </a>
-
-                            <a
-                              href="https://www.thedigitalacademy.tech.gov.sg/course/detail/running-effective-design-critiques"
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="flex items-center gap-[var(--space-3)] px-[var(--space-4)] py-[var(--space-3)] bg-[rgb(var(--color-surface))] border border-[rgb(var(--color-border))] rounded-lg hover:border-[rgb(var(--color-primary-300))] hover:bg-[rgb(var(--color-primary-50))] transition-all group"
-                            >
-                              <svg className="w-5 h-5 text-[rgb(var(--color-text-muted))] group-hover:text-[rgb(var(--color-primary-600))] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
-                                <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
-                              </svg>
-                              <span className="text-[rgb(var(--color-text-primary))] font-medium group-hover:text-[rgb(var(--color-primary-700))] transition-colors">
-                                Running Effective Design Critiques
-                              </span>
-                            </a>
-
-                            <a
-                              href="https://www.thedigitalacademy.tech.gov.sg/course/detail/uiux-design-with-gen-ai-wireframing-prototyping"
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="flex items-center gap-[var(--space-3)] px-[var(--space-4)] py-[var(--space-3)] bg-[rgb(var(--color-surface))] border border-[rgb(var(--color-border))] rounded-lg hover:border-[rgb(var(--color-primary-300))] hover:bg-[rgb(var(--color-primary-50))] transition-all group"
-                            >
-                              <svg className="w-5 h-5 text-[rgb(var(--color-text-muted))] group-hover:text-[rgb(var(--color-primary-600))] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
-                                <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
-                              </svg>
-                              <span className="text-[rgb(var(--color-text-primary))] font-medium group-hover:text-[rgb(var(--color-primary-700))] transition-colors">
-                                UI/UX Wireframing and Prototyping with Figma
-                              </span>
-                            </a>
-
-                            <a
-                              href="https://www.thedigitalacademy.tech.gov.sg/course/detail/uiux-wireframing-and-prototyping-with-figma"
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="flex items-center gap-[var(--space-3)] px-[var(--space-4)] py-[var(--space-3)] bg-[rgb(var(--color-surface))] border border-[rgb(var(--color-border))] rounded-lg hover:border-[rgb(var(--color-primary-300))] hover:bg-[rgb(var(--color-primary-50))] transition-all group"
-                            >
-                              <svg className="w-5 h-5 text-[rgb(var(--color-text-muted))] group-hover:text-[rgb(var(--color-primary-600))] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
-                                <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
-                              </svg>
-                              <span className="text-[rgb(var(--color-text-primary))] font-medium group-hover:text-[rgb(var(--color-primary-700))] transition-colors">
-                                UI/UX Design with Gen AI: Wireframing & Prototyping
-                              </span>
-                            </a>
-
-                          </div>
-                        </div>
-
-                        {/* Electives */}
-                        <div>
-                          <h4 className="font-serif text-[length:var(--text-xl)] font-bold text-[rgb(var(--color-text-primary))] mb-[var(--space-4)]">
-                            Electives
-                          </h4>
-                          <div className="space-y-[var(--space-3)]">
-                            <a
-                              href="https://www.thedigitalacademy.tech.gov.sg/course/detail/design-rules-principles-and-practices-for-great-ui-design"
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="flex items-center gap-[var(--space-3)] px-[var(--space-4)] py-[var(--space-3)] bg-[rgb(var(--color-surface))] border border-[rgb(var(--color-border))] rounded-lg hover:border-[rgb(var(--color-primary-300))] hover:bg-[rgb(var(--color-primary-50))] transition-all group"
-                            >
-                              <svg className="w-5 h-5 text-[rgb(var(--color-text-muted))] group-hover:text-[rgb(var(--color-primary-600))] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
-                                <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
-                              </svg>
-                              <span className="text-[rgb(var(--color-text-primary))] font-medium group-hover:text-[rgb(var(--color-primary-700))] transition-colors">
-                                Human-Computer Interaction
-                              </span>
-                            </a>
-
-                            <a
-                              href="https://www.thedigitalacademy.tech.gov.sg/course/detail/human-computer-interaction"
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="flex items-center gap-[var(--space-3)] px-[var(--space-4)] py-[var(--space-3)] bg-[rgb(var(--color-surface))] border border-[rgb(var(--color-border))] rounded-lg hover:border-[rgb(var(--color-primary-300))] hover:bg-[rgb(var(--color-primary-50))] transition-all group"
-                            >
-                              <svg className="w-5 h-5 text-[rgb(var(--color-text-muted))] group-hover:text-[rgb(var(--color-primary-600))] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
-                                <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
-                              </svg>
-                              <span className="text-[rgb(var(--color-text-primary))] font-medium group-hover:text-[rgb(var(--color-primary-700))] transition-colors">
-                                Interaction Intelligence: Advanced Prototyping with Figma
-                              </span>
-                            </a>
-
-                            <a
-                              href="https://www.thedigitalacademy.tech.gov.sg/course/detail/interaction-intelligence-advanced-prototyping-with-figma"
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="flex items-center gap-[var(--space-3)] px-[var(--space-4)] py-[var(--space-3)] bg-[rgb(var(--color-surface))] border border-[rgb(var(--color-border))] rounded-lg hover:border-[rgb(var(--color-primary-300))] hover:bg-[rgb(var(--color-primary-50))] transition-all group"
-                            >
-                              <svg className="w-5 h-5 text-[rgb(var(--color-text-muted))] group-hover:text-[rgb(var(--color-primary-600))] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
-                                <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
-                              </svg>
-                              <span className="text-[rgb(var(--color-text-primary))] font-medium group-hover:text-[rgb(var(--color-primary-700))] transition-colors">
-                                Writing is Designing: UX Content & Interface Strategy
-                              </span>
-                            </a>
-
-                            <a
-                              href="https://www.thedigitalacademy.tech.gov.sg/course/detail/writing-is-designing-ux-content-interface-strategy"
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="flex items-center gap-[var(--space-3)] px-[var(--space-4)] py-[var(--space-3)] bg-[rgb(var(--color-surface))] border border-[rgb(var(--color-border))] rounded-lg hover:border-[rgb(var(--color-primary-300))] hover:bg-[rgb(var(--color-primary-50))] transition-all group"
-                            >
-                              <svg className="w-5 h-5 text-[rgb(var(--color-text-muted))] group-hover:text-[rgb(var(--color-primary-600))] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
-                                <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
-                              </svg>
-                              <span className="text-[rgb(var(--color-text-primary))] font-medium group-hover:text-[rgb(var(--color-primary-700))] transition-colors">
-                                Design Rules: Principles and practices for Great UI Design
-                              </span>
-                            </a>
-
-                            <a
-                              href="https://www.thedigitalacademy.tech.gov.sg/course/detail/how-to-design-for-accessibility"
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="flex items-center gap-[var(--space-3)] px-[var(--space-4)] py-[var(--space-3)] bg-[rgb(var(--color-surface))] border border-[rgb(var(--color-border))] rounded-lg hover:border-[rgb(var(--color-primary-300))] hover:bg-[rgb(var(--color-primary-50))] transition-all group"
-                            >
-                              <svg className="w-5 h-5 text-[rgb(var(--color-text-muted))] group-hover:text-[rgb(var(--color-primary-600))] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
-                                <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
-                              </svg>
-                              <span className="text-[rgb(var(--color-text-primary))] font-medium group-hover:text-[rgb(var(--color-primary-700))] transition-colors">
-                                How to Design for Accessibility
-                              </span>
-                            </a>
-
-                          </div>
-                        </div>
-                    </div>
+                                                                        ) : expandedLevel === 1 ? (
+                    {renderCourses(1)}
                                     ) : expandedLevel === 2 ? (
-                    // Level 2 Designer (II)
-                    <div className="space-y-[var(--space-6)]">
-                      {/* Core */}
-                      <div className="mb-[var(--space-6)]">
-                          <h4 className="font-serif text-[length:var(--text-xl)] font-bold text-[rgb(var(--color-text-primary))] mb-[var(--space-4)]">
-                            Core
-                          </h4>
-                          <div className="space-y-[var(--space-3)]">
-                            <a
-                              href="https://www.thedigitalacademy.tech.gov.sg/course/detail/advanced-design-thinking-certificate"
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="flex items-center gap-[var(--space-3)] px-[var(--space-4)] py-[var(--space-3)] bg-[rgb(var(--color-surface))] border border-[rgb(var(--color-border))] rounded-lg hover:border-[rgb(var(--color-primary-300))] hover:bg-[rgb(var(--color-primary-50))] transition-all group"
-                            >
-                              <svg className="w-5 h-5 text-[rgb(var(--color-text-muted))] group-hover:text-[rgb(var(--color-primary-600))] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
-                                <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
-                              </svg>
-                              <span className="text-[rgb(var(--color-text-primary))] font-medium group-hover:text-[rgb(var(--color-primary-700))] transition-colors">
-                                Advanced Design Thinking Certificate
-                              </span>
-                            </a>
-
-                            <a
-                              href="https://www.thedigitalacademy.tech.gov.sg/course/detail/ai-essentials-for-user-experience-designers"
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="flex items-center gap-[var(--space-3)] px-[var(--space-4)] py-[var(--space-3)] bg-[rgb(var(--color-surface))] border border-[rgb(var(--color-border))] rounded-lg hover:border-[rgb(var(--color-primary-300))] hover:bg-[rgb(var(--color-primary-50))] transition-all group"
-                            >
-                              <svg className="w-5 h-5 text-[rgb(var(--color-text-muted))] group-hover:text-[rgb(var(--color-primary-600))] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
-                                <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
-                              </svg>
-                              <span className="text-[rgb(var(--color-text-primary))] font-medium group-hover:text-[rgb(var(--color-primary-700))] transition-colors">
-                                User Research - Methods and Best Practice
-                              </span>
-                            </a>
-
-                            <a
-                              href="https://www.thedigitalacademy.tech.gov.sg/course/detail/communication-with-stakeholders"
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="flex items-center gap-[var(--space-3)] px-[var(--space-4)] py-[var(--space-3)] bg-[rgb(var(--color-surface))] border border-[rgb(var(--color-border))] rounded-lg hover:border-[rgb(var(--color-primary-300))] hover:bg-[rgb(var(--color-primary-50))] transition-all group"
-                            >
-                              <svg className="w-5 h-5 text-[rgb(var(--color-text-muted))] group-hover:text-[rgb(var(--color-primary-600))] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
-                                <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
-                              </svg>
-                              <span className="text-[rgb(var(--color-text-primary))] font-medium group-hover:text-[rgb(var(--color-primary-700))] transition-colors">
-                                Product Design
-                              </span>
-                            </a>
-
-                            <a
-                              href="https://www.thedigitalacademy.tech.gov.sg/course/detail/product-design"
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="flex items-center gap-[var(--space-3)] px-[var(--space-4)] py-[var(--space-3)] bg-[rgb(var(--color-surface))] border border-[rgb(var(--color-border))] rounded-lg hover:border-[rgb(var(--color-primary-300))] hover:bg-[rgb(var(--color-primary-50))] transition-all group"
-                            >
-                              <svg className="w-5 h-5 text-[rgb(var(--color-text-muted))] group-hover:text-[rgb(var(--color-primary-600))] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
-                                <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
-                              </svg>
-                              <span className="text-[rgb(var(--color-text-primary))] font-medium group-hover:text-[rgb(var(--color-primary-700))] transition-colors">
-                                Service Design
-                              </span>
-                            </a>
-
-                            <a
-                              href="https://www.thedigitalacademy.tech.gov.sg/course/detail/user-research-step-by-step-ux-research-methods"
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="flex items-center gap-[var(--space-3)] px-[var(--space-4)] py-[var(--space-3)] bg-[rgb(var(--color-surface))] border border-[rgb(var(--color-border))] rounded-lg hover:border-[rgb(var(--color-primary-300))] hover:bg-[rgb(var(--color-primary-50))] transition-all group"
-                            >
-                              <svg className="w-5 h-5 text-[rgb(var(--color-text-muted))] group-hover:text-[rgb(var(--color-primary-600))] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
-                                <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
-                              </svg>
-                              <span className="text-[rgb(var(--color-text-primary))] font-medium group-hover:text-[rgb(var(--color-primary-700))] transition-colors">
-                                AI Essentials for User Experience Designers
-                              </span>
-                            </a>
-
-                            <a
-                              href="https://www.thedigitalacademy.tech.gov.sg/course/detail/service---design"
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="flex items-center gap-[var(--space-3)] px-[var(--space-4)] py-[var(--space-3)] bg-[rgb(var(--color-surface))] border border-[rgb(var(--color-border))] rounded-lg hover:border-[rgb(var(--color-primary-300))] hover:bg-[rgb(var(--color-primary-50))] transition-all group"
-                            >
-                              <svg className="w-5 h-5 text-[rgb(var(--color-text-muted))] group-hover:text-[rgb(var(--color-primary-600))] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
-                                <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
-                              </svg>
-                              <span className="text-[rgb(var(--color-text-primary))] font-medium group-hover:text-[rgb(var(--color-primary-700))] transition-colors">
-                                Communication with Stakeholders
-                              </span>
-                            </a>
-
-                          </div>
-                        </div>
-                    </div>
+                    {renderCourses(2)}
                                     ) : expandedLevel === 3 ? (
-                    // Level 3 Senior Designer
-                    <div className="space-y-[var(--space-6)]">
-                      {/* Core */}
-                      <div className="mb-[var(--space-6)]">
-                          <h4 className="font-serif text-[length:var(--text-xl)] font-bold text-[rgb(var(--color-text-primary))] mb-[var(--space-4)]">
-                            Core
-                          </h4>
-                          <div className="space-y-[var(--space-3)]">
-                            <div className="flex items-center gap-[var(--space-3)] px-[var(--space-4)] py-[var(--space-3)] bg-[rgb(var(--color-neutral-50))] border border-[rgb(var(--color-border))] rounded-lg opacity-75">
-                              <svg className="w-5 h-5 text-[rgb(var(--color-text-muted))]" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
-                                <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-                              </svg>
-                              <span className="text-[rgb(var(--color-text-secondary))] font-medium">
-                                Facilitating UX Workshops
-                              </span>
-                            </div>
-
-                            <a
-                              href="https://www.thedigitalacademy.tech.gov.sg/course/detail/human-centered-systems-thinking"
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="flex items-center gap-[var(--space-3)] px-[var(--space-4)] py-[var(--space-3)] bg-[rgb(var(--color-surface))] border border-[rgb(var(--color-border))] rounded-lg hover:border-[rgb(var(--color-primary-300))] hover:bg-[rgb(var(--color-primary-50))] transition-all group"
-                            >
-                              <svg className="w-5 h-5 text-[rgb(var(--color-text-muted))] group-hover:text-[rgb(var(--color-primary-600))] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
-                                <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
-                              </svg>
-                              <span className="text-[rgb(var(--color-text-primary))] font-medium group-hover:text-[rgb(var(--color-primary-700))] transition-colors">
-                                Human-Centered Systems Thinking
-                              </span>
-                            </a>
-
-                            <div className="flex items-center gap-[var(--space-3)] px-[var(--space-4)] py-[var(--space-3)] bg-[rgb(var(--color-neutral-50))] border border-[rgb(var(--color-border))] rounded-lg opacity-75">
-                              <svg className="w-5 h-5 text-[rgb(var(--color-text-muted))]" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
-                                <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-                              </svg>
-                              <span className="text-[rgb(var(--color-text-secondary))] font-medium">
-                                Design Ops: Scaling UX Design
-                              </span>
-                            </div>
-
-                            <div className="flex items-center gap-[var(--space-3)] px-[var(--space-4)] py-[var(--space-3)] bg-[rgb(var(--color-neutral-50))] border border-[rgb(var(--color-border))] rounded-lg opacity-75">
-                              <svg className="w-5 h-5 text-[rgb(var(--color-text-muted))]" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
-                                <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-                              </svg>
-                              <span className="text-[rgb(var(--color-text-secondary))] font-medium">
-                                Problem Framing  - Solving Problems with Creative and Critical Thinking
-                              </span>
-                            </div>
-
-                            <div className="flex items-center gap-[var(--space-3)] px-[var(--space-4)] py-[var(--space-3)] bg-[rgb(var(--color-neutral-50))] border border-[rgb(var(--color-border))] rounded-lg opacity-75">
-                              <svg className="w-5 h-5 text-[rgb(var(--color-text-muted))]" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
-                                <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-                              </svg>
-                              <span className="text-[rgb(var(--color-text-secondary))] font-medium">
-                                Design Strategy: Become a Senior UX Design Strategist
-                              </span>
-                            </div>
-
-                            <a
-                              href="https://www.thedigitalacademy.tech.gov.sg/course/detail/leadership-practical-leadership-skills"
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="flex items-center gap-[var(--space-3)] px-[var(--space-4)] py-[var(--space-3)] bg-[rgb(var(--color-surface))] border border-[rgb(var(--color-border))] rounded-lg hover:border-[rgb(var(--color-primary-300))] hover:bg-[rgb(var(--color-primary-50))] transition-all group"
-                            >
-                              <svg className="w-5 h-5 text-[rgb(var(--color-text-muted))] group-hover:text-[rgb(var(--color-primary-600))] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
-                                <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
-                              </svg>
-                              <span className="text-[rgb(var(--color-text-primary))] font-medium group-hover:text-[rgb(var(--color-primary-700))] transition-colors">
-                                Leadership: Practical Leadership Skills
-                              </span>
-                            </a>
-
-                            <a
-                              href="https://www.thedigitalacademy.tech.gov.sg/course/detail/navigate-conflict-and-deliver-feedback"
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="flex items-center gap-[var(--space-3)] px-[var(--space-4)] py-[var(--space-3)] bg-[rgb(var(--color-surface))] border border-[rgb(var(--color-border))] rounded-lg hover:border-[rgb(var(--color-primary-300))] hover:bg-[rgb(var(--color-primary-50))] transition-all group"
-                            >
-                              <svg className="w-5 h-5 text-[rgb(var(--color-text-muted))] group-hover:text-[rgb(var(--color-primary-600))] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
-                                <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
-                              </svg>
-                              <span className="text-[rgb(var(--color-text-primary))] font-medium group-hover:text-[rgb(var(--color-primary-700))] transition-colors">
-                                Navigate Conflict and Deliver Feedback
-                              </span>
-                            </a>
-
-                          </div>
-                        </div>
-                    </div>
+                    {renderCourses(3)}
                   ) : expandedLevel === 4 ? (
                     // Level 4 Lead Designer
                     <div className="space-y-[var(--space-6)]">
