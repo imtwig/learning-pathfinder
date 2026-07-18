@@ -1232,17 +1232,6 @@ function StaffDashboardContent() {
                           <p className="text-sm text-[rgb(var(--color-text-secondary))]">
                             Complete these 4 foundational steps with manager approval before progressing to Level 1
                           </p>
-                          <div className="mt-[var(--space-4)] flex items-center gap-[var(--space-3)]">
-                            <div className="flex-1 h-2 bg-[rgb(var(--color-neutral-200))] rounded-full overflow-hidden">
-                              <div
-                                className="h-full bg-[rgb(34,197,94)] transition-all duration-500 rounded-full"
-                                style={{ width: `${uxDesignerProgressPercentage}%` }}
-                              ></div>
-                            </div>
-                            <span className="text-sm font-semibold text-[rgb(var(--color-text-primary))] min-w-[60px] text-right">
-                              {uxDesignerApprovedCount} / 4
-                            </span>
-                          </div>
                         </div>
                       )}
 
