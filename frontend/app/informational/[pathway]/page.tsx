@@ -289,57 +289,21 @@ function StaffDashboardContent() {
   const [showFullPathway, setShowFullPathway] = useState(false);
   const [isCollapsing, setIsCollapsing] = useState(false);
 
-  // Initialize pre-schema statuses based on userId
+  // Initialize pre-schema statuses - default state for informational view
   const getInitialPreSchemaStatuses = () => {
-    if (userId === 'staff-0') {
-      // Demo User: all steps at "Not Yet"
-      return {
-        '1': 'Not Yet',
-        '2': 'Not Yet',
-        '3': 'Not Yet',
-        '4': 'Not Yet',
-      };
-    } else if (userId === 'staff-1') {
-      // John Tan: completed step 3, pending emplacement on step 4
-      return {
-        '1': 'Completed',
-        '2': 'Passed',
-        '3': 'Completed',
-        '4': 'Pending Emplacement for Apprenticeship',
-      };
-    } else if (userId === 'staff-2') {
-      // Sarah Chen: completed step 2, ongoing step 3
-      return {
-        '1': 'Completed',
-        '2': 'Passed',
-        '3': 'Ongoing',
-        '4': 'Not Yet',
-      };
-    } else {
-      // All other demo users start with "Not Yet"
-      return {
-        '1': 'Not Yet',
-        '2': 'Not Yet',
-        '3': 'Not Yet',
-        '4': 'Not Yet',
-      };
-    }
+    return {
+      '1': 'Not Yet',
+      '2': 'Not Yet',
+      '3': 'Not Yet',
+      '4': 'Not Yet',
+    };
   };
 
   const [preSchemaStatuses, setPreSchemaStatuses] = useState<{[key: string]: string}>(getInitialPreSchemaStatuses());
   const [openStatusPopover, setOpenStatusPopover] = useState<string | null>(null);
   const [popoverDirection, setPopoverDirection] = useState<'down' | 'up'>('down');
   const [step3UploadedFile, setStep3UploadedFile] = useState<File | null>(null);
-  const [step3SampleCertificate, setStep3SampleCertificate] = useState<boolean>(
-    userId === 'staff-1' || userId === 'staff-2' // John and Sarah have certificates
-  );
-
-  // Reset pre-schema statuses when userId changes
-  useEffect(() => {
-    setPreSchemaStatuses(getInitialPreSchemaStatuses());
-    setStep3SampleCertificate(userId === 'staff-1' || userId === 'staff-2'); // Only John and Sarah have certificates
-    setStep3UploadedFile(null);
-  }, [userId]);
+  const [step3SampleCertificate, setStep3SampleCertificate] = useState<boolean>(false);
   const [endorsements, setEndorsements] = useState<{[key: string]: string}>({});
   const [showToast, setShowToast] = useState(false);
   const [toastMessage, setToastMessage] = useState('');
