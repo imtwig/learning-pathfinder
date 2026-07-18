@@ -1245,18 +1245,7 @@ function StaffDashboardContent() {
                                       href="https://www.thedigitalacademy.tech.gov.sg/course/detail/google-ux-design-professional-certificate-course-1-4"
                                       target="_blank"
                                       rel="noopener noreferrer"
-                                      className="
-                                        bg-[rgb(var(--color-primary-600))]
-                                        hover:bg-[rgb(var(--color-primary-700))]
-                                        text-white
-                                        shadow-sm
-                                        sm:shrink-0
-                                        w-full sm:w-auto
-                                        inline-flex items-center justify-center
-                                        px-4 py-2 rounded-md
-                                        font-medium text-sm
-                                        transition-all
-                                      "
+                                      className="bg-[rgb(var(--color-neutral-600))] hover:bg-[rgb(var(--color-neutral-700))] text-white shadow-sm px-4 py-2 inline-flex items-center justify-center text-sm font-medium rounded-md transition-all sm:shrink-0 w-full sm:w-auto"
                                     >
                                       View Course
                                     </a>
@@ -1267,18 +1256,7 @@ function StaffDashboardContent() {
                                       href="https://www.thedigitalacademy.tech.gov.sg/course/detail/google-ux-design-professional-certificate-course-5-8"
                                       target="_blank"
                                       rel="noopener noreferrer"
-                                      className="
-                                        bg-[rgb(var(--color-primary-600))]
-                                        hover:bg-[rgb(var(--color-primary-700))]
-                                        text-white
-                                        shadow-sm
-                                        sm:shrink-0
-                                        w-full sm:w-auto
-                                        inline-flex items-center justify-center
-                                        px-4 py-2 rounded-md
-                                        font-medium text-sm
-                                        transition-all
-                                      "
+                                      className="bg-[rgb(var(--color-neutral-600))] hover:bg-[rgb(var(--color-neutral-700))] text-white shadow-sm px-4 py-2 inline-flex items-center justify-center text-sm font-medium rounded-md transition-all sm:shrink-0 w-full sm:w-auto"
                                     >
                                       View Course
                                     </a>
@@ -1286,18 +1264,7 @@ function StaffDashboardContent() {
 
                                   {step.id === '4' && (
                                     <button
-                                      className="
-                                        bg-[rgb(var(--color-primary-600))]
-                                        hover:bg-[rgb(var(--color-primary-700))]
-                                        text-white
-                                        shadow-sm
-                                        sm:shrink-0
-                                        w-full sm:w-auto
-                                        inline-flex items-center justify-center
-                                        px-4 py-2 rounded-md
-                                        font-medium text-sm
-                                        transition-all
-                                      "
+                                      className="bg-[rgb(var(--color-neutral-600))] hover:bg-[rgb(var(--color-neutral-700))] text-white shadow-sm px-4 py-2 inline-flex items-center justify-center text-sm font-medium rounded-md transition-all sm:shrink-0 w-full sm:w-auto"
                                     >
                                       View Apprenticeship Site
                                     </button>
