@@ -41,8 +41,8 @@ COPY --from=backend-builder --chown=app:app /app/backend/package.json ./backend/
 COPY --from=backend-builder --chown=app:app /app/backend/dist ./backend/dist
 COPY --from=backend-builder --chown=app:app /app/backend/prisma ./backend/prisma
 
-COPY --chown=app:app scripts/start-airbase.sh ./start-airbase.sh
+COPY --chown=app:app start.js ./start.js
 
 USER app
 EXPOSE 3000
-CMD ["sh", "/app/start-airbase.sh"]
+CMD ["node", "/app/start.js"]
